@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 旧地址兼容：当前 Contact 页面位于 contact/contact.html。 -->
+    <meta http-equiv="refresh" content="0;url=./contact/contact.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <style>
+        /* ==========================================
+           1. 字体与全局设置
+           ========================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Moulpali&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(227, 236, 242); ; /* 轻微暖白底色，更显高级 */
+            color: #333;
+            font-family: 'Cormorant Garamond', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* ==========================================
+           2. 导航栏样式 (保持原有结构不变)
+           ========================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 30px 30px;
+            box-sizing: border-box;
+
+            z-index: 9000;
+
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+
+            transition:
+                background 0.4s ease,
+                padding 0.4s ease,
+                backdrop-filter 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 20px 30px;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+
+            color: #111;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-item {
+            font-size: 1rem;
+            color: #555;
+            text-decoration: none;
+            cursor: pointer;
+
+            display: inline-block;
+            transform: translateY(0);
+
+            transition:
+                transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                color 0.3s ease,
+                opacity 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .nav-links:hover .nav-item:not(:hover) {
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 18px 16px;
+            }
+
+            .navbar.scrolled {
+                padding: 14px 16px;
+            }
+
+            .nav-logo {
+                font-size: 0.98rem;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-item {
+                font-size: 0.82rem;
+            }
+        }
+
+        /* ==========================================
+           3. 全新 Contact 页面布局
+           ========================================== */
+        .contact-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 40px; /* 顶部留出导航栏空间 */
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: row;
+            background: #ffffff;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* 左侧信息区 */
+        .contact-info-section {
+            flex: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info-section h1 {
+            font-family: 'Emilys Candy', cursive;
+            font-size: 2.8rem;
+            color: #404b7a;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .contact-info-section p.intro {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Moulpali', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .social-item span {
+            font-weight: 600;
+            color: #444;
+            min-width: 80px;
+        }
+
+        .social-item a {
+            color: #637ed0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .social-item a:hover {
+            color: #4a2c6c;
+            transform: translateX(3px);
+        }
+
+        /* 右侧表单区 */
+        .contact-form-section {
+            flex: 1.2;
+            padding: 50px 40px;
+            background: #ffffff;
+        }
+
+        .contact-form-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+
+        label {
+            font-family: 'Moulpali', sans-serif;
+            font-size: 1rem;
+            color: #666;
+            margin-left: 2px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+            color: #333;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #839ce7;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(131, 156, 231, 0.15);
+        }
+
+        button[type="submit"] {
+            margin-top: 10px;
+            background: #637ed0;
+            color: white;
+            padding: 14px 24px;
+            font-size: 1.1rem;
+            font-family: 'Moulpali', sans-serif;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            align-self: flex-start; /* 按钮靠左对齐 */
+        }
+
+        button[type="submit"]:hover {
+            background: #4a2c6c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 44, 108, 0.2);
+        }
+
+        /* ==========================================
+           4. 响应式布局
+           ========================================== */
+        @media (max-width: 850px) {
+            .contact-card {
+                flex-direction: column;
+                max-width: 500px;
+            }
+            .contact-info-section {
+                padding: 40px 30px;
+                text-align: center;
+            }
+            .contact-info-section h1 {
+                font-size: 2.4rem;
+            }
+            .social-links {
+                align-items: center;
+            }
+            .social-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .social-item span {
+                min-width: auto;
+            }
+            .contact-form-section {
+                padding: 40px 30px;
+            }
+            button[type="submit"] {
+                align-self: stretch; /* 移动端按钮全宽 */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .contact-wrapper {
+                padding-top: 80px;
+            }
+            .contact-card {
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            .contact-info-section h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+
+        <a class="nav-logo" href="../index.html">
+            Lydia's Portfolio
+        </a>
+    
+        <div class="nav-links">
+    
+            <a class="nav-item" href="../index.html#work-section">
+                Work
+            </a>
+    
+            <a class="nav-item" href="./about.html">
+                About
+            </a>
+    
+            <a class="nav-item" href="./contact.html">
+                Contact
+            </a>
+    
+        </div>
+    
+    </nav>
+
+    <main class="contact-wrapper">
+        <div class="contact-card">
+            
+            <section class="contact-info-section">
+                <h1 data-i18n="contact.Title">Let’s talk.</h1>
+                <p class="intro" data-i18n="contact.intro">
+                    If something here sparked an idea, or if you’d like to make something together,
+                    I’d love to hear from you.
+                </p>
+                
+                <div class="social-links">
+                    <div class="social-item">
+                        <span>Email</span>
+                        <a href="mailto:nh2530@nyu.edu">nh2530@nyu.edu</a>
+                    </div>
+                    <div class="social-item">
+                        <span>Instagram</span>
+                        <a href="https://instagram.com/unnioo_h20" target="_blank">@unnioo_h20</a>
+                    </div>
+                    <div class="social-item">
+                        <span>GitHub</span>
+                        <a href="https://github.com/Lydia0420" target="_blank">github.com/Lydiagithub</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-form-section">
+                <h2 data-i18n="contact.formTitle">Leave me a note</h2>                <form action="https://formspree.io/f/xpwpzypq" method="post">
+                    <div class="form-group">
+                        <label for="name" data-i18n="contact.name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-i18n="contact.message">Message</label>
+                        <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+                    </div>
+
+                    <button type="submit" data-i18n="contact.send">Send Message</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+    
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <script src="../i18n.js"></script>
+    <script src="../script.js"></script>
+
+<script src="../preview-media.js" defer></script>
+</body>
+</html>

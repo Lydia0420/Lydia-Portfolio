@@ -1,0 +1,408 @@
+@import url(
+  "https://fonts.googleapis.com/css2?family=Aldrich&display=swap"
+);
+
+
+/* =========================
+   BASE
+========================= */
+
+:root {
+  --paper: #fbe6e1;
+  --ink: #1b1818;
+  --muted: #756d70;
+  --line: rgba(27,24,24,.14);
+  --accent: #b37f8e;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+
+  overflow: hidden;
+}
+
+
+body {
+  background: var(--paper);
+
+  color: var(--ink);
+
+  font-family:
+    Georgia,
+    serif;
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+.sketch-nav {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 58px;
+
+  padding:
+    10px 22px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  background:transparent;
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  border-bottom:
+    1px solid
+    rgba(27,24,24,.06);
+
+  z-index: 1000;
+}
+
+
+.nav-back {
+  justify-self: start;
+
+  color:
+    var(--ink);
+
+  text-decoration: none;
+
+  font-size:
+    1rem;
+
+  border-bottom:
+    1.5px solid
+    var(--ink);
+
+  transition:
+    opacity .25s ease;
+}
+
+
+.nav-back:hover {
+  opacity: .55;
+}
+
+
+.nav-center,
+.nav-index {
+  font-family:
+    "Aldrich",
+    sans-serif;
+
+  font-size:
+    .68rem;
+
+  letter-spacing:
+    .14em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.nav-center {
+  justify-self:
+    center;
+
+  color:
+    #7d7276;
+}
+
+
+.nav-index {
+  justify-self:
+    end;
+
+  color:
+    #9b878d;
+}
+
+
+/* =========================
+   EXPERIENCE AREA
+========================= */
+
+.experience {
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+
+  place-items: center;
+
+  padding-top:
+    58px;
+}
+
+
+/* =========================
+   CANVAS FRAME
+========================= */
+
+.canvas-frame {
+  position: relative;
+
+  display: grid;
+
+  place-items: center;
+
+  width:
+    min(72vh, 720px);
+
+  aspect-ratio:
+    1;
+
+  overflow: hidden;
+
+  border-radius:
+    8px;
+
+  background:
+    #141414;
+
+  box-shadow:
+    0 22px 60px
+    rgba(26,20,22,.16);
+}
+
+
+.canvas-frame canvas {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* =========================
+   TOP RIGHT TITLE
+========================= */
+
+.sketch-meta {
+  position: fixed;
+
+  top: 92px;
+  right: 54px;
+  width: 300px;
+
+  text-align:
+    right;
+
+  z-index: 50;
+
+  pointer-events:
+    none;
+}
+
+
+.sketch-type {
+  margin-bottom:
+    9px;
+
+  font-family:
+    "Aldrich",
+    sans-serif;
+
+  font-size:
+    .72rem;
+
+  letter-spacing:
+    .14em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    var(--accent);
+}
+
+
+.sketch-meta h1 {
+  margin: 0;
+
+  font-family:
+    "Aldrich",
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.8rem,
+      2.6vw,
+      2.8rem
+    );
+
+  line-height:
+    .98;
+
+  letter-spacing:
+    -.035em;
+}
+
+
+/* =========================
+   BOTTOM LEFT HINT
+========================= */
+
+.interaction-hint {
+  position: fixed;
+
+  left: 42px;
+  bottom: 36px;
+
+  z-index: 50;
+
+  pointer-events:
+    none;
+}
+
+
+.hint-label {
+  margin-bottom:
+    8px;
+
+  font-family:
+    "Aldrich",
+    sans-serif;
+
+  font-size:
+    .72rem;
+
+  letter-spacing:
+    .14em;
+
+  color:
+    var(--accent);
+}
+
+
+.hint-text {
+  font-size:
+    1rem;
+
+  color:
+    #675e61;
+}
+
+/* =========================
+   TWEAKPANE
+========================= */
+
+.tp-dfwv {
+  position: fixed !important;
+  top: 230px !important;
+  right: 54px !important;
+  width: 260px !important;
+  z-index: 200 !important;
+}
+
+.tp-dfwv {
+  --tp-base-background-color: rgb(251, 206, 198);
+  --tp-base-shadow-color: rgba(27, 24, 24, 0.10);
+  --tp-button-background-color: rgba(179, 127, 142, 0.716);
+  --tp-button-background-color-hover: rgba(177, 113, 132, 0.613);
+  --tp-button-foreground-color: #1b1818;
+
+  --tp-container-background-color: rgba(27, 24, 24, 0.04);
+  --tp-container-background-color-hover: rgba(27, 24, 24, 0.07);
+
+  --tp-input-background-color: rgba(255, 255, 255, 0.45);
+  --tp-input-foreground-color: #1b1818;
+
+  --tp-label-foreground-color: #675e61;
+  --tp-monitor-background-color: rgba(255, 255, 255, 0.35);
+  --tp-monitor-foreground-color: #1b1818;
+
+  font-family: "Aldrich", sans-serif;
+}
+
+.tp-dfwv .tp-rotv {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tp-dfwv .tp-lblv_l {
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .sketch-nav {
+    padding:
+      10px 14px;
+
+    grid-template-columns:
+      1fr auto;
+  }
+
+
+  .nav-center {
+    display: none;
+  }
+
+
+  .canvas-frame {
+    width:
+      min(
+        92vw,
+        72vh
+      );
+  }
+
+
+  .sketch-meta {
+    top: 76px;
+    right: 14px;
+
+    width: 180px;
+  }
+
+
+  .sketch-meta h1 {
+    font-size:
+      1.55rem;
+  }
+
+
+  .interaction-hint {
+    left: 14px;
+    bottom: 14px;
+  }
+
+
+  .hint-text {
+    font-size:
+      .76rem;
+  }
+
+}

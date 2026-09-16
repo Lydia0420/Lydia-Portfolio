@@ -1,0 +1,27 @@
+/* Figma artboard: 393 × 852. Shared sizing, never non-uniform scaling.
+   Lavender housing is a CSS reconstruction, not an exported Figma device asset. */
+:root{--menu-screen-width:min(393px,calc((100svh - 190px) * 393 / 852),calc(100vw - 110px));--menu-rim:7px}
+#phone{width:calc(var(--menu-screen-width) + 2 * var(--menu-rim));max-width:100%;aspect-ratio:auto;height:auto;transform:none;transition:none}
+.native-player{height:auto;padding:16px;width:100%}
+#phone>.native-player{padding:0}
+.native-device{box-sizing:content-box;width:var(--menu-screen-width);max-width:calc(100% - 14px);height:auto;aspect-ratio:393/852;flex:none;border:var(--menu-rim) solid #101013;border-radius:52px;background:#09090c;overflow:hidden;box-shadow:0 0 0 2px #b9aecb,0 0 0 3px #6b6279,0 14px 32px #241e3820}
+.native-viewport{border-radius:45px}
+.native-device>.native-viewport{position:absolute;inset:0;height:auto;min-height:0;width:100%;overflow:auto}
+.native-transition{border-radius:45px}
+.native-device:after{top:1.7%;left:34%;width:32%;height:4.2%;box-shadow:inset -5px 0 5px #171322}
+#prototype-slot{height:auto;max-height:none;min-height:0}
+#inline-prototype{height:auto;padding:10px 0}
+/* Only the comparison player: retain the hero and expanded-dialog sizes. */
+.prototype-stage{--menu-screen-width:min(373.35px,calc((100svh - 190px) * 393 / 852 * .95),calc((100vw - 110px) * .95))}
+#prototype-poster{height:auto;min-height:calc(var(--menu-screen-width) * 852 / 393 + 60px)}
+#prototype-poster img{height:auto;width:var(--menu-screen-width);max-height:none}
+#figma-container{height:auto;min-height:0}
+.journey-action{display:inline-block;margin-top:18px;font-size:10px;letter-spacing:.3px;border-bottom:1px solid #cbd3cc;padding-bottom:5px}
+.hero-reset{border:0;background:none;padding:6px 10px;font-size:10px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.hero{padding-top:85px;padding-bottom:40px;align-content:start}
+.phone-caption{margin-top:16px;margin-bottom:4px}
+.walkthrough-link{border:0;background:none;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.prototype-fallback{justify-content:flex-end}
+@media(min-width:681px){:root{--menu-screen-width:min(393px,calc((100svh - 235px) * 393 / 852),calc(100vw - 110px))}}
+@media(min-width:681px){.prototype-stage{--menu-screen-width:min(373.35px,calc((100svh - 235px) * 393 / 852 * .95),calc((100vw - 110px) * .95))}}
+@media(max-width:680px){.native-device{border-radius:43px}.native-viewport,.native-transition{border-radius:36px}.hero-stage{overflow:visible}}

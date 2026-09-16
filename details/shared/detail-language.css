@@ -1,0 +1,32 @@
+@import url('./language-controls.css');
+
+/* Language controls only; each project keeps its own typography and colors. */
+.shared-language-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.shared-language-toggle {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: 400 13px/1.4 'Helvetica Neue', Arial, sans-serif;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.shared-language-toggle:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .shared-language-identity {
+    gap: 5px;
+  }
+  .shared-language-toggle {
+    min-width: 32px;
+  }
+}

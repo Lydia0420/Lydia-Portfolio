@@ -1,0 +1,18 @@
+#p5_loading, #mode-loading:not([hidden]) {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: 0; padding: 24px; box-sizing: border-box;
+  background: var(--loading-bg); color: var(--loading-ink);
+  font: 14px/1.5 Arial, sans-serif; letter-spacing: .03em;
+}
+.ready-line { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.ready-dots { display: inline-flex; gap: 5px; }
+.ready-dots i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; animation: ready-bounce 1s ease-in-out infinite; }
+.ready-dots i:nth-child(2) { animation-delay: .14s; }
+.ready-dots i:nth-child(3) { animation-delay: .28s; }
+#mode-loading #load-status { margin: 0; }
+#mode-loading #load-progress { display: none; }
+#mode-loading.is-error:not([hidden]) { position: static; background: none; z-index: auto; padding: 12px; }
+#mode-loading.is-error .ready-dots { display: none; }
+@keyframes ready-bounce { 0%,60%,100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-4px); opacity: 1; } }
+@media(prefers-reduced-motion:reduce) { .ready-dots i { animation: none; opacity: .65; } }

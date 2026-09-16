@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Emotion Recipe — Lydia</title>
+  <meta name="description" content="An interactive narrative about cooking, small feelings, and the days we carry home. Pick an ingredient and step into the kitchen.">
+  <link rel="stylesheet" href="./emotion.css">
+<link rel="stylesheet" href="./book.css?v=physical-cover-3">
+<link rel="stylesheet" href="../shared/project-nav.css"><script src="../shared/section34-nav.js" defer></script><link rel="stylesheet" href="../shared/detail-language.css">
+
+<!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
+<script src="../shared/detail-translations.js"></script>
+</head>
+<body>
+<nav><a class="back" href="../../index.html#imac-modal">← Back</a><div><button id="sound" aria-pressed="false" data-en="Sound off" data-zh="声音关">Sound off</button><button id="lang">中文</button></div></nav>
+<main>
+  <section class="hero" id="home">
+    <img class="hero-art" src="./kitchen.webp" alt="A warm kitchen at the end of the day">
+    <div class="hero-shade"></div><div class="warmth" aria-hidden="true"></div>
+    <div class="hero-copy"><span class="eyebrow" data-en="AN INTERACTIVE NARRATIVE" data-zh="互动叙事作品">AN INTERACTIVE NARRATIVE</span><h1>Emotion<br><em>Recipe.</em></h1><p data-en="What did today taste like?" data-zh="今天，是什么味道？">What did today taste like?</p><div class="hero-actions"><a class="pill light" href="./game/index.html" data-en="Enter the kitchen ↗" data-zh="走进厨房 ↗">Enter the kitchen ↗</a></div></div>
+    <div class="hero-bottom"><span data-en="A small game about the things you bring home." data-zh="关于那些被你带回家的小小心事。">A small game about the things you bring home.</span><a href="#ingredients" data-en="Pick something for tonight ↓" data-zh="为今晚挑一种食材 ↓">Pick something for tonight ↓</a></div>
+  </section>
+  <section class="pantry" id="ingredients">
+    <div class="section-top"><span class="eyebrow" data-en="01 / ON THE TABLE" data-zh="01 / 放上餐桌">01 / ON THE TABLE</span><span class="hand" data-en="make a dish for today" data-zh="为今天做一道料理">make a dish for today</span></div>
+    <h2 data-en="What are you carrying?" data-zh="今天，你带回了什么？">What are you carrying?</h2><p class="intro" data-en="Pick an ingredient. There might be something familiar inside." data-zh="拿起一种食材，也许里面藏着熟悉的心事。">Pick an ingredient. There might be something familiar inside.</p>
+    <div class="ingredient-shelf" id="ingredient-shelf" role="group" aria-label="Choose an ingredient"></div>
+    <div class="story-table">
+      <div class="ingredient-display"><span class="scribble" data-en="tonight's ingredient" data-zh="今晚的食材">tonight's ingredient</span><img id="picked-food" src="./tomato.png" alt="Tomato"><span class="food-number" id="food-number">03 / 05</span></div>
+      <article class="note" aria-live="polite"><span class="eyebrow" id="food-label"></span><h3 id="food-title"></h3><p id="food-story"></p><p class="hand" id="food-whisper"></p><a href="#preparation" class="text-link dark" data-en="Bring it to the cutting board ↓" data-zh="把它带到砧板上 ↓">Bring it to the cutting board ↓</a></article>
+    </div>
+  </section>
+  <section class="preparation" id="preparation"><div class="section-top"><span class="eyebrow" data-en="02 / A WAY THROUGH" data-zh="02 / 慢慢处理">02 / A WAY THROUGH</span><span data-en="A small taste of the story" data-zh="故事的一小段体验">A small taste of the story</span></div>
+    <div class="prep-layout"><figure class="prep-picture"><img id="cut-image" src="./scenes/033.webp" alt="Cutting a tomato into large pieces" loading="lazy"><figcaption id="cut-caption">TOMATO / BIG CHUNKS</figcaption></figure><div class="prep-copy"><h2 data-en="How will you<br>handle it?" data-zh="你想怎么<br>处理它？">How will you<br>handle it?</h2><p data-en="The same ingredient. A different way of making room for it." data-zh="同一种食材，也可以有不同的面对方式。">The same ingredient. A different way of making room for it.</p><div class="cut-options" id="cut-options" role="group" aria-label="Choose a preparation method"></div><div class="cut-response" aria-live="polite"><span class="hand" id="cut-meaning"></span><p id="cut-story"></p></div></div></div>
+  </section>
+  <section class="process"><div class="section-top"><span class="eyebrow" data-en="03 / HOW THE STORY UNFOLDS" data-zh="03 / 故事如何展开">03 / HOW THE STORY UNFOLDS</span><span>Twine / JiMeng / Adobe</span></div><div class="process-title"><h2 data-en="A recipe made<br>of small choices." data-zh="由小小的选择，<br>组成一道料理。">A recipe made<br>of small choices.</h2><p data-en="Cooking gives everyday feelings a shape. Each step asks something different; there is no score to get right." data-zh="料理让日常感受有了形状。每个步骤提出一个不同的问题，没有需要答对的分数。">Cooking gives everyday feelings a shape. Each step asks something different; there is no score to get right.</p></div><div class="steps" id="steps" role="group" aria-label="Explore the story structure"></div><div class="process-detail"><div aria-live="polite"><span class="hand" id="step-note"></span><h3 id="step-title"></h3><p id="step-description"></p></div><img id="step-image" src="./scenes/22.webp" alt="Open fridge with ingredients" loading="lazy"></div></section>
+  <section class="notebook" id="notebook"><div class="section-top"><span class="eyebrow" data-en="04 / KITCHEN NOTES" data-zh="04 / 厨房笔记">04 / KITCHEN NOTES</span><span class="hand" data-en="behind the story" data-zh="故事的背后">behind the story</span></div><h2 data-en="Before it became dinner." data-zh="在成为晚餐之前。">Before it became dinner.</h2><div class="book"><button id="page-open" aria-label="Open Emotion Recipe book"><img id="book-image" src="./blueprint-book/01.webp" alt="Emotion Recipe — A Kitchen for Tired Souls, cover" loading="lazy"></button></div><p class="book-hint" data-en="Open the cover." data-zh="翻开封面。">Open the cover.</p></section>
+  <section class="ending" id="supper"><img src="./supper.webp" alt="A warm plate of homemade food" loading="lazy"><div><span class="eyebrow" data-en="THE KITCHEN IS STILL OPEN" data-zh="厨房的灯还亮着">THE KITCHEN IS STILL OPEN</span><h2 data-en="Something warm,<br>before you go." data-zh="离开之前，<br>吃点热的吧。">Something warm,<br>before you go.</h2><a class="pill" href="./game/index.html" data-en="Make something for yourself ↗" data-zh="为自己做一顿饭 ↗">Make something for yourself ↗</a></div></section>
+</main><footer><span>EMOTION RECIPE / LYDIA / 2025</span><span>Interactive Narrative</span></footer>
+
+<dialog id="page-dialog" aria-label="Emotion Recipe book"><div class="dialog-bar"><span data-en="Kitchen notes" data-zh="厨房笔记">Kitchen notes</span><div class="reader-header-actions"><button data-close aria-label="Close notebook">✕</button></div></div><div class="reader-spread" id="reader-spread"><div class="reader-leaf"><img id="leaf-left" alt=""></div><div class="reader-leaf right"><img id="leaf-right" alt=""></div><div id="turning-leaf" class="turning-leaf" hidden aria-hidden="true"><img id="flip-front" alt=""><img id="flip-back" class="back-face" alt=""></div></div><div class="reader-controls"><button id="reader-prev" aria-label="Previous page">←</button><span id="reader-count" aria-live="polite"></span><button id="reader-next" aria-label="Next page">→</button></div></dialog>
+<audio id="bgm" src="./game/audio/bgm.mp3" loop preload="none"></audio>
+<script src="./emotion.js"></script>
+<script src="./book.js?v=physical-cover-3"></script>
+
+<script src="../shared/detail-language.js" defer></script>
+<script src="../../preview-media.js" defer></script>
+</body></html>
+
+
+
+

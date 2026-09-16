@@ -1,0 +1,31 @@
+/* One shared language control. The 44px hit area leaves about 9px before its text. */
+html body .nav-identity,
+html body .shared-language-identity,
+html body nav.project-nav { gap: 0; }
+html body button.site-language-control:is(#lang, #lang-toggle, .language-toggle, .lang-toggle) {
+  position: relative; display: inline-grid; place-items: center;
+  flex: 0 0 44px; width: 44px; min-width: 44px; height: 44px; min-height: 44px;
+  box-sizing: border-box; margin: 0; padding: 0; border: 0; border-radius: 4px;
+  background: transparent; cursor: pointer; pointer-events: auto;
+  transform: none; opacity: 1;
+}
+html body button.site-language-control::before {
+  content: ''; position: absolute; inset: 7px 3px;
+  border: 1px solid currentColor; border-radius: 4px;
+  background: transparent; opacity: 0; pointer-events: none;
+  transition: opacity .18s ease;
+}
+@media (hover: hover) {
+  html body button.site-language-control:hover::before { opacity: .3; }
+}
+html body button.site-language-control:focus-visible { outline: none; }
+html body button.site-language-control:focus-visible::before { opacity: .8; }
+html body button.site-language-control:active::before { opacity: .55; }
+/* The gallery had its language switch on the right; keep it beside Back too. */
+html body header:has(> #lang.site-language-control) { justify-content: flex-start; gap: 0; }
+html body header:has(> #lang.site-language-control) > .back { order: 0; }
+html body header > #lang.site-language-control { order: 1; }
+html body header:has(> #lang.site-language-control) > .brand { order: 2; margin-left: auto; }
+@media (prefers-reduced-motion: reduce) {
+  html body button.site-language-control::before { transition: none; }
+}

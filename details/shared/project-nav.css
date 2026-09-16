@@ -1,0 +1,76 @@
+/* Shared navigation for section 1. Each project can override the colors. */
+nav.project-nav {
+  --nav-ink: #292720;
+  --nav-surface: transparent;
+  box-sizing: border-box;
+  position: fixed;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 60px;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  z-index: 1000;
+  background: var(--nav-surface);
+  border-bottom: 0;
+  pointer-events: none;
+  color: var(--nav-ink);
+  text-align: left;
+}
+.project-nav .back-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--nav-ink);
+  font: 400 16px/24px 'Helvetica Neue', Arial, sans-serif;
+  pointer-events: auto;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: opacity .2s ease;
+}
+.project-nav .back-btn span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  border-bottom: 0;
+  padding-bottom: 2px;
+}
+.project-nav .back-btn span::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 1.5px;
+  background: currentColor;
+  pointer-events: none;
+}
+.project-nav .back-icon { display: block; flex: none; stroke-width: 1.6; }
+.project-nav .back-btn:hover { opacity: .65; }
+.project-nav .lang-right { display: flex; align-items: center; }
+.project-nav .lang-toggle {
+  box-sizing: border-box;
+  position: static;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--nav-ink);
+  font: 400 13px/20px Arial, 'PingFang SC', sans-serif;
+  pointer-events: auto;
+  letter-spacing: .02em;
+  opacity: 1;
+}
+.project-nav .lang-toggle:disabled { opacity: .45; cursor: not-allowed; }
+.project-nav a:focus-visible,
+.project-nav button:focus-visible { outline: 2px solid var(--nav-ink); outline-offset: 3px; }
+@media (max-width: 640px) { nav.project-nav { padding-inline: 16px; } }
+@media (prefers-reduced-motion: reduce) { .project-nav .back-btn { transition: none; } }

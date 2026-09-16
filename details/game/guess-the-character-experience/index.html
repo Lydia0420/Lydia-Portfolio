@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guess the Character</title><style>html,body{margin:0;padding:0}canvas{display:block}nav.game-nav{position:fixed;top:20px;left:28px;right:28px;z-index:10000;display:flex;justify-content:space-between;align-items:center;pointer-events:none;font:14px Arial,sans-serif}nav.game-nav a,nav.game-nav button{pointer-events:auto;color:#60441e;text-decoration:none;background:transparent;border:0;padding:4px 0;font:inherit;cursor:pointer}nav.game-nav a:hover,nav.game-nav button:hover{color:#8e2949}nav.game-nav a:focus-visible,nav.game-nav button:focus-visible{outline:2px solid #8e2949;outline-offset:5px}@media(max-width:500px){nav.game-nav{top:14px;left:18px;right:18px}}html,body{background:#e9b96e}
+#p5_loading{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#e9b96e;color:#60441e;font:14px Arial,sans-serif;letter-spacing:.03em}
+.ready-line{display:flex;align-items:center;gap:12px}
+.ready-dots{display:flex;gap:5px}
+.ready-dots i{width:4px;height:4px;border-radius:50%;background:currentColor;animation:ready-bounce 1s ease-in-out infinite}
+.ready-dots i:nth-child(2){animation-delay:.14s}
+.ready-dots i:nth-child(3){animation-delay:.28s}
+@keyframes ready-bounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.ready-dots i{animation:none;opacity:.65}}
+</style>
+<script src="p5.min.js" defer></script><script src="p5.sound.min.js" defer></script><script src="gsap.min.js" defer></script><script src="mySketch.js" defer></script><script src="../../shared/experience-nav.js" defer></script></head><body><div id="p5_loading" role="status" aria-live="polite"><div class="ready-line"><span>Getting ready…</span><span class="ready-dots" aria-hidden="true"><i></i><i></i><i></i></span></div></div><nav class="game-nav" aria-label="Game navigation"><a href="../game.html">← Back</a><button type="button" onclick="location.reload()" aria-label="Restart and return to difficulty selection">Restart ↻</button></nav><script src="../../../preview-media.js" defer></script>
+</body></html>
+
+

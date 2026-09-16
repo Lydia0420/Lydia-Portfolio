@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lydia — The Painting Rooms</title><meta name="description" content="Four rooms of paintings, from elementary school to university."><link rel="stylesheet" href="./05/gallery/gallery.css?v=modern4"><link rel="stylesheet" href="../shared/detail-language.css">
+
+<!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
+<script src="../shared/detail-translations.js"></script>
+</head><body>
+<div id="stage"></div><header><a href="../../index.html#work-art" class="back">← Back</a><div class="brand">LYDIA <span>/ THE PAINTING ROOMS</span></div><button id="lang">中文</button></header>
+<div class="room-heading"><span id="room-number">ROOM 01</span><h1 id="room-name">Elementary School</h1><p id="room-subtitle">The first brushstrokes.</p></div>
+<div id="status" role="status">Opening the gallery…</div><button id="hint" hidden></button>
+<aside class="guide"><div id="room-nav" role="group" aria-label="Choose a room"></div><button id="browse" data-en="Collection ↗" data-zh="作品目录 ↗">Collection ↗</button></aside>
+<div class="bottom"><p data-en="Scroll to explore · Click to look closer" data-zh="滑动逛展 · 点击画作，正面欣赏">Scroll to explore · Click to look closer</p><div class="journey-bar"><input id="journey" type="range" min="0" max="1" step=".0001" value="0" aria-label="Gallery journey"><output id="journey-count">0%</output><button id="reset" data-en="Return to the atrium" data-zh="回到大厅">Return to the atrium</button></div></div>
+<div id="focus-panel" hidden><span id="focus-label"></span><button id="original" data-en="View original ↗" data-zh="查看原图 ↗">View original ↗</button><button id="continue" data-en="Continue exploring →" data-zh="继续参观 →">Continue exploring →</button></div>
+<div id="entry" aria-hidden="true"><div class="entry-door"></div></div>
+<dialog id="art-dialog" aria-label="Painting detail"><button class="close" data-close aria-label="Close painting">✕</button><div class="art-image-wrap"><img id="art-image" alt=""></div><div class="art-caption"><div><span id="art-era"></span><h2 id="art-title"></h2></div><span id="art-index"></span><div><button id="art-prev" aria-label="Previous painting">←</button><button id="art-next" aria-label="Next painting">→</button></div></div></dialog>
+<dialog id="catalog" aria-label="All paintings"><div class="catalog-head"><div><span data-en="THE COLLECTION" data-zh="作品目录">THE COLLECTION</span><h2 data-en="Four rooms. Years of looking." data-zh="四间展厅，一路看见。">Four rooms. Years of looking.</h2></div><button class="close" data-close aria-label="Close collection">✕</button></div><div id="catalog-rooms"></div></dialog>
+<noscript><p>Please enable JavaScript to enter the gallery.</p></noscript><script type="module" src="./05/gallery/gallery.js?v=modern4"></script>
+<script src="../shared/detail-language.js" defer></script>
+<script src="../../preview-media.js" defer></script>
+</body></html>
+
+
+
+

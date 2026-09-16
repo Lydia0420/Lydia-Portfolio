@@ -1,0 +1,68 @@
+/* Mobile cover display: two rows, original artwork, direct project links. */
+.mobile-folios { display: none; }
+@media (max-width: 768px) {
+  #book-modal { display: block; background: #e3ebf2; padding: 0; }
+  #book-modal .book-container { display: none; }
+  #book-modal .modal-label {
+    position: sticky; top: 0; left: auto; right: auto; z-index: 3;
+    padding: max(26px,env(safe-area-inset-top)) 76px 22px 24px;
+    margin: 0; background: #e3ebf2;
+  }
+  #book-modal .modal-label-title { font-size: 12px; line-height: 1.5; }
+  #book-modal .modal-label-meta { font-size: 12px; margin-top: 5px; }
+  #book-modal .modern-close-btn { position: fixed; z-index: 4; top: max(20px,env(safe-area-inset-top)); }
+  #book-modal .mobile-folios {
+    display: flex; flex-direction: column; gap: 40px;
+    max-width: 520px; margin: 0 auto;
+    padding: 22px 24px max(40px,env(safe-area-inset-bottom));
+  }
+  .folio-shelf {
+    --cover-height: clamp(160px, 47vw, 230px);
+    display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px;
+    position: relative; isolation: isolate;
+  }
+  /* A single continuous ledge connects each pair without enclosing the works. */
+  .folio-shelf::before {
+    content: ''; position: absolute; z-index: -1;
+    left: -8px; right: -8px; top: calc(var(--cover-height) - 3px); height: 13px;
+    background: linear-gradient(to bottom,#d3dcdf 0%,#f3f6f7 40%,#e7edef 43%,#b0bfc5 45%,#c5d0d5 100%);
+    box-shadow: 0 1px 1px rgba(48,67,78,.15),0 11px 10px -5px rgba(47,64,75,.25),0 23px 22px -15px rgba(47,64,75,.13);
+    border-radius: 1px 1px 2px 2px;
+  }
+  .mobile-folio { min-width: 0; }
+  .folio-link { display: block; color: #303a40; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .folio-cover {
+    position: relative; isolation: isolate;
+    height: var(--cover-height);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding: 6px 4px 0; box-sizing: border-box;
+    perspective: 650px;
+  }
+  /* A shallow contact shadow anchors each object to the shared display ledge. */
+  .folio-cover::after {
+    content: ''; position: absolute; z-index: -1;
+    bottom: -2px; left: 12%; right: 12%; height: 6px;
+    background: radial-gradient(ellipse,rgba(37,50,56,.28),rgba(37,50,56,0) 72%);
+  }
+  .folio-cover img {
+    display: block; width: auto; height: auto; max-width: 100%; max-height: 100%;
+    object-fit: contain; transform: rotateX(-5deg) rotateY(-5deg); transform-origin: bottom center;
+    filter: drop-shadow(1px 0 0 #eef0e9) drop-shadow(2px 1px 0 #bcc4bf) drop-shadow(4px 5px 5px rgba(37,50,56,.15));
+    transition: transform 220ms cubic-bezier(.22,1,.36,1);
+  }
+  .mobile-folio[data-project="b-3"] .folio-cover img {
+    max-height: 90%; transform: rotateY(3deg);
+    filter: drop-shadow(3px 5px 5px rgba(37,50,56,.13));
+  }
+  .mobile-folio[data-project="b-3"] .folio-cover::after { left: 28%; right: 28%; }
+  .mobile-folio[data-project="b-2"] .folio-cover img { max-height: 75%; transform: rotateX(-7deg) rotateY(4deg); }
+  .mobile-folio[data-project="b-4"] .folio-cover img { transform: rotateX(-4deg) rotateY(3deg); }
+  .folio-spine { display: grid; grid-template-columns: 19px minmax(0,1fr); gap: 7px; margin-top: 29px; }
+  .folio-number { font: italic 13px/1.45 Georgia,serif; color: #788392; }
+  .folio-title { font: 500 14px/1.4 'Helvetica Neue',Arial,sans-serif; letter-spacing: -.015em; overflow-wrap: break-word; }
+  .folio-meta { display: block; font: 400 12px/1.55 'Helvetica Neue',Arial,sans-serif; color: #69757e; }
+  .folio-link > div:last-child { margin: 7px 0 0 26px; }
+  .folio-link:active .folio-cover img { transform: translateY(-5px) rotate(0); }
+  .folio-link:focus-visible { outline: 2px solid #576f79; outline-offset: 6px; }
+  @media (prefers-reduced-motion: reduce) { .folio-cover img { transition: none; } }
+}

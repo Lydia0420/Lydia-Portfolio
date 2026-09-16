@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><style>html:has(#p5_loading),body:has(#p5_loading){background:#f8f2f4}
+#p5_loading{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#f8f2f4;color:#75616a;font:14px Arial,sans-serif;letter-spacing:.03em}
+.ready-line,.ready-dots{display:flex;align-items:center;gap:12px}.ready-dots{gap:5px}.ready-dots i{width:4px;height:4px;border-radius:50%;background:currentColor;animation:sakura-ready 1s ease-in-out infinite}.ready-dots i:nth-child(2){animation-delay:.14s}.ready-dots i:nth-child(3){animation-delay:.28s}@keyframes sakura-ready{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}@media(prefers-reduced-motion:reduce){.ready-dots i{animation:none;opacity:.65}}</style>
+    <script type="module">
+      import {Pane} from './tweakpane.min.js';
+      
+      window.Pane = Pane;
+    </script>
+
+    <script src="p5.js" defer></script>
+    <script src="p5.sound.min.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sakura — Interactive Experience</title>
+  </head>
+  <body><div id="p5_loading" role="status" aria-live="polite"><div class="ready-line"><span>Getting ready…</span><span class="ready-dots" aria-hidden="true"><i></i><i></i><i></i></span></div></div>
+    <main></main>
+    <p id="local-note" hidden style="position:fixed;bottom:16px;left:16px;right:16px;z-index:1000;background:#fff;padding:16px;color:#222;font:14px/1.5 Arial,sans-serif">Please open this experience through a local web server (localhost), rather than a file URL, so that audio and interactive controls can load. Allow camera access when prompted, then click the scene to enable sound.</p>
+    <script>if(location.protocol==='file:')document.getElementById('local-note').hidden=false;</script>
+    <script src="sketch.js" defer></script>
+    <script src="sky-navigation.js" defer></script>
+  <script src="../../../preview-media.js" defer></script>
+</body>
+</html>

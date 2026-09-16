@@ -1,0 +1,4 @@
+/* Shared navigation owns typography and spacing. */
+nav.project-nav.section2-nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
+nav.project-nav.sketch-nav .sketch-nav-title { position: absolute; left: 50%; transform: translateX(-50%); color: var(--nav-ink); }
+nav.project-nav.sketch-nav .sketch-count { margin-left: auto; color: var(--nav-ink); }

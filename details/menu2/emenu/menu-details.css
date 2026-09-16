@@ -1,0 +1,39 @@
+/* Exact exported artwork, cropped only by a CSS viewport; no raster edits. */
+.native-original-choice{overflow:hidden;border-radius:0;background:none!important;box-shadow:none!important;height:auto!important;aspect-ratio:var(--choice-ratio)}
+.choice-art{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.choice-art img{position:absolute;max-width:none;height:auto;display:block}
+/* Source duration: 800ms. Ease-out is an explicit web fallback, not a claim
+   to reproduce Figma's unexposed Gentle spring parameters. */
+.choice-art.selected{opacity:0;transition:opacity 800ms ease-out}
+.native-original-choice:focus-visible .selected,.native-original-choice:active .selected{opacity:1}
+@media(hover:hover){.native-original-choice:hover .selected{opacity:1}}
+.native-content>.native-detail-image{position:absolute;inset:0 auto auto 0;width:100%;height:auto;opacity:0;pointer-events:none;z-index:1}
+.native-content>.native-detail-image.is-active{opacity:1}
+.native-detail-trigger{z-index:2}
+/* Deliberately no invented easing: original Appetizer timing/trigger missing in the current Figma file. */
+.native-tea-interaction{position:absolute;left:0;top:46.98672%;width:100%;height:53.01328%;pointer-events:none;container-type:inline-size}
+.native-tea-art{position:absolute;left:0;top:0;width:44.52926%;height:100%;overflow:hidden;opacity:0;pointer-events:none;transition:opacity 400ms ease-out}
+.native-tea-art>img{position:absolute;max-width:none;height:auto;display:block}
+.native-tea-art.is-active{opacity:1}
+.native-tea-green{position:absolute;left:47.5827%;top:27.55299%;width:25.5%;height:5.3%;background:#fff3dc;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:6.10687cqw;line-height:1.12;color:#000}
+.native-tea-trigger{position:absolute;left:0;width:96%;height:20%;pointer-events:auto;border:0;background:none;cursor:pointer;border-radius:8px;padding:0}
+.native-tea-trigger:focus-visible{outline:2px solid #926e5d;outline-offset:-3px}
+.native-art-choice{overflow:hidden;background:none!important;box-shadow:none!important;height:auto!important;aspect-ratio:var(--choice-ratio);border-radius:0}
+.native-choice-state{position:absolute;inset:0;overflow:hidden;border-radius:var(--choice-radius);background:linear-gradient(0deg,#ff3636 0%,#451a0d 12%,#291306 30%);box-shadow:inset 0 0 0 1px #a07359;opacity:0;pointer-events:none}
+.native-choice-lettering{position:absolute;inset:0;width:100%;height:100%}
+.native-image-detail{position:absolute;border:0;padding:0;background:transparent;cursor:zoom-in;touch-action:pan-y;z-index:2}
+.native-image-detail-art{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:#000;opacity:0;transform:scale(var(--detail-rest));transform-origin:center}
+.native-image-detail-art>img{position:absolute;max-width:none;height:auto;display:block}
+.native-image-detail.is-active .native-image-detail-art{opacity:1;transform:scale(1)}
+.native-image-detail.is-active{cursor:zoom-out}
+.native-image-detail:focus-visible{outline:2px solid #926e5d;outline-offset:4px;border-radius:16px}
+.native-player[data-version="2"] .native-choice-state{transition:opacity 800ms ease-out}
+.native-art-choice.art-ready:focus-visible .native-choice-state,.native-art-choice.art-ready:active .native-choice-state{opacity:1}
+@media(hover:hover){.native-art-choice.art-ready:hover .native-choice-state{opacity:1}}
+.native-nav-art{position:absolute;z-index:3;pointer-events:none;bottom:0;left:0;width:100%;height:9.97653%;overflow:hidden}
+.native-nav-art>img,.native-drawer-art>img{position:absolute;max-width:none;height:auto;left:0;display:block}
+.native-drawer-art{position:absolute;left:0;top:0;height:100%;overflow:hidden;pointer-events:none;z-index:3}
+.native-player[data-version="1"] .native-fixed:focus-visible{outline:2px solid #fff;outline-offset:-3px}
+.native-player[data-version="1"] .native-fixed:active{background:#ffffff20}
+@media(hover:hover){.native-player[data-version="1"] .native-fixed:hover{background:#ffffff12}}
+@media(prefers-reduced-motion:reduce){.native-tea-art,.choice-art.selected,.native-choice-state,.native-image-detail-art{transition:none!important}}

@@ -1,0 +1,28 @@
+/* Keep the original type hierarchy and the original 69% / 16% image balance.
+   No forced section heights, text scaling, fixed image heights or cropping. */
+.evolution .version-panel{display:grid}
+.evolution .version-panel-copy{grid-area:1 / 1;min-width:0}
+.evolution .version-size-reference{visibility:hidden;pointer-events:none;user-select:none}
+.evolution .try-task>.version-hint-slot{display:grid}
+.evolution .version-hint-slot>span{grid-area:1 / 1;min-width:0}
+@media(min-width:900px){
+ .evolution.section{padding:40px 0}
+ .evolution .prototype-stage{width:94%;justify-self:center}
+ .evolution .version-tabs{margin-top:26px;margin-bottom:26px}
+ .evolution .try-task{padding-top:16px}
+ .evolution #inline-prototype{padding:6px 0}
+ .evolution #inline-prototype>.native-player{padding:12px}
+ .evolution .prototype-help{padding-top:12px;padding-bottom:12px}
+ .identity.section{padding:36px 0}
+ .identity .section-heading{margin-bottom:18px}
+ .identity-layout{
+  width:100%;max-width:min(100%,calc((100svh - 450px) * 2));
+  margin-inline:auto;padding:8px 0 20px;
+ }
+ .identity-layout figcaption{margin-top:12px}
+ .identity .language-grid{padding-top:18px}
+}
+/* Very short windows retain the artwork's readability and scroll naturally. */
+@media(min-width:900px) and (max-height:650px){
+ .identity-layout{max-width:80%}
+}

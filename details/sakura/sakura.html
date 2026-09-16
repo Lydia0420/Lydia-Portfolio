@@ -1,0 +1,3144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Before It Falls - Case Study</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+
+    :root {
+      --paper: #f8f2f4;
+      --ink: #1b1818;
+      --muted: #756d70;
+      --line: rgba(27,24,24,.16);
+      --pink: #d9a6b1;
+      --deep: #17171d;
+      --deep-2: #24232d;
+      --night-text: #f6eef2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding-top: 58px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 58px;
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(248,242,244,.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(27,24,24,.06);
+    }
+
+    .back-btn {
+      font-size: 1.05rem;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      transition: opacity .25s ease;
+    }
+
+    .back-btn:hover {
+      opacity: .55;
+    }
+
+    .lang-toggle {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.35);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font: 12px Georgia, serif;
+      color: var(--ink);
+      cursor: pointer;
+      opacity: .72;
+    }
+
+    h1,
+    h2,
+    h3,
+    .eyebrow,
+    .step-no,
+    .micro-label,
+    .big-statement {
+      font-family: 'Aldrich', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 1.08rem;
+      line-height: 1.72;
+      color: #4e4749;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 58px);
+      display: grid;
+      grid-template-columns: .78fr 1.42fr;
+      gap: 55px;
+      align-items: center;
+      padding: 76px 0 86px;
+    }
+
+    .eyebrow {
+      font-size: .78rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #8a737a;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4.2vw, 4.2rem);
+      line-height: .93;
+      letter-spacing: -.035em;
+      margin-bottom: 28px;
+      max-width: 620px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.28rem;
+      line-height: 1.55;
+      max-width: 560px;
+      color: #63595d;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      border: 1px solid rgba(27,24,24,.32);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .82rem;
+      background: rgba(255,255,255,.3);
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .text-link {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      font-size: 1rem;
+    }
+
+    .hero-media {
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-media video,
+    .hero-media img {
+      width: 100%;
+      max-width: 700px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 4px;
+
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+      filter: drop-shadow(-18px 24px 8px rgba(0,0,0,0.25));
+
+      transition: transform 0.3s ease;
+    }
+
+    .hero-media img:hover,
+    .hero-media video:hover {
+      transform: scale(1.03) rotate(-1deg);
+    }
+
+    .hero-media::after {
+      content: "05";
+      position: absolute;
+      right: -20px;
+      bottom: -35px;
+      font: 7rem/1 'Aldrich', sans-serif;
+      color: rgba(166,124,138,.18);
+      pointer-events: none;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 120px;
+    }
+
+    .meta-item {
+      padding: 24px 22px;
+      border-right: 1px solid var(--line);
+    }
+
+    .meta-item:last-child {
+      border-right: 0;
+    }
+
+    .meta-item h3 {
+      font-size: .78rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .meta-item p {
+      font-size: .95rem;
+      margin: 0;
+      color: #71686b;
+      line-height: 1.45;
+    }
+
+    .section {
+      width: min(900px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 0 0 110px;
+    }
+
+    .section h2,
+    .section-title {
+      font-size: clamp(1.9rem, 3.4vw, 3rem);
+      line-height: 1.05;
+      margin-bottom: 30px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .big-statement {
+      font-size: clamp(2rem, 4vw, 4.5rem);
+      line-height: 1;
+      color: #b37f8e;
+    }
+
+    /* ================= ENVIRONMENTAL STATES CAROUSEL ================= */
+
+    .scene-showcase {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto 130px;
+    }
+
+    .scene-showcase-head {
+      display: block;
+      margin-bottom: 34px;
+    }
+
+    .scene-showcase-head p {
+      max-width: 760px;
+      margin: 18px 0 0;
+    }
+
+    .scene-carousel {
+      position: relative;
+    }
+
+    .scene-stage {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #e8e1df;
+      aspect-ratio: 16 / 9;
+
+      box-shadow: 0 18px 40px rgba(0,0,0,.18);
+      filter: drop-shadow(-12px 18px 7px rgba(0,0,0,.12));
+    }
+
+    .scene-slide {
+      position: absolute;
+      inset: 0;
+
+      margin: 0;
+
+      opacity: 0;
+      transform: scale(1.015);
+
+      transition:
+        opacity 1.05s ease-in-out,
+        transform 1.15s ease-in-out;
+
+      pointer-events: none;
+    }
+
+    .scene-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .scene-slide img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: contain;
+
+  }
+
+    .scene-caption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+
+      padding: 8px 11px;
+
+      border-radius: 999px;
+
+      background: rgba(247,242,236,.82);
+
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+
+      font-family: 'Aldrich', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .08em;
+
+      color: #5d5256;
+    }
+
+    .scene-arrow {
+      position: absolute;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.7);
+
+      background: rgba(20,20,20,.22);
+      color: white;
+
+      font-size: 1.2rem;
+
+      cursor: pointer;
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      transition:
+        background .25s ease,
+        transform .25s ease;
+
+      z-index: 3;
+    }
+
+    .scene-arrow:hover {
+      background: rgba(20,20,20,.42);
+    }
+
+    .scene-arrow.prev {
+      left: 16px;
+    }
+
+    .scene-arrow.next {
+      right: 16px;
+    }
+
+    .scene-nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+
+      gap: 10px;
+
+      margin-top: 18px;
+    }
+
+    .scene-dot {
+      appearance: none;
+
+      border: 0;
+      border-top: 1px solid rgba(27,24,24,.22);
+
+      background: transparent;
+
+      padding: 12px 0 0;
+
+      text-align: left;
+
+      color: #8d8084;
+
+      font-family: 'Aldrich', sans-serif;
+      font-size: .7rem;
+      letter-spacing: .06em;
+
+      cursor: pointer;
+
+      transition:
+        color .25s ease,
+        border-color .25s ease;
+    }
+
+    .scene-dot:hover {
+      color: var(--ink);
+    }
+
+    .scene-dot.active {
+      color: var(--ink);
+      border-top: 2px solid #b37f8e;
+    }
+
+
+    .interaction {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto 130px;
+    }
+
+    .interaction-track {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .interaction-step {
+      padding: 28px 18px 34px;
+      border-right: 1px solid var(--line);
+      min-height: 235px;
+    }
+
+    .interaction-step:last-child {
+      border-right: 0;
+    }
+
+    .step-no {
+      font-size: .72rem;
+      letter-spacing: .1em;
+      color: #a27c87;
+      margin-bottom: 34px;
+    }
+
+    .interaction-step h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .interaction-step p {
+      font-size: .92rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .interaction-video {
+      width: min(960px, 100%);
+      margin: 50px auto 0;
+    }
+
+    .interaction-video-copy {
+      max-width: 720px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+
+    .interaction-video-frame {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #e8e0df;
+      box-shadow: 0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .interaction-video-frame video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .process {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding-bottom: 120px;
+    }
+
+    .process-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 65px;
+    }
+
+    .process-header p {
+      max-width: 500px;
+      margin: 0;
+    }
+
+
+    .visual-direction-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+      margin: 0 0 110px;
+    }
+
+    .visual-direction-copy {
+      max-width: none;
+    }
+
+    .visual-direction-copy h3 {
+      font-size: 1.45rem;
+      margin-bottom: 16px;
+    }
+
+    .visual-direction-copy p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .visual-direction-image {
+      margin: 0;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 14px 34px rgba(46,37,40,.13);
+    }
+
+    .visual-direction-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    .visual-direction-image:hover img {
+      transform: scale(1.015);
+    }
+
+    .process-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+      margin: 0 0 110px;
+    }
+
+    .process-block.reverse .process-image {
+      order: -1;
+    }
+
+    .process-text h3 {
+      font-size: 1.45rem;
+      margin-bottom: 16px;
+    }
+
+    .micro-label {
+      font-size: .72rem;
+      letter-spacing: .12em;
+      color: #9b727f;
+      margin-bottom: 12px;
+    }
+
+    .process-image img,
+    .process-image video {
+      width: 100%;
+      display: block;
+      border-radius: 3px;
+      box-shadow: 0 14px 34px rgba(46,37,40,.15);
+    }
+
+    .process-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .process-thumb {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #ece4e3;
+      box-shadow: 0 10px 24px rgba(46,37,40,.12);
+    }
+
+    .process-thumb img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: 58% 72%;
+      display: block;
+      box-shadow: none;
+      border-radius: 0;
+      transition: transform .3s ease;
+    }
+
+    .flower-gallery .process-thumb img {
+    object-position: 78% 92%;
+  }
+
+    .process-thumb:hover img {
+      transform: scale(1.025);
+    }
+
+    .process-thumb-wide {
+      grid-column: auto;
+    }
+
+    .process-thumb-wide img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .process-thumb figcaption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(247,242,236,.82);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      font: .62rem 'Aldrich', sans-serif;
+      letter-spacing: .07em;
+      color: #5f5558;
+    }
+
+    .pivot-test {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #ece4e3;
+      box-shadow: 0 14px 34px rgba(46,37,40,.15);
+    }
+
+    .pivot-test img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .pivot-test figcaption {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+
+      padding: 6px 9px;
+      border-radius: 999px;
+
+      background: rgba(247,242,236,.86);
+
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      font: .62rem 'Aldrich', sans-serif;
+      letter-spacing: .07em;
+
+      color: #5f5558;
+    }
+
+    .process-image .placeholder {
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      background: #ece4e3;
+      border: 1px dashed rgba(27,24,24,.18);
+      color: #9a888d;
+      text-align: center;
+      padding: 30px;
+      font-style: italic;
+    }
+
+    .night-section {
+      background: linear-gradient(180deg, var(--deep) 0%, var(--deep-2) 100%);
+      color: var(--night-text);
+      padding: 115px 0 130px;
+      margin: 10px 0 125px;
+    }
+
+    .night-section h2,
+    .night-section h3 {
+      color: var(--night-text);
+    }
+
+    .night-section p {
+      color: #c8bec3;
+    }
+
+    .night-grid {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .night-media img,
+    .night-media video {
+      width: 100%;
+      display: block;
+      border-radius: 3px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.38);
+    }
+
+    .night-notes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .night-note {
+      border-top: 1px solid rgba(255,255,255,.2);
+      padding-top: 12px;
+      font: .78rem 'Aldrich', sans-serif;
+      color: #d7cbd0;
+    }
+
+    .night-grid > div:first-child {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .night-media {
+      opacity: 0;
+      transform: translateY(22px) scale(.985);
+      transition: opacity .9s ease .08s, transform .9s ease .08s;
+    }
+
+    .night-section.is-visible .night-grid > div:first-child,
+    .night-section.is-visible .night-media {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .sound-image {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+
+      box-shadow:
+        0 24px 64px rgba(0,0,0,.42),
+        0 0 36px rgba(217,166,177,.08);
+    }
+
+    .sound-image img {
+      width: 100%;
+      display: block;
+      border-radius: 0;
+      box-shadow: none;
+      transform: scale(1);
+      transition: transform 6s ease;
+    }
+
+    .sound-image:hover img {
+      transform: scale(1.022);
+    }
+
+    .sound-image figcaption {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(18,18,24,.48);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      color: rgba(246,238,242,.82);
+      font: .6rem 'Aldrich', sans-serif;
+      letter-spacing: .08em;
+    }
+
+    .diagram {
+      margin-top: 28px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .diagram-row {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.28);
+      font-size: .93rem;
+    }
+
+    .diagram-row strong {
+      font-family: 'Aldrich', sans-serif;
+      font-size: .8rem;
+    }
+
+/* ===== REPLACE THIS WHOLE EXHIBITION CSS BLOCK ===== */
+
+    /* =========================
+      EXHIBITION / NYU SHOW
+    ========================= */
+
+    .exhibition {
+      width: min(1120px, calc(100% - 48px));
+      margin: 0 auto 125px;
+      text-align: center;
+    }
+
+    .exhibition-head {
+      max-width: 760px;
+      margin: 0 auto 46px;
+      text-align: center;
+      display: block;
+    }
+
+    .exhibition-head p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #51494b;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .invitation-stage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .invitation-wrap {
+      position: relative;
+      width: min(500px, 100%);
+      padding: 20px 24px 56px;
+    }
+
+    .invitation-card {
+      position: relative;
+      width: 100%;
+      /* aspect-ratio: 1.48 / 1; */
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      z-index: 2;
+
+      transition:
+        transform .35s ease,
+        filter .35s ease;
+    }
+
+    .invitation-card:hover {
+      transform: translateY(-4px);
+
+      filter:
+        drop-shadow(
+          0 20px 30px
+          rgba(48,38,42,.14)
+        );
+    }
+
+    .invitation-card > img {
+      width: 100%;
+      height: auto;
+      display: block;
+
+      border-radius: 4px;
+
+      box-shadow:
+        0 14px 30px
+        rgba(48,38,42,.10);
+    }
+
+
+    /* =========================
+      CORNER UI
+    ========================= */
+
+    .corner {
+      position: absolute;
+
+      width: 34px;
+      height: 34px;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      z-index: 5;
+
+      transition:
+        opacity .25s ease,
+        transform .35s
+        cubic-bezier(.2,.7,.2,1);
+    }
+
+    .corner::before,
+    .corner::after {
+      content: "";
+
+      position: absolute;
+
+      background: rgba(179,127,142,.72);
+    }
+
+    .corner::before {
+      width: 100%;
+      height: 1px;
+    }
+
+    .corner::after {
+      width: 1px;
+      height: 100%;
+    }
+
+
+    /* top left */
+
+    .corner-tl {
+      left: 0;
+      top: 0;
+
+      transform:
+        translate(12px,12px);
+    }
+
+    .corner-tl::before,
+    .corner-tl::after {
+      left: 0;
+      top: 0;
+    }
+
+
+    /* top right */
+
+    .corner-tr {
+      right: 0;
+      top: 0;
+
+      transform:
+        translate(-12px,12px);
+    }
+
+    .corner-tr::before,
+    .corner-tr::after {
+      right: 0;
+      top: 0;
+    }
+
+
+    /* bottom left */
+
+    .corner-bl {
+      left: 0;
+      bottom: 36px;
+
+      transform:
+        translate(12px,-12px);
+    }
+
+    .corner-bl::before,
+    .corner-bl::after {
+      left: 0;
+      bottom: 0;
+    }
+
+
+    /* bottom right */
+
+    .corner-br {
+      right: 0;
+      bottom: 36px;
+
+      transform:
+        translate(-12px,-12px);
+    }
+
+    .corner-br::before,
+    .corner-br::after {
+      right: 0;
+      bottom: 0;
+    }
+
+
+    /* hover = corners appear */
+
+    .invitation-wrap:hover .corner {
+      opacity: 1;
+      transform: translate(0,0);
+    }
+
+
+    /* =========================
+      BOTTOM GUIDE
+    ========================= */
+
+    .guide-rail {
+      position: absolute;
+
+      left: 50%;
+      bottom: 30px;
+
+      width:
+        min(
+          380px,
+          calc(100% - 80px)
+        );
+
+      height: 1px;
+
+      background:
+        rgba(
+          179,
+          127,
+          142,
+          .26
+        );
+
+      transform:
+        translateX(-50%)
+        scaleX(.22);
+
+      transform-origin:
+        center;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        transform .45s
+        cubic-bezier(.2,.7,.2,1),
+
+        opacity .3s ease;
+    }
+
+
+    /* small CLICK hint */
+
+    .click-hint {
+      position: absolute;
+      right: 26px;
+      bottom: 14px;
+
+      opacity: 0;
+      transform: translateY(4px);
+
+      color: #9a7f88;
+
+      font-family: "Aldrich", sans-serif;
+      font-size: .56rem;
+      letter-spacing: .16em;
+
+      pointer-events: none;
+
+      transition:
+        opacity .25s ease,
+        transform .25s ease;
+    }
+
+    .invitation-wrap:hover .click-hint {
+      opacity: .82;
+      transform: translateY(0);
+    }
+
+    .invitation-wrap.is-open .click-hint {
+      opacity: 0;
+    }
+
+
+    /* rail appears on hover */
+
+    .invitation-wrap:hover
+    .guide-rail {
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        scaleX(1);
+    }
+
+
+    /* vertical rails */
+
+    .guide-rail::before,
+    .guide-rail::after {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      width: 1px;
+      height: 0;
+
+      background:
+        rgba(
+          179,
+          127,
+          142,
+          .34
+        );
+
+      transition:
+        height .55s
+        cubic-bezier(.2,.7,.2,1);
+    }
+
+    .guide-rail::before {
+      left: 0;
+    }
+
+    .guide-rail::after {
+      right: 0;
+    }
+
+
+    /* clicked */
+
+    .invitation-wrap.is-open
+    .guide-rail {
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        scaleX(1);
+    }
+
+    .invitation-wrap.is-open
+    .guide-rail::before,
+
+    .invitation-wrap.is-open
+    .guide-rail::after {
+      height: 56px;
+    }
+
+
+    /* =========================
+      GALLERY
+    ========================= */
+
+    .show-gallery {
+      display: grid;
+
+      grid-template-columns:
+        auto
+        auto
+        auto;
+
+      gap: 16px;
+
+      align-items: stretch;
+      justify-content: center;
+
+      margin-top: 0;
+
+      max-height: 0;
+
+      opacity: 0;
+
+      overflow: hidden;
+
+      transform:
+        translateY(34px);
+
+      pointer-events: none;
+
+      transition:
+        max-height .9s
+        cubic-bezier(.2,.7,.2,1),
+
+        opacity .45s ease .12s,
+
+        transform .78s
+        cubic-bezier(.2,.7,.2,1)
+        .08s,
+
+        margin-top .78s ease;
+    }
+
+    .show-gallery.open {
+      max-height: 520px;
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+
+      pointer-events: auto;
+
+      margin-top: 26px;
+    }
+
+    .gallery-item {
+      position: relative;
+
+      margin: 0;
+
+      overflow: hidden;
+
+      border-radius: 3px;
+
+      background: #e7dddd;
+
+      box-shadow:
+        0 8px 20px
+        rgba(45,35,39,.08);
+
+      opacity: 0;
+
+      transform:
+        translateY(22px);
+
+      transition:
+        opacity .45s ease,
+
+        transform .55s
+        cubic-bezier(.2,.7,.2,1),
+
+        box-shadow .35s ease;
+    }
+
+    .show-gallery.open
+    .gallery-item {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+    .show-gallery.open
+    .gallery-item:nth-child(1) {
+      transition-delay: .12s;
+    }
+
+    .show-gallery.open
+    .gallery-item:nth-child(2) {
+      transition-delay: .20s;
+    }
+
+    .show-gallery.open
+    .gallery-item:nth-child(3) {
+      transition-delay: .28s;
+    }
+
+
+    /* show2 portrait */
+
+    .gallery-item:nth-child(1) {
+      height: 300px;
+      width: 200px;
+    }
+
+
+    /* show1 landscape */
+
+    .gallery-item:nth-child(2) {
+      height: 300px;
+      width: auto;
+    }
+
+
+    /* show3 portrait */
+
+    .gallery-item:nth-child(3) {
+      height: 300px;
+      width: 200px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+      object-position: center;
+
+      transition:
+        transform .65s ease,
+        filter .4s ease;
+    }
+
+    .gallery-item:nth-child(1) img {
+      object-position:
+        50% 42%;
+    }
+
+    .gallery-item:nth-child(2) img {
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .gallery-item:nth-child(3) img {
+      object-position:
+        50% 38%;
+    }
+
+
+    /* gallery hover */
+
+    .gallery-item:hover {
+      z-index: 3;
+
+      transform:
+        translateY(-7px)
+        scale(1.015)
+        !important;
+
+      box-shadow:
+        0 18px 34px
+        rgba(45,35,39,.15);
+    }
+
+    .gallery-item:hover img {
+      transform:
+        scale(1.035);
+    }
+
+    .show-gallery:hover
+    .gallery-item:not(:hover)
+    img {
+      filter:
+        saturate(.72)
+        opacity(.68);
+    }
+
+
+    /* label */
+
+    .gallery-label {
+      position: absolute;
+
+      left: 10px;
+      bottom: 9px;
+
+      padding:
+        5px 8px;
+
+      border-radius:
+        999px;
+
+      background:
+        rgba(
+          247,
+          242,
+          236,
+          .88
+        );
+
+      backdrop-filter:
+        blur(6px);
+
+      -webkit-backdrop-filter:
+        blur(6px);
+
+      color:
+        #66595d;
+
+      font-size:
+        .55rem;
+
+      letter-spacing:
+        .08em;
+
+      font-family:
+        "Aldrich",
+        sans-serif;
+    }
+
+    /* ===== END EXHIBITION CSS BLOCK ===== */
+
+
+
+
+
+    .reflection {
+      width: min(1040px, calc(100% - 40px));
+      margin: 0 auto 130px;
+    }
+
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .reflection-card {
+      border-top: 1px solid var(--line);
+      padding: 22px 0 0;
+    }
+
+    .reflection-card h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .reflection-card p {
+      font-size: .96rem;
+      line-height: 1.6;
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 60px;
+      color: #7d7276;
+      font-size: .92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .overview-grid,
+      .process-block,
+      .visual-direction-block,
+      .night-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 40px;
+      }
+
+      .hero-media {
+        max-width: 700px;
+      }
+
+      .hero-media::after {
+        right: 0;
+      }
+
+      .meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .meta-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .meta-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .interaction-track {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .interaction-step {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .interaction-step:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .interaction-step:last-child {
+        border-bottom: 0;
+      }
+
+      .process-block.reverse .process-image {
+        order: 0;
+      }
+
+      .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-header{
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .wrap,
+      .section,
+      .interaction,
+      .process,
+      .night-grid,
+      .exhibition,
+      .reflection,
+      .inspiration {
+        width: min(100% - 28px, 1180px);
+      }
+
+      nav {
+        padding: 10px 14px;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.08rem;
+      }
+
+      .meta-grid,
+      .interaction-track,
+      .night-notes,
+      .inspiration-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .meta-item,
+      .meta-item:nth-child(2) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .meta-item:last-child {
+        border-bottom: 0;
+      }
+
+      .interaction-step,
+      .interaction-step:nth-child(2n) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        min-height: 0;
+      }
+
+      .process-block {
+        gap: 28px;
+        margin-bottom: 78px;
+      }
+
+      .process-image .placeholder {
+        min-height: 280px;
+      }
+
+      .night-section {
+        padding: 80px 0 90px;
+      }
+
+      .times {
+        transform: rotate(90deg);
+        margin: 6px auto;
+      }
+
+      .invitation-wrap {
+        padding-inline: 18px;
+      }
+
+      .corner {
+        display: none;
+      }
+
+      .guide-rail {
+        width: calc(100% - 72px);
+      }
+
+      .show-gallery {
+        grid-template-columns: 1fr;
+        justify-content: stretch;
+      }
+
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(2),
+      .gallery-item:nth-child(3) {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1.25 / 1;
+      }
+    }
+  </style>
+<link rel="stylesheet" href="../shared/project-nav.css">
+<link rel="stylesheet" href="../shared/section2-nav.css">
+<style>
+  .hero-links { align-items: center; }
+  .hero-links .experience-cta {
+    display: inline-block; padding: 15px 21px;
+    background: #493e46; color: #f8f2f4;
+    border: 0; text-decoration: none;
+    font: 400 15px/1.5 Georgia, serif;
+    transition: background-color .2s ease;
+  }
+  .hero-links .experience-cta:hover { background: #855c70; }
+  .hero-links .experience-cta:focus-visible { outline: 2px solid #855c70; outline-offset: 4px; }
+  @media (prefers-reduced-motion: reduce) { .hero-links .experience-cta { transition: none; } }
+</style>
+<link rel="stylesheet" href="../shared/detail-language.css">
+
+<!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
+<script src="../shared/detail-translations.js"></script>
+</head>
+
+<body>
+
+  <nav class="project-nav section2-nav" aria-label="Project navigation" style="--nav-ink:#493e46;--nav-surface:rgba(248,242,244,.94)"><a class="back-btn" href="../../index.html#game-modal"><span><svg class="back-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</span></a><div class="lang-right"><button id="lang-toggle" class="lang-toggle" type="button" aria-label="Chinese translation is not available yet" title="Chinese translation coming soon" disabled>中文</button></div></nav>
+
+
+  <main>
+
+    <!-- HERO -->
+    <div class="wrap">
+
+      <section class="hero">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow">
+            05 / Interactive Installation
+          </div>
+
+          <h1>
+            Before It Falls
+          </h1>
+
+          <p class="subtitle"
+  data-i18n-managed="true"
+  data-zh="由人的在场、动作与集体能量共同塑造的樱花景观。">
+            A living cherry blossom landscape shaped by human presence,
+            movement, and collective energy.
+          </p>
+
+
+          <div class="tags">
+
+            <span class="tag">
+              p5.js
+            </span>
+
+            <span class="tag">
+              JavaScript
+            </span>
+
+            <span class="tag">
+              OOP
+            </span>
+
+            <span class="tag"
+  data-i18n-managed="true"
+  data-zh="计算机视觉">
+              Computer Vision
+            </span>
+
+            <span class="tag"
+  data-i18n-managed="true"
+  data-zh="生成式系统">
+              Generative System
+            </span>
+
+            <span class="tag">
+              REAPER
+            </span>
+
+          </div>
+
+
+          <div class="hero-links">
+
+            <a
+              class="experience-cta"
+              href="./sakura-experience/index.html"
+              target="_blank"
+              rel="noopener"
+            
+  data-i18n-managed="true"
+  data-zh="走进花境 ↗">
+              Enter the landscape ↗
+            </a>
+
+            <a
+              class="text-link"
+              href="https://drive.google.com/file/d/1NQQ0valmmW2F5rxjzeJoZD9_0eilP7_6/view?usp=drive_link"
+              target="_blank"
+            
+  data-i18n-managed="true"
+  data-zh="IMA 展览影像 →">
+              IMA Show Video →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-media">
+
+          <img
+            src="./scene3.jpg"
+            alt="Before It Falls main scene"
+          >
+        
+        </div>
+
+      </section>
+
+
+      <!-- META -->
+
+      <section class="meta-grid">
+
+        <div class="meta-item">
+
+          <h3>
+            Role
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="创意技术 / 交互设计">
+            Creative Technologist / Interaction Designer
+          </p>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <h3>
+            Tools
+          </h3>
+
+          <p>
+            p5.js, JavaScript, computer vision, REAPER
+          </p>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <h3>
+            Context
+          </h3>
+
+          <p>
+            IMA Final Project / IMA Show
+          </p>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <h3>
+            Focus
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="生成式视觉、交互、声音、装置">
+            Generative visuals, interaction, sound, installation
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- OVERVIEW -->
+
+    <section class="section">
+
+      <div class="overview-grid">
+
+        <div class="big-statement">
+          Bloom.<br>
+          Scatter.<br>
+          Reset.
+        </div>
+
+
+        <div>
+
+          <h2>
+            Overview
+          </h2>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="Before It Falls 是一件围绕樱花短暂生命展开的交互生成装置。它不是固定播放的动画，而是一个会回应人的小世界：有人靠近时环境发生变化，光粒聚集在动作周围，连续动作逐渐积累能量，支持多人参与，直到花瓣落下。">
+            Before It Falls is an interactive generative installation
+            built around the fleeting life of cherry blossoms.
+            Instead of presenting a fixed animation, the work behaves
+            like a small responsive world: the environment shifts
+            when someone approaches, glowing particles gather around
+            movement, and collective motion builds energy until petals
+            begin to fall.
+          </p>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="作品探索数字景观如何在无人触碰时也显得鲜活，以及交互如何从直接的因果反馈延伸到氛围、期待与时间中的变化。">
+            The project explores how a digital landscape can feel alive
+            even before anyone touches it, and how interaction can move
+            beyond a direct cause-and-effect gesture into atmosphere,
+            anticipation, and change over time.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= ENVIRONMENTAL STATES ================= -->
+
+    <section class="scene-showcase">
+
+      <div class="scene-showcase-head">
+
+        <div>
+
+          <div class="eyebrow">
+            Environmental States
+          </div>
+
+          <h2 class="section-title"
+  data-i18n-managed="true"
+  data-zh="持续变化的世界">
+            A world in continuous change
+          </h2>
+
+        </div>
+
+        <p
+  data-i18n-managed="true"
+  data-zh="同一棵树经历光线、天气、粒子与能量状态的变化。环境成为观众动作的视觉反馈。">
+          The same tree moves through changing light, weather,
+          particles, and energy states. The environment becomes
+          visual feedback for the viewer’s presence and movement.
+        </p>
+
+      </div>
+
+
+      <div class="scene-carousel" id="scene-carousel">
+
+        <div class="scene-stage">
+
+
+          <!-- SCENE 1 -->
+
+          <figure class="scene-slide active">
+
+            <img
+              src="./scene1.jpg"
+              alt="Before It Falls daytime state"
+            >
+
+            <figcaption class="scene-caption"
+  data-i18n-managed="true"
+  data-zh="01 / 白昼 · 待机">
+              01 / DAY · IDLE
+            </figcaption>
+
+          </figure>
+
+
+          <!-- SCENE 2 -->
+
+          <figure class="scene-slide">
+
+            <img
+              src="./scene2.jpg"
+              alt="Before It Falls muted environmental state"
+            >
+
+            <figcaption class="scene-caption"
+  data-i18n-managed="true"
+  data-zh="02 / 转变">
+              02 / SHIFT
+            </figcaption>
+
+          </figure>
+
+
+          <!-- SCENE 3 -->
+
+          <figure class="scene-slide">
+
+            <img
+              src="./scene3.jpg"
+              alt="Before It Falls dusk state with fireflies"
+            >
+
+            <figcaption class="scene-caption"
+  data-i18n-managed="true"
+  data-zh="03 / 黄昏 · 萤火">
+              03 / DUSK · FIREFLIES
+            </figcaption>
+
+          </figure>
+
+
+          <!-- SCENE 4 -->
+
+          <figure class="scene-slide">
+
+            <img
+              src="./scene4.jpg"
+              alt="Before It Falls rainy high-energy state"
+            >
+
+            <figcaption class="scene-caption"
+  data-i18n-managed="true"
+  data-zh="04 / 降雨 · 高能量">
+              04 / RAIN · HIGH ENERGY
+            </figcaption>
+
+          </figure>
+
+
+          <!-- SCENE 5 -->
+
+          <figure class="scene-slide">
+
+            <img
+              src="./scene5.jpg"
+              alt="Before It Falls cooldown state"
+            >
+
+            <figcaption class="scene-caption"
+  data-i18n-managed="true"
+  data-zh="05 / 平息">
+              05 / COOLDOWN
+            </figcaption>
+
+          </figure>
+
+
+          <!-- ARROWS -->
+
+          <button
+            class="scene-arrow prev"
+            type="button"
+            aria-label="Previous scene"
+          >
+            ←
+          </button>
+
+          <button
+            class="scene-arrow next"
+            type="button"
+            aria-label="Next scene"
+          >
+            →
+          </button>
+
+        </div>
+
+
+        <!-- SCENE NAV -->
+
+        <div
+          class="scene-nav"
+          aria-label="Scene selector"
+        >
+
+          <button
+            class="scene-dot active"
+            type="button"
+            data-scene="0"
+          
+  data-i18n-managed="true"
+  data-zh="01 白昼">
+            01 DAY
+          </button>
+
+          <button
+            class="scene-dot"
+            type="button"
+            data-scene="1"
+          
+  data-i18n-managed="true"
+  data-zh="02 变化">
+            02 SHIFT
+          </button>
+
+          <button
+            class="scene-dot"
+            type="button"
+            data-scene="2"
+          
+  data-i18n-managed="true"
+  data-zh="03 黄昏">
+            03 DUSK
+          </button>
+
+          <button
+            class="scene-dot"
+            type="button"
+            data-scene="3"
+          
+  data-i18n-managed="true"
+  data-zh="04 雨">
+            04 RAIN
+          </button>
+
+          <button
+            class="scene-dot"
+            type="button"
+            data-scene="4"
+          
+  data-i18n-managed="true"
+  data-zh="05 平息">
+            05 COOLDOWN
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- INTERACTION -->
+
+    <section class="interaction">
+
+      <div class="eyebrow">
+        Interaction Logic
+      </div>
+
+      <h2 class="section-title"
+  data-i18n-managed="true"
+  data-zh="由在场塑造的循环">
+        A cycle shaped by presence
+      </h2>
+
+
+      <div class="interaction-track">
+
+
+        <div class="interaction-step">
+
+          <div class="step-no">
+            01
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="经过">
+            PASS BY
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="背景与音乐轻微变化，吸引注意。">
+            The background and music subtly shift to catch attention.
+          </p>
+
+        </div>
+
+
+        <div class="interaction-step">
+
+          <div class="step-no">
+            02
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="靠近">
+            APPROACH
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="装置开始更明显地回应观众。">
+            The installation begins responding more visibly to the viewer.
+          </p>
+
+        </div>
+
+
+        <div class="interaction-step">
+
+          <div class="step-no">
+            03
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="挥动">
+            WAVE
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="萤火虫般的粒子在观众的动作周围悬浮。">
+            Firefly-like particles hover around the viewer’s movement.
+          </p>
+
+        </div>
+
+
+        <div class="interaction-step">
+
+          <div class="step-no">
+            04
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="触发">
+            TRIGGER
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="动作填满能量条，触发落日事件。">
+            Movement fills an energy bar and activates the petal-fall event.
+          </p>
+
+        </div>
+
+
+        <div class="interaction-step">
+
+          <div class="step-no">
+            05
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="重置">
+            RESET
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="能量归零后，世界平静下来，等待下一位观众。">
+            When energy returns to zero, the world settles and waits again.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="interaction-video">
+
+        <div class="interaction-video-copy">
+
+          <div class="eyebrow">
+            Interaction in Motion
+          </div>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="从细微的环境变化到粒子、雨与落花，交互随人的动作连续展开。">
+            From subtle environmental shifts to particles, rain, and falling petals,
+            the full interaction unfolds as a continuous response to human movement.
+          </p>
+
+        </div>
+
+        <div class="interaction-video-frame">
+
+          <video
+            data-preview-src="./video.mov"
+            controls
+            playsinline
+            preload="metadata"
+            poster="./scene3.jpg"
+          ></video>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PROCESS -->
+
+    <section class="process">
+
+      <div class="process-header">
+
+        <div>
+
+          <div class="eyebrow">
+            Design Process
+          </div>
+
+          <h2 class="section-title"
+  data-i18n-managed="true"
+  data-zh="构建一个鲜活的世界">
+            Building a world that feels alive
+          </h2>
+
+        </div>
+
+
+        <p
+  data-i18n-managed="true"
+  data-zh="作品在视觉、技术与交互问题的推动下不断演进。每个限制都让它从简单的树木动画走向更完整的装置体验。">
+          The project evolved through a series of visual, technical,
+          and interaction problems. Each constraint pushed the system
+          away from a simple tree animation and toward a more complete
+          installation experience.
+        </p>
+
+      </div>
+
+
+      <!-- PROCESS 00 -->
+
+      <div class="visual-direction-block">
+
+        <!-- LEFT / IMAGE -->
+
+        <figure class="visual-direction-image">
+          <img
+            src="./Mood_Board.png"
+            alt="Early visual mood board for Before It Falls"
+          >
+        </figure>
+
+
+        <!-- RIGHT / TEXT -->
+
+        <div class="visual-direction-copy">
+
+          <div class="micro-label">
+            00 / VISUAL DIRECTION
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="寻找氛围">
+            Finding the atmosphere
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="柔和的色彩、有机的不规则，以及仿佛已在消逝的感觉。">
+            Soft color, organic irregularity, and a sense of something already beginning to disappear.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROCESS 01 -->
+
+      <div class="process-block">
+
+        <div class="process-text">
+
+          <div class="micro-label">
+            01 / STRUCTURE
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="从分形到有机形态">
+            From Fractal to Organic
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="我从 Branch 类开始，让每根枝条成为具有父子关系的对象。纯随机生成的树容易僵硬或别扭，于是我把长枝分成小段，在连接点加入轻微的横纵偏移，形成更自然、斑驳的轮廓。">
+            I began with a Branch class so each limb could exist as an
+            object with parent-child relationships. Purely random
+            procedural trees quickly became stiff or awkward, so I split
+            long branches into smaller segments and introduced slight
+            X/Y offsets at each joint to create a more weathered,
+            irregular silhouette.
+          </p>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="随后结合人工选择与递归：第一代枝条手动设计，后续枝条由算法生成。">
+            I then combined manual curation with recursion: the first
+            generation of branches was explicitly designed, while later
+            generations were generated algorithmically.
+          </p>
+
+        </div>
+
+        <div class="process-image process-gallery">
+
+          <figure class="process-thumb">
+            <img src="./tree-01-basic.jpg" alt="Basic Y branch test">
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="01 / 基础枝条">01 / BASIC BRANCH</figcaption>
+          </figure>
+        
+          <figure class="process-thumb">
+            <img src="./tree-02-recursion.jpg" alt="Recursive branching test">
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="02 / 递归">02 / RECURSION</figcaption>
+          </figure>
+        
+          <figure class="process-thumb">
+            <img src="./tree-03-gnarled.jpg" alt="Organic gnarled branch test">
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="03 / 不规则形态">03 / GNARLED FORM</figcaption>
+          </figure>
+        
+          <figure class="process-thumb process-thumb-wide">
+            <img src="./tree-04-parameters.jpg" alt="Parameterized tree structure">
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="04 / 参数化结构">04 / PARAMETERIZED STRUCTURE</figcaption>
+          </figure>
+        
+        </div>
+      </div>
+
+
+
+      <!-- PROCESS 02 -->
+
+      <div class="process-block reverse">
+
+        <div class="process-text">
+
+          <div class="micro-label">
+            02 / FORM
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="设计花朵系统">
+            Designing the Blossom System
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="我用 beginShape() 和 bezierVertex() 绘制单片樱花花瓣，包括顶端的小缺口。透明度营造层叠水彩感，随机粉色、旋转角度与不同生命周期状态，让树冠不再像重复贴图。">
+            I drew individual sakura petals with beginShape()
+            and bezierVertex(), including the small cleft at the tip.
+            Transparency created a layered watercolor effect, while
+            randomized pink tones, rotation, and multiple lifecycle
+            states prevented the canopy from feeling like a repeated
+            digital texture.
+          </p>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="花苞与盛开的花共存，让树有自己的节奏，而非凝固在某个完美瞬间。">
+            Buds and blossoms coexist so the tree carries rhythm rather
+            than appearing frozen at one perfect moment.
+          </p>
+
+        </div>
+
+
+        <div class="process-image process-gallery flower-gallery">
+
+          <figure class="process-thumb">
+            <img
+              src="./flower-01-radial.jpg"
+              alt="Early radial blossom construction"
+            >
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="01 / 放射形态">
+              01 / RADIAL FORM
+            </figcaption>
+          </figure>
+        
+          <figure class="process-thumb">
+            <img
+              src="./flower-02-bezier.jpg"
+              alt="Bezier cherry blossom petal refinement"
+            >
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="02 / 贝塞尔花瓣">
+              02 / BEZIER PETAL
+            </figcaption>
+          </figure>
+        
+          <figure class="process-thumb">
+            <img
+              src="./flower-03-variation.jpg"
+              alt="Cherry blossom color and size variation test"
+            >
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="03 / 色彩变化">
+              03 / COLOR VARIATION
+            </figcaption>
+          </figure>
+        
+          <figure class="process-thumb">
+            <img
+              src="./flower-04-buds.jpg"
+              alt="Blossoms and buds integrated into the tree"
+            >
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="04 / 花朵 + 花苞">
+              04 / BLOOMS + BUDS
+            </figcaption>
+          </figure>
+        
+        </div>
+
+      </div>
+
+
+
+      <!-- PROCESS 03 -->
+
+      <div class="process-block">
+
+        <div class="process-text">
+
+          <div class="micro-label">
+            03 / PERFORMANCE
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="千朵花，同一个难题">
+            Thousands of Blossoms, One Problem
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="加入落花后，大量计算导致帧率骤降。我将静态与动态内容分离：树和枝头花朵预先绘制到透明的离屏图层，主画布只更新移动的花瓣与交互粒子。">
+            Once falling petals were introduced, the frame rate collapsed
+            under the number of calculations. The solution was to separate
+            static and dynamic content. The tree and attached blossoms
+            were rendered once onto a transparent off-screen layer,
+            while only the moving petals and interactive particles
+            remained on the main canvas.
+          </p>
+
+
+          <div class="diagram">
+
+            <div class="diagram-row">
+              <strong>STATIC LAYER</strong>
+              — tree + attached blossoms
+            </div>
+
+            <div class="diagram-row">
+              <strong>DYNAMIC LAYER</strong>
+              — falling petals + particles + interaction
+            </div>
+
+            <div class="diagram-row">
+              <strong>COMPOSITE</strong>
+              — layered together on the final canvas
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="process-image performance-diagram">
+          <img
+            src="./performance-layer.png"
+            alt="Static cherry blossom tree layer combined with a separate falling petal layer"
+          >
+        </div>
+
+      </div>
+
+
+
+
+      <!-- PROCESS 04 -->
+
+      <div class="process-block reverse">
+
+        <div class="process-text">
+
+          <div class="micro-label">
+            04 / DESIGN PIVOT
+          </div>
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="当模拟成为叙事">
+            When Simulation Became Narrative
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="起初我希望枝头的花随落花逐渐减少，但将花朵从固定图层分离破坏了视觉纵深，树像叠起来的贴纸。我没有强行保留效果，而是调整了交互模型。">
+            I initially wanted blossoms on the tree to visibly decrease
+            as petals fell. Separating them from the fixed layer broke
+            the visual depth and made the tree feel like stacked stickers.
+            Rather than forcing the effect, I changed the interaction model.
+          </p>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="动作转而为能量系统蓄力，驱动环境变化。作品由“触碰一棵树”变成影响一个拥有开始、触发、释放与重置过程的世界。">
+            Movement now contributes to an energy system that drives
+            environmental change. This transformed the project from
+            “touching a tree” into influencing an entire world with
+            a beginning, trigger, release, and reset.
+          </p>
+
+        </div>
+
+
+        <div class="process-image">
+
+          <figure class="pivot-test">
+
+            <img
+              src="./performance-.jpeg"
+              alt="Failed test separating blossoms from the fixed cherry blossom tree layer"
+            >
+
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="未成功的测试 / 分离花朵">
+              FAILED TEST / SEPARATING BLOSSOMS
+            </figcaption>
+
+          </figure>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SOUND -->
+
+    <section class="night-section">
+
+      <div class="night-grid">
+
+        <div>
+
+          <div
+            class="eyebrow"
+            style="color:#c39ca8;"
+          >
+            Sound & Atmosphere
+          </div>
+
+
+          <h2 class="section-title"
+  data-i18n-managed="true"
+  data-zh="环境也在倾听">
+            The environment listens back
+          </h2>
+
+
+          <p
+  data-i18n-managed="true"
+  data-zh="声音是交互的一部分，而非背景装饰。我混合鸟鸣与雨声，在 REAPER 中编辑结束主题，并用铃声提示场景切换。音量与能量随人的动作响应，与视觉共同参与同一个循环。">
+            Sound was treated as part of the interaction rather than
+            background decoration. I mixed bird chirps and rain ambience,
+            edited an ending theme in REAPER, and added a bell cue for
+            scene transitions. Volume and energy respond to human movement
+            so the soundscape participates in the same cycle as the visuals.
+          </p>
+
+
+          <div class="night-notes">
+
+            <div class="night-note">
+              BIRDS
+            </div>
+
+            <div class="night-note">
+              RAIN
+            </div>
+
+            <div class="night-note">
+              BELL
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="night-media">
+
+          <figure class="sound-image">
+            <img
+              src="./sound-atmosphere.jpg"
+              alt="Before It Falls atmospheric rain and sound state"
+            >
+            <figcaption
+  data-i18n-managed="true"
+  data-zh="声音响应环境 / 雨景">
+              AUDIO-REACTIVE ENVIRONMENT / RAIN STATE
+            </figcaption>
+          </figure>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EXHIBITION -->
+
+    <section class="exhibition">
+
+      <div class="exhibition-head">
+
+        <div class="eyebrow">
+          Exhibition
+        </div>
+
+        <h2 class="section-title"
+  data-i18n-managed="true"
+  data-zh="NYU 展览">
+          NYU Show
+        </h2>
+
+        <p
+  data-i18n-managed="true"
+  data-zh="当作品进入人群，体验也随之改变。经过的身体、抬起的手臂与交叠的动作，将可控的交互变成现场的社会性系统。">
+          The piece changed once it entered a crowd.
+          Passing bodies, raised arms, and overlapping movements
+          turned a controlled interaction into a live social system.
+        </p>
+
+      </div>
+
+
+      <div class="invitation-stage">
+
+        <div
+          class="invitation-wrap"
+          id="invitation-wrap"
+        >
+
+
+          <!-- four corners -->
+
+          <span class="corner corner-tl"></span>
+          <span class="corner corner-tr"></span>
+          <span class="corner corner-bl"></span>
+          <span class="corner corner-br"></span>
+
+
+          <!-- card -->
+
+          <button
+            class="invitation-card"
+            id="invitation-card"
+            type="button"
+            aria-expanded="false"
+            aria-controls="show-gallery"
+          >
+
+            <img
+              src="./show-card-front.jpg"
+              alt="NYU Show invitation card"
+            >
+
+          </button>
+
+
+          <!-- expanding rail -->
+
+          <div
+            class="guide-rail"
+            aria-hidden="true"
+          ></div>
+
+
+          <!-- hover click hint -->
+
+          <div
+            class="click-hint"
+            aria-hidden="true"
+          >
+            CLICK
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- GALLERY -->
+
+      <div
+        class="show-gallery"
+        id="show-gallery"
+        aria-hidden="true"
+      >
+
+
+        <!-- SHOW 2 -->
+
+        <figure class="gallery-item">
+
+          <img
+            src="./show2.jpg"
+            alt="Visitor passing the interactive installation"
+          >
+
+          <figcaption class="gallery-label"
+  data-i18n-managed="true"
+  data-zh="01 / 经过">
+            01 / PASSING
+          </figcaption>
+
+        </figure>
+
+
+        <!-- SHOW 1 -->
+
+        <figure class="gallery-item">
+
+          <img
+            src="./show1.jpg"
+            alt="Four installation states at NYU Show"
+          >
+
+          <figcaption class="gallery-label"
+  data-i18n-managed="true"
+  data-zh="02 / 状态">
+            02 / STATES
+          </figcaption>
+
+        </figure>
+
+
+        <!-- SHOW 3 -->
+
+        <figure class="gallery-item">
+
+          <img
+            src="./show3.jpg"
+            alt="Visitor interacting with the installation"
+          >
+
+          <figcaption class="gallery-label"
+  data-i18n-managed="true"
+  data-zh="03 / 手势">
+            03 / GESTURE
+          </figcaption>
+
+        </figure>
+
+      </div>
+
+    </section>
+
+    <!-- ===== END EXHIBITION HTML SECTION ===== -->
+
+
+    <!-- REFLECTION -->
+
+    <section class="reflection">
+
+      <div class="eyebrow">
+        Reflection
+      </div>
+
+      <h2 class="section-title"
+  data-i18n-managed="true"
+  data-zh="与观众测试之后的改变">
+        What changed after testing it with people
+      </h2>
+
+
+      <div class="reflection-grid">
+
+
+        <div class="reflection-card">
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="01 — 无人交互时，也要有生命力">
+            01 — Idle state matters
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="交互装置不应看起来只是在等待启动，即使无人靠近也应具有吸引力。更暗的雨夜开场或许能形成更强的视觉与情绪引力。">
+            An interactive installation should not look like it is waiting
+            to be activated. It needs to feel compelling even when nobody
+            is there. A darker rainy-night opening would create a stronger
+            visual and emotional hook.
+          </p>
+
+        </div>
+
+
+        <div class="reflection-card">
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="02 — 人群改变规则">
+            02 — Crowds change the rules
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="我测试过让花朵在指尖下即时出现的交互，但它在公共展览中显得过于混乱，因此移除了这一效果。面向人群设计，需要更少的手势和更明确的环境反馈。">
+            I tested an “instant bloom” interaction where flowers appeared
+            beneath users’ fingertips. It felt too chaotic for a public
+            exhibition, so I removed it. Designing for a crowd required
+            fewer gestures and clearer environmental feedback.
+          </p>
+
+        </div>
+
+
+        <div class="reflection-card">
+
+          <h3
+  data-i18n-managed="true"
+  data-zh="03 — 下一次实验">
+            03 — Next experiment
+          </h3>
+
+          <p
+  data-i18n-managed="true"
+  data-zh="我希望继续探索多人同步开花与投影映射，让树仅在多个动作协调时回应，也让数字景观更真实地存在于空间中。">
+            I would like to develop synchronized multi-user blooms
+            and projection mapping, allowing the tree to react only
+            when multiple movements align and making the digital
+            landscape feel more physically present in space.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <footer>
+    Before It Falls — Interactive Generative Installation
+  </footer>
+
+
+  <script>
+    document
+      .querySelector(".back-btn")
+      .addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        window.location.href =
+          "../../index.html#game-modal";
+
+      });
+  </script>
+
+
+  <script>
+    (() => {
+
+      const carousel =
+        document.querySelector("#scene-carousel");
+
+      if (!carousel) return;
+
+
+      const slides =
+        [...carousel.querySelectorAll(".scene-slide")];
+
+      const dots =
+        [...carousel.querySelectorAll(".scene-dot")];
+
+      const prev =
+        carousel.querySelector(".scene-arrow.prev");
+
+      const next =
+        carousel.querySelector(".scene-arrow.next");
+
+
+      let current = 0;
+
+      let timer;
+
+
+      function showScene(index) {
+
+        current =
+          (index + slides.length) % slides.length;
+
+
+        slides.forEach((slide, i) => {
+
+          slide.classList.toggle(
+            "active",
+            i === current
+          );
+
+        });
+
+
+        dots.forEach((dot, i) => {
+
+          dot.classList.toggle(
+            "active",
+            i === current
+          );
+
+        });
+
+      }
+
+
+      function restartAutoPlay() {
+
+        clearInterval(timer);
+
+        timer = setInterval(() => {
+
+          showScene(current + 1);
+
+        }, 3500);
+
+      }
+
+
+      prev.addEventListener(
+        "click",
+        () => {
+
+          showScene(current - 1);
+
+          restartAutoPlay();
+
+        }
+      );
+
+
+      next.addEventListener(
+        "click",
+        () => {
+
+          showScene(current + 1);
+
+          restartAutoPlay();
+
+        }
+      );
+
+
+      dots.forEach(
+        (dot, index) => {
+
+          dot.addEventListener(
+            "click",
+            () => {
+
+              showScene(index);
+
+              restartAutoPlay();
+
+            }
+          );
+
+        }
+      );
+
+
+      carousel.addEventListener(
+        "mouseenter",
+        () => {
+
+          clearInterval(timer);
+
+        }
+      );
+
+
+      carousel.addEventListener(
+        "mouseleave",
+        () => {
+
+          restartAutoPlay();
+
+        }
+      );
+
+
+      showScene(0);
+
+      restartAutoPlay();
+
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const section = document.querySelector('.night-section');
+      if (!section) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.add('is-visible');
+            observer.unobserve(section);
+          }
+        });
+      }, { threshold: 0.22 });
+
+      observer.observe(section);
+    })();
+  </script>
+
+  <script>
+    (() => {
+
+      const card =
+        document.querySelector(
+          "#invitation-card"
+        );
+
+      const wrap =
+        document.querySelector(
+          "#invitation-wrap"
+        );
+
+      const gallery =
+        document.querySelector(
+          "#show-gallery"
+        );
+
+      if (
+        !card ||
+        !wrap ||
+        !gallery
+      ) return;
+
+
+      card.addEventListener(
+        "click",
+        () => {
+
+          const isOpen =
+            gallery
+              .classList
+              .toggle(
+                "open"
+              );
+
+
+          wrap
+            .classList
+            .toggle(
+              "is-open",
+              isOpen
+            );
+
+
+          card.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+          );
+
+
+          gallery.setAttribute(
+            "aria-hidden",
+            String(!isOpen)
+          );
+
+
+          if (isOpen) {
+
+            window.setTimeout(
+              () => {
+
+                gallery.scrollIntoView(
+                  {
+                    behavior:
+                      "smooth",
+
+                    block:
+                      "nearest"
+                  }
+                );
+
+              },
+              220
+            );
+
+          }
+
+        }
+      );
+
+    })();
+  </script>
+
+  <script src="./sakura-cover-petals.js" defer></script>
+  
+
+  
+
+<!-- 本页动态备用译文：原文由拼接产生或暂未在当前代码中找到；不影响其他作品。 -->
+<script id="page-translations">
+LydiaI18n.register([
+  [
+    "IMA Show Video",
+    "IMA 展览影像"
+  ]
+]);
+</script>
+<script src="../shared/detail-language.js" defer></script>
+<script src="../../preview-media.js" defer></script>
+</body>
+</html>
+
+
+
+

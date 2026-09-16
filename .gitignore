@@ -1,0 +1,11 @@
+.DS_Store
+.vscode/
+_backups/
+*.mp4
+*.mov
+*.webm
+*.m4v
+*.MP4
+*.MOV
+baseline.html
+/bg/

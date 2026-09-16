@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-Menu — Lydia He</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./emenu/style.css">
+  <link rel="stylesheet" href="../shared/project-nav.css">
+<link rel="stylesheet" href="../shared/detail-language.css">
+
+<!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
+<script src="../shared/detail-translations.js"></script>
+</head>
+<body>
+  <nav class="project-nav" aria-label="Project navigation"><a class="back-btn" href="../../index.html#book-modal"><span><svg class="back-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</span></a><div class="lang-right"><button id="lang-toggle" class="lang-toggle" type="button" aria-label="Chinese translation is not available yet" title="Chinese translation coming soon" disabled>中文</button></div></nav>
+  <main>
+    <section class="hero" id="experience">
+      <div class="hero-copy">
+        <h1>E-Menu</h1>
+        <p class="hero-line"
+  data-i18n-managed="true"
+  data-zh="同一张餐桌，&lt;br&gt;另一种点餐方式。">The same table.<br>A different way in.</p>
+        <p class="intro"
+  data-i18n-managed="true"
+  data-zh="将 Umami 从纸质菜单转化为移动端体验，探索视觉识别、导航，以及影响浏览体验的细微设计。">Umami, translated from a printed menu into a mobile experience. A study in visual identity, navigation, and the small decisions that shape browsing.</p>
+        <dl class="credits"><div><dt>FORMAT</dt><dd
+  data-i18n-managed="true"
+  data-zh="移动端菜单">Mobile menu</dd></div><div><dt>TOOL</dt><dd>Figma</dd></div><div><dt>FOCUS</dt><dd
+  data-i18n-managed="true"
+  data-zh="UI / UX · 视觉设计">UI / UX · Visual design</dd></div></dl>
+        <div class="hero-actions"><button class="primary" id="enter-menu"
+  data-i18n-managed="true"
+  data-zh="探索菜单 ↗">Explore the menu <span>↗</span></button><button class="text-button" data-figma>Original Figma prototype ↗</button></div>
+        <a class="down" href="#navigation"
+  data-i18n-managed="true"
+  data-zh="了解设计 ↓">Discover the design ↓</a>
+      </div>
+      <div class="hero-stage">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="phone" id="phone"><div class="phone-screen" id="phone-scroll" tabindex="0" aria-label="Interactive menu screen. Scroll to read."><div class="screen-content" id="screen-content"><img id="screen-image" src="./emenu/assets/final-01.jpg" alt="Umami final menu cover"><div id="hotspots"></div></div></div></div>
+        <div class="phone-caption"
+  data-i18n-managed="true"
+  data-zh="点击封面开始"><span class="status-dot"></span><span id="screen-status" aria-live="polite">Tap the cover to begin</span></div>
+        <div class="phone-controls"><button id="screen-back" disabled>← Back</button><button id="categories">Categories</button><button id="reset">Reset ↺</button></div>
+        <p class="demo-note">Local guided demo · Original design screens</p>
+      </div>
+    </section>
+
+    <section class="journey section" id="navigation">
+      <div class="section-heading"><p class="eyebrow"
+  data-i18n-managed="true"
+  data-zh="01 / 寻找路径">01 / Finding your way</p><h2
+  data-i18n-managed="true"
+  data-zh="菜单，也是一张地图。">A menu is also a map.</h2><p
+  data-i18n-managed="true"
+  data-zh="从大分类到一道菜，逐层探索最终界面的导航结构。">From a first impression to a dish: explore the layers of the final interface.</p></div>
+      <div class="journey-grid">
+        <button class="journey-card" data-menu-screen="categories" aria-controls="inline-prototype"><span class="step"
+  data-i18n-managed="true"
+  data-zh="01 / 选择">01 / CHOOSE</span><div class="journey-image"><img src="./emenu/assets/final-04.jpg" loading="lazy" alt="Eight menu categories"></div><h3
+  data-i18n-managed="true"
+  data-zh="从一个类别开始 ">Start with a category <span>↓</span></h3><p
+  data-i18n-managed="true"
+  data-zh="集中的分类列表，为菜单的每个部分提供清晰入口。">A central list gives each part of the menu its own point of entry.</p><span class="journey-action"
+  data-i18n-managed="true"
+  data-zh="浏览分类 ↓">Explore categories ↓</span></button>
+        <button class="journey-card" data-menu-screen="main-menu" aria-controls="inline-prototype"><span class="step"
+  data-i18n-managed="true"
+  data-zh="02 / 缩小范围">02 / NARROW IT DOWN</span><div class="journey-image"><img src="./emenu/assets/final-05.jpg" loading="lazy" alt="Main dishes, recommendations, and vegetables"></div><h3
+  data-i18n-managed="true"
+  data-zh="找到你的方向 ">Find your direction <span>↓</span></h3><p
+  data-i18n-managed="true"
+  data-zh="主菜、推荐与蔬菜构成第二层选择。">Main dishes, recommendations, and vegetables form a second layer of choices.</p><span class="journey-action"
+  data-i18n-managed="true"
+  data-zh="试试主菜的子菜单 ↓">Try the Main submenu ↓</span></button>
+        <button class="journey-card" data-menu-screen="main" aria-controls="inline-prototype"><span class="step"
+  data-i18n-managed="true"
+  data-zh="03 / 浏览">03 / EXPLORE</span><div class="journey-image"><img src="./emenu/assets/final-10.jpg" loading="lazy" alt="Main dish list"></div><h3
+  data-i18n-managed="true"
+  data-zh="按自己的节奏浏览 ">Browse at your own pace <span>↓</span></h3><p
+  data-i18n-managed="true"
+  data-zh="在连续的分类页面中滚动比较菜品、价格与食材。">Scroll through dishes, prices, and ingredients within one continuous category.</p><span class="journey-action"
+  data-i18n-managed="true"
+  data-zh="浏览主菜 ↓">Browse main dishes ↓</span></button>
+      </div>
+      <p class="small-note">Select a screen to try it in the phone above.</p>
+    </section>
+
+    <section class="evolution section" id="versions">
+      <div class="evolution-copy"><p class="eyebrow"
+  data-i18n-managed="true"
+  data-zh="02 / 动态的设计">02 / Design in motion</p><h2
+  data-i18n-managed="true"
+  data-zh="一份菜单，&lt;br&gt;不同的浏览路径。">One menu.<br>Different ways<br>to navigate.</h2><p class="section-intro"
+  data-i18n-managed="true"
+  data-zh="不同版本探索的不只是色彩，还包括导航放在哪里、如何展开，以及浏览时的体验感。">The versions explore more than color. They change where navigation lives, how it opens, and how the menu feels.</p>
+        <div class="version-tabs" role="tablist" aria-label="Menu design versions"><button role="tab" id="v1" aria-selected="false" aria-controls="version-panel" tabindex="-1" data-version="0">01</button><button role="tab" id="v2" aria-selected="false" aria-controls="version-panel" tabindex="-1" data-version="1">02</button><button role="tab" id="v3" aria-selected="false" aria-controls="version-panel" tabindex="-1" data-version="2">03</button><button role="tab" id="v4" aria-selected="true" aria-controls="version-panel" data-version="3">Final</button></div>
+        <div class="version-panel" id="version-panel" role="tabpanel" aria-labelledby="v4" tabindex="0"><span id="version-kicker" class="eyebrow"
+  data-i18n-managed="true"
+  data-zh="最终版 / 统一的方向">FINAL / A COHESIVE DIRECTION</span><h3 id="version-title">A centered category system.</h3><p id="version-description">The final category screen brings the list back to the center. Green controls and decorative corner motifs connect navigation to the menu’s visual identity.</p></div>
+        <span class="annotation">← Compare the same task: finding a category</span>
+      </div>
+      <div class="comparison-stage"><span class="stage-index" id="version-stage-label">FINAL DESIGN</span><img id="version-image" src="./emenu/assets/final-04.jpg" alt="Final category navigation screen" loading="lazy"><span class="comparison-caption">CATEGORY NAVIGATION / ORIGINAL SCREEN</span></div>
+    </section>
+
+    <section class="identity section">
+      <div class="section-heading"><p class="eyebrow"
+  data-i18n-managed="true"
+  data-zh="03 / 从纸面到屏幕">03 / From page to screen</p><h2
+  data-i18n-managed="true"
+  data-zh="依然，一眼认出 Umami。">Still unmistakably Umami.</h2><p
+  data-i18n-managed="true"
+  data-zh="形式虽变，视觉语言延续。">A change of format, with a shared visual language.</p></div>
+      <div class="identity-layout"><figure class="paper"><img src="./emenu/assets/print-spread.jpg" alt="Umami printed appetizer spread" loading="lazy"><figcaption
+  data-i18n-managed="true"
+  data-zh="纸质菜单 / 完整跨页">THE PRINTED MENU / A FULL SPREAD</figcaption></figure><div class="identity-bridge"><span>→</span><span>REFRAMED<br>FOR SCROLLING</span></div><figure class="digital"><img src="./emenu/assets/final-07.jpg" alt="Umami digital appetizer menu" loading="lazy"><figcaption
+  data-i18n-managed="true"
+  data-zh="数字菜单">THE DIGITAL MENU</figcaption></figure></div>
+      <div class="language-grid"><div><div class="swatches"><i style="--swatch:#174d3d"></i><i style="--swatch:#843e38"></i><i style="--swatch:#ded0a6"></i></div><h3
+  data-i18n-managed="true"
+  data-zh="共同的色彩">A shared palette</h3><p
+  data-i18n-managed="true"
+  data-zh="深绿、红色与温暖的纸色，串联封面、控件与菜品特色。">Deep green, red, and warm paper tones connect the cover, controls, and dish highlights.</p></div><div><span class="type-sample">Aa <small>Ingredients, clearly.</small></span><h3
+  data-i18n-managed="true"
+  data-zh="有层次地阅读">Reading in layers</h3><p
+  data-i18n-managed="true"
+  data-zh="菜名与价格突出呈现，下方则是较小的食材说明。">Dish names and prices stand apart from the smaller ingredient descriptions underneath.</p></div><div><span class="motif-sample"
+  data-i18n-managed="true"
+  data-zh="翻页 → 滚动">Page → Scroll</span><h3
+  data-i18n-managed="true"
+  data-zh="不同的节奏">A different rhythm</h3><p
+  data-i18n-managed="true"
+  data-zh="纸质跨页转为纵向浏览，分类导航取代翻页。">The printed spread becomes a vertical sequence, with category navigation replacing the page turn.</p></div></div>
+    </section>
+
+    <section class="recording section" id="walkthrough"><div class="section-heading"><p class="eyebrow">04 / The final experience</p><h2>See it in motion.</h2><p>The recorded Figma walkthrough, alongside the original prototype.</p></div><div class="recording-layout"><video controls playsinline preload="metadata" poster="emenu/assets/recording-15.jpg" aria-label="Final Figma prototype walkthrough"><source data-preview-src="./emenu/assets/walkthrough.mp4" type="video/mp4"></video><div><p class="eyebrow">FINAL MENU / FIGMA</p><h3>Follow the flow.<br>Then make it yours.</h3><p>The recording shows the designed transitions. Open the original prototype to explore the Figma experience.</p><button class="primary" data-figma>Open Figma prototype ↗</button><p class="small-note">Figma access and loading depend on its sharing settings.</p></div></div></section>
+
+    <section class="archive section"><details id="archive"><summary><span><span class="eyebrow">05 / Behind the interface</span><span class="archive-title"
+  data-i18n-managed="true"
+  data-zh="工作档案。">The working archive.</span></span><span class="expand-icon">+</span></summary><div class="archive-body"><p
+  data-i18n-managed="true"
+  data-zh="选择图片，查看细节。">Wireframes, alternative directions, and final screens. Select an image for a closer look.</p><div class="archive-filters" aria-label="Archive groups"><button data-group="wireframe" aria-pressed="true">Wireframes</button><button data-group="2" aria-pressed="false">Version 01</button><button data-group="3" aria-pressed="false">Version 02</button><button data-group="1" aria-pressed="false">Version 03</button><button data-group="final" aria-pressed="false">Final screens</button></div><div class="archive-grid" id="archive-grid"></div></div></details></section>
+  </main>
+  <footer><span>UMAMI / E-MENU</span><a href="#experience"
+  data-i18n-managed="true"
+  data-zh="返回体验区 ↑">Back to the experience ↑</a></footer>
+  <dialog id="figma-dialog"><div class="dialog-bar"><span>Original Figma prototype</span><button data-close="figma-dialog" aria-label="Close prototype">Close ×</button></div><div id="figma-container"></div><p class="embed-help">If the prototype does not load, <a href="https://www.figma.com/proto/MbI6Pq3hthVtzZVOFXrCFW/Lydia-s-Menu-Project?node-id=0-1&amp;t=3mQ1i0XUaoAVXGXC-1" target="_blank" rel="noopener">open it in Figma ↗</a>.</p></dialog>
+  <dialog id="image-dialog"><div class="dialog-bar"><span id="image-label"
+  data-i18n-managed="true"
+  data-zh="设计界面">Design screen</span><button data-close="image-dialog" aria-label="Close image">Close ×</button></div><img id="archive-large" alt=""></dialog>
+  <link rel="stylesheet" href="./emenu/prototype.css">
+  <link rel="stylesheet" href="./emenu/native.css">
+  <link rel="stylesheet" href="./emenu/native-controls.css">
+  <link rel="stylesheet" href="./emenu/native-transition.css">
+  <link rel="stylesheet" href="./emenu/device-layout.css">
+  <link rel="stylesheet" href="./emenu/menu-details.css">
+  <link rel="stylesheet" href="./emenu/section-layout.css">
+  <script src="./emenu/menu-details.js?v=local-compat-1"></script>
+  <script src="./emenu/menu-native.js"></script>
+  <script src="./emenu/prototype.js"></script>
+  <script src="./emenu/page-motion.js"></script>
+<!-- 本页动态备用译文：原文由拼接产生或暂未在当前代码中找到；不影响其他作品。 -->
+<script id="page-translations">
+LydiaI18n.register([
+  [
+    "Menu Design",
+    "菜单设计"
+  ],
+  [
+    "Logo Design",
+    "标志设计"
+  ]
+]);
+</script>
+<script src="../shared/detail-language.js" defer></script>
+<script src="../../preview-media.js" defer></script>
+</body></html>
+
+
+

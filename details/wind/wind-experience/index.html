@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html:has(#p5_loading), body:has(#p5_loading) { background: #7d736e; }
+      #p5_loading { position: fixed; inset: 0; z-index: 999; display: flex; align-items: center; justify-content: center; background: #7d736e; color: #fff5e9; font: 14px Arial, sans-serif; letter-spacing: .03em; }
+      .ready-line { display: flex; align-items: center; gap: 12px; }
+      .ready-dots { display: flex; gap: 5px; }
+      .ready-dots i { width: 4px; height: 4px; border-radius: 50%; background: currentColor; animation: ready-bounce 1s ease-in-out infinite; }
+      .ready-dots i:nth-child(2) { animation-delay: .14s; }
+      .ready-dots i:nth-child(3) { animation-delay: .28s; }
+      @keyframes ready-bounce { 0%,60%,100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-4px); opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .ready-dots i { animation: none; opacity: .65; } }
+    </style>
+    <script type="module">
+      import {Pane} from './tweakpane.min.js';
+      
+      window.Pane = Pane;
+    </script>
+
+    <script src="p5.min.js" defer></script>
+    <script src="p5.sound.min.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Shape of the Wind</title>
+  <script src="../../shared/experience-nav.js" defer></script></head>
+  <body>
+    <div id="p5_loading" role="status" aria-live="polite"><div class="ready-line"><span>Getting ready…</span><span class="ready-dots" aria-hidden="true"><i></i><i></i><i></i></span></div></div>
+    <a href="../wheat.html" aria-label="Back to project" style="position:fixed;top:20px;left:28px;z-index:1000;color:#40352f;font:14px Arial,sans-serif;text-decoration:none">← Back</a>
+    <main></main>
+    <script src="sketch.js" defer></script>
+  <script src="../../../preview-media.js" defer></script>
+</body>
+</html>
+
+

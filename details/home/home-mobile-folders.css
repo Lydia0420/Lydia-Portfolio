@@ -1,0 +1,56 @@
+.mobile-folder-library { display: none; }
+@media (max-width: 768px) {
+  #imac-modal { display: block; padding: 0; background: #e3ebf2; }
+  #imac-modal .imac-container { display: none; }
+  #imac-modal .modal-label { position: sticky; top: 0; left: auto; right: auto; z-index: 3; margin: 0; padding: max(20px,env(safe-area-inset-top)) 74px 14px 24px; background: #e3ebf2; }
+  #imac-modal .modal-label-title,#imac-modal .modal-label-meta { font-size: 12px; line-height: 1.5; }
+  #imac-modal .modern-close-btn { position: fixed; top: max(20px,env(safe-area-inset-top)); z-index: 4; }
+  #imac-modal .mobile-folder-library {
+    display: grid; grid-template-rows: repeat(2,minmax(0,1fr));
+    gap: 20px; box-sizing: border-box;
+    height: calc(100svh - 115px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    min-height: 360px; max-height: 650px;
+    max-width: 370px; padding: 12px 30px 22px; margin: 0 auto;
+  }
+  .project-folder { min-height: 0; }
+  .folder-direct-link { display: block; height: 100%; color: #344854; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+  .folder-art { display: block; position: relative; height: 100%; isolation: isolate; transform: scale(.93); transform-origin: center; }
+  /* The original folder silhouette supplies the back and its familiar tab. */
+  .folder-art > img:not(.folder-peek) {
+    position: absolute; inset: auto -43% -24%; width: 186%; height: 136%;
+    object-fit: fill; max-width: none; filter: saturate(.09) brightness(.95) contrast(.82);
+    clip-path: inset(23% 22% 19% 22%); z-index: 0;
+  }
+  .folder-peek {
+    position: absolute; z-index: 1; top: 3%; left: 12%;
+    width: 76%; height: 82%; object-fit: contain;
+    box-sizing: border-box; padding: 6px; background: #f3f5f4;
+    transform: rotate(-4deg); box-shadow: 0 1px 0 #ced8dc,0 3px 5px rgba(43,65,79,.10),0 9px 13px -6px rgba(43,65,79,.14);
+  }
+  .project-folder:nth-child(2) .folder-peek { transform: rotate(3deg); }
+  .folder-frosted-front {
+    display: block; position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 62%;
+    border: 1px solid rgba(248,253,255,.85); border-right-color: rgba(161,185,202,.8); border-bottom-color: #a6bbc8;
+    border-radius: 9px 10px 12px 12px;
+    background: linear-gradient(155deg,rgba(239,247,251,.35),transparent 38%),linear-gradient(125deg,rgba(211,227,237,.80),rgba(184,206,221,.70));
+    -webkit-backdrop-filter: blur(12px) saturate(.6); backdrop-filter: blur(12px) saturate(.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9),inset 1px 0 0 rgba(255,255,255,.38),inset 0 -2px 3px rgba(115,147,166,.12),1px 2px 0 rgba(158,181,197,.48),0 4px 5px -2px rgba(44,69,85,.20),0 13px 19px -9px rgba(44,69,85,.19);
+  }
+  /* Quiet inset rim suggests a thicker translucent front without strong reflections. */
+  .folder-frosted-front::before {
+    content: ''; position: absolute; inset: 3px; border-radius: 7px 8px 9px 9px;
+    border: 1px solid rgba(244,250,254,.20); pointer-events: none;
+  }
+  .folder-caption { display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 12px 20px; box-sizing: border-box; }
+  .folder-index { display: block; font: italic 21px/1 Georgia,serif; color: #637f90; margin-bottom: 8px; }
+  .folder-name { display: block; font: 500 20px/1.2 'Helvetica Neue',Arial,sans-serif; letter-spacing: -.025em; }
+  .folder-hint { display: block; margin-top: 10px; font: 400 12px/1.4 'Helvetica Neue',Arial,sans-serif; color: #4e6878; }
+  .folder-direct-link:focus-visible { outline: 2px solid #365b70; outline-offset: 6px; }
+  .folder-direct-link:active .folder-art { transform: translateY(2px) scale(.93); }
+  @media (max-height: 640px) {
+    .folder-caption { padding: 8px 16px; }
+    .folder-index { font-size: 16px; margin-bottom: 5px; }
+    .folder-name { font-size: 18px; }
+    .folder-hint { margin-top: 5px; }
+  }
+}

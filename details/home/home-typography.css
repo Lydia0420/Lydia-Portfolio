@@ -1,0 +1,63 @@
+/* Homepage editorial type study. Navigation and modal typography are untouched. */
+#about-section {
+  width: min(1080px, calc(100% - 100px)); margin-inline: auto;
+  min-height: 88vh; padding: 110px 0 100px;
+  align-items: stretch; text-align: left; box-sizing: border-box;
+}
+#about-section .intro-kicker,
+#about-section .intro-slogan {
+  margin: 0; font: 500 clamp(44px,6.1vw,82px)/1.07 'Helvetica Neue',Arial,sans-serif;
+  letter-spacing: -.055em; color: #22272b;
+}
+#about-section .intro-kicker { font-size: clamp(37px,5.05vw,68px); margin-bottom: 30px; text-transform: none; }
+#about-section .intro-slogan { margin-bottom: 40px; }
+#about-section .intro-kicker em,
+#about-section .intro-slogan em {
+  font-family: Georgia,'Times New Roman',serif; font-weight: 400;
+  letter-spacing: -.065em; color: #6d7787;
+}
+#about-section .intro-desc {
+  width: min(530px,100%); max-width: none; margin: 0 0 0 auto;
+  font: 400 17px/1.8 'Helvetica Neue',Arial,sans-serif; color: #65696d;
+}
+#about-section .intro-desc .intro-lead { display: block; color: #272e35; font-size: 20px; line-height: 1.55; margin-bottom: 18px; }
+#about-section .intro-desc .intro-detail { display: block; margin-top: 12px; }
+#about-section .intro-signature { display: block; width: 245px; max-width: 100%; margin: -5px 0 7px -10px; color: #52786e; }
+#about-section .intro-signature svg { display: block; width: 100%; height: auto; overflow: visible; transform: rotate(-3deg); }
+.intro-signature.is-ready path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.intro-signature.is-writing path { animation: signature-write var(--duration) ease-out var(--delay) both; }
+.intro-signature .signature-flourish { stroke-width: 1.4; opacity: .65; }
+@keyframes signature-write { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .intro-signature.is-ready path { stroke-dashoffset: 0; animation: none; }
+}
+#work-section .collection-list { max-width: 1080px; }
+#work-section .collection-item { padding: 90px 0; border-bottom: 1px solid #cbd0d7; align-items: flex-start; }
+#work-section .collection-item:first-child { border-top: 1px solid #cbd0d7; }
+#work-section #work-art { border-bottom: 0; }
+#work-section .year { width: 18%; display: flex; flex-direction: column; gap: 16px; color: #737982; font: 400 11px/1.8 'Helvetica Neue',Arial,sans-serif; letter-spacing: .02em; }
+#work-section .index-number { font: italic 36px/1 Georgia,serif; letter-spacing: -.06em; color: #788392; }
+#work-section .content { width: 73%; }
+#work-section .content .title { max-width: 740px; margin: 0 0 20px; font: 500 clamp(29px,3.1vw,43px)/1.16 'Helvetica Neue',Arial,sans-serif; letter-spacing: -.04em; color: #252b31; text-wrap: balance; }
+#work-section .title .type-amp { font: italic 1.08em Georgia,serif; color: #788392; }
+#work-section .content .description { max-width: 600px; padding-right: 0; font: 400 16px/1.75 'Helvetica Neue',Arial,sans-serif; color: #696e74; }
+#work-section .arrow { width: 9%; padding-top: 5px; font-size: 25px; color: #7b8593; }
+.site-footer .footer-name { font-size: 19px; font-weight: 500; letter-spacing: -.025em; }
+.site-footer .footer-meta { font-size: 12px; line-height: 1.7; }
+@media(max-width:700px) {
+  #about-section { width: calc(100% - 44px); min-height: 0; padding: 90px 0 80px; }
+  #about-section .intro-kicker,
+  #about-section .intro-slogan { font-size: clamp(36px,9.4vw,64px); line-height: 1.09; }
+  #about-section .intro-kicker { font-size: clamp(30px,7.9vw,53px); margin-bottom: 26px; max-width: 13ch; }
+  #about-section .intro-slogan { margin-bottom: 28px; }
+  #about-section .intro-signature { width: 220px; }
+  #about-section .intro-desc { font-size: 15px; line-height: 1.75; }
+  #about-section .intro-desc .intro-lead { font-size: 18px; }
+  #work-section .collection-item { padding: 48px 0 52px; row-gap: 26px; }
+  #work-section .year { width: auto; flex-direction: row; gap: 20px; align-items: start; font-size: 10px; }
+  #work-section .index-number { font-size: 29px; }
+  #work-section .content { width: 100%; }
+  #work-section .content .title { font-size: clamp(27px,7.2vw,35px); margin-bottom: 15px; }
+  #work-section .content .description { font-size: 15px; line-height: 1.7; }
+  #work-section .arrow { width: auto; font-size: 22px; padding-top: 0; }
+}

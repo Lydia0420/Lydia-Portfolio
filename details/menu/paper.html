@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork 7 - Menu Project</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+
+        body {
+            background-color: white;
+            color: black;
+            margin: 0;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 10px 20px;
+            z-index: 1000;
+            text-align: left;
+            display: flex;
+        }
+
+        .back-btn {
+            font-size: 1.2rem;
+            color: black;
+            text-decoration: none;
+            border-bottom: 2px solid black;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .back-btn:hover {
+            opacity: 0.6;
+        }
+
+        /* work */
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        /* Final + intro */
+        .final-intro {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 80px;
+            margin-bottom: 90px;
+            margin-left: 80px;
+        }
+
+        .final-menu {
+            flex: 1;
+            text-align: center;
+        }
+
+        .final-image {
+            width: 100%;
+            max-width: 390px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Add a shadow to the element */
+            filter: drop-shadow(-20px 25px 5px rgba(0, 0, 0, 0.4)); /* shadow effect to images */
+        }
+
+        .final-image:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            filter: drop-shadow(-15px 25px 30px rgba(0, 0, 0, 0.6));
+        }
+
+        .project-intro {
+            flex: 1;
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-family: 'Aldrich', sans-serif;
+            margin-top: 100px;
+        }
+
+        .project-intro p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        /* visual */
+        .subtitle-images {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 90px;
+        }
+
+        .subtitle-images img {
+            height: 100px;
+            object-fit: contain; /* Fill the container in original proportions without cutting */
+        }
+
+        /* Wireframes */
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-section {
+            flex: 1;
+            max-width: 400px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            text-align: left;
+            margin-right: 50px;
+        }
+
+        .image-section {
+            display: flex;
+            gap: 0;  
+            align-items: center;
+        }
+
+        .graphic-img {
+            width: 100%;
+            max-width: 330px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .wireframes {
+            display: flex;
+            flex-direction: column;  
+        }
+
+        .wireframes img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            display: block;
+        }
+
+        /* second draft */
+        .description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 10px auto 30px;
+            line-height: 1.5;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        .single-row-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* used to define the number and width of columns in a Grid layout. */
+            gap: 15px;
+            max-width: 65vw;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .single-row-gallery img {
+            width: 100%;
+            border-radius: 3px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .single-row-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* flipbook */
+        .flipbook-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .flipbook-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-family: 'Aldrich', sans-serif;
+        }
+
+        .flipbook-section p {
+            font-size: 1.1rem;
+            max-width: 850px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .flipbook-container {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        @media (max-width: 1324px) {
+            .single-row-gallery {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 12px;
+                min-width: 80vw;
+            }
+
+            /* used in Flexbox layouts to reorder elements visually for I want */
+            .single-row-gallery img:nth-child(4n + 1) { order: 1; } /* 1, 5, 9, 13 ... */
+            .single-row-gallery img:nth-child(4n + 2) { order: 2; } /* 2, 6, 10, 14 ... */
+            .single-row-gallery img:nth-child(4n + 3) { order: 3; } /* 3, 7, 11, 15 ... */
+            .single-row-gallery img:nth-child(4n + 4) { order: 4; } /* 4, 8, 12, 16 ... */
+
+            .flipbook-section p {
+                max-width: 80vw;
+            }
+
+            .content-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .text-section {
+                order: -1;   /* control the visual order of flex items */
+                width: 72vw;
+                max-width: 1000px;
+                margin-bottom: 20px;
+                margin-right: 0px;
+            }
+
+            .image-section {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .graphic-img {
+                width: 35vw;
+                max-width: 800px;
+            }
+
+            .wireframes img {
+                width: 20vw;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .single-row-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .final-intro {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+                margin: 0 auto;
+                gap: 0px;
+            }  
+
+            .final-image {
+                width:60vw;
+                margin-top: 60px;
+            }
+
+            h1 {
+                text-align: center;
+            }
+            
+            .project-intro p {
+                max-width: 80vw;
+                margin-bottom: 50px;
+            }
+            
+            .image-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .graphic-img {
+                width: 60vw;
+                max-width: 800px;
+            }
+
+            .wireframes img {
+                width: 60vw;
+                max-width: 800px;
+            }
+
+            .description {
+                max-width: 500px;
+            }
+
+            .subtitle-images {
+                flex-direction: column; 
+                align-items: center;
+                gap: 15px;
+                margin-top: 50px;
+            }
+
+            .subtitle-images img {
+                width: 100%;
+                max-width: 800px;
+                max-height: 150px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .single-row-gallery {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .description {
+                max-width: 370px;
+            }
+        }
+
+        .carousel-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-group {
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 65vw;
+            margin: 0px auto;
+            padding: 0px;
+        }
+
+        .gallery-group.active {
+            display: grid;
+        }
+
+        .gallery-group img {
+            width: 100%;
+            border-radius: 3px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-group img:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-controls {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .carousel-controls button {
+            padding: 6px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .carousel-controls button:hover {
+            background: #444;
+            transform: scale(1.05);
+        }
+
+        #group-indicator {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-group {
+                gap: 5px;
+                max-width: 95vw;
+                margin: 0px auto;
+                padding: 0px;
+            }
+        }
+
+        .lang-toggle {
+            margin-left: 8px;   
+            margin-top: 4px;
+            align-self: center;            
+            border: 1px solid rgba(0,0,0,.1);
+            background: rgba(255,255,255,.4);
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-size: 12px;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            color: black;
+        }
+
+        .lang-toggle:hover {
+            opacity: 1;
+        }
+
+        @media (max-width:768px){
+            .lang-toggle { 
+                position:relative; 
+                z-index:10000; 
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./menu-reader.css">
+    <link rel="stylesheet" href="../shared/project-nav.css">
+<link rel="stylesheet" href="../shared/detail-language.css">
+
+<!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
+<script src="../shared/detail-translations.js"></script>
+</head>
+<body>
+    <nav class="project-nav" aria-label="Project navigation">
+        <a href="../../index.html#book-modal" class="back-btn"><span><svg class="back-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</span></a>
+
+        <div class="lang-right">
+            <button id="lang-toggle" class="lang-toggle" aria-label="Chinese translation is not available yet" title="Chinese translation coming soon" disabled>中文</button>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="final-intro">
+            <div class="final-menu">
+                <img src="../home/01/paper.png" alt="Final Menu Design" class="final-image">
+            </div>
+    
+            <div class="project-intro">
+                <h1 data-i18n="art7.Title"
+  data-i18n-managed="true"
+  data-zh="菜单设计">Menu Design</h1>
+                <p class="description" data-i18n="art7.description1"
+  data-i18n-managed="true"
+  data-zh="设计的不只是一份菜单，更是一段用餐体验。这个项目探索视觉元素如何在体现餐厅身份的同时，让菜单清晰、有趣且易于阅读。最终设计将中式美学与现代简约结合，在字体、版式与色彩之间寻找平衡，让菜单兼具功能与艺术感。">
+                    Designing an experience, not just a menu.  
+                    This project is an exploration of how visual elements can enhance the dining experience,  
+                    reflecting the restaurant's identity while maintaining a clear and engaging structure.  
+                    The final design embraces Chinese aesthetics with modern minimalism,  
+                    carefully balancing typography, layout, and color to create a menu that is both functional and artistic.
+                </p>
+            </div>
+        </section>
+
+        <div class="subtitle-images">
+            <img src="./Visual.png" alt="Visual Design">
+            <img src="./Research.png" alt="Research Process">
+        </div>
+
+        <div class="content-container">
+            <div class="text-section">
+                <p class="description" data-i18n="art7.description2"
+  data-i18n-managed="true"
+  data-zh="我为一家创意中式融合餐厅设计菜单，涵盖正餐与下午茶。视觉研究从古典中式美学与现代平面设计出发，计划以中式元素营造复古的视觉气质。">My idea was to design the menu for a creative fusion cuisine Chinese restaurant, including both formal dining and afternoon tea. 
+                Inspired by my Visual Research, which explores classical Chinese aesthetics and modern graphic treatments,
+                so I used many elements of Chinese style to emphasize the classical, retro visual effect.</p>
+            </div>
+
+            <div class="image-section">
+                <img src="./Graphic.png" alt="Graphic Treatment" class="graphic-img">
+                <div class="wireframes">
+                    <img src="./ Wireframes1.jpg" alt="Wireframe 1">
+                    <img src="./ Wireframes2.jpg" alt="Wireframe 2">
+                    <img src="./ Wireframes3.jpg" alt="Wireframe 3">
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <h1 data-i18n="art7.secondTitle"
+  data-i18n-managed="true"
+  data-zh="第二轮设计">Second Draft</h1>
+    <p class="description" data-i18n="art7.description3"
+  data-i18n-managed="true"
+  data-zh="这里展示菜单的 48 次设计迭代，方便比较各阶段的细节调整。">This section showcases all 48 iterations of the menu, allowing a detailed comparison of design refinements.</p>
+
+    <div class="carousel-gallery">
+        <div class="gallery-group active" data-index="0">
+            <img src="./draft2_01.png" alt="Draft 2 - 01">
+            <img src="./draft2_02.png" alt="Draft 2 - 02">
+            <img src="./draft2_03.png" alt="Draft 2 - 03">
+            <img src="./draft2_04.png" alt="Draft 2 - 04">
+            <img src="./draft2_05.png" alt="Draft 2 - 05">
+            <img src="./draft2_06.png" alt="Draft 2 - 06">
+            <img src="./draft2_07.png" alt="Draft 2 - 07">
+            <img src="./draft2_08.png" alt="Draft 2 - 08">
+            <img src="./draft2_09.png" alt="Draft 2 - 09">
+            <img src="./draft2_10.png" alt="Draft 2 - 10">
+            <img src="./draft2_11.png" alt="Draft 2 - 11">
+            <img src="./draft2_12.png" alt="Draft 2 - 12">
+        </div>
+        <div class="gallery-group" data-index="1">
+            <img src="./draft2_13.png" alt="Draft 2 - 13">
+            <img src="./draft2_14.png" alt="Draft 2 - 14">
+            <img src="./draft2_15.png" alt="Draft 2 - 15">
+            <img src="./draft2_16.png" alt="Draft 2 - 16">
+            <img src="./draft2_17.png" alt="Draft 2 - 17">
+            <img src="./draft2_18.png" alt="Draft 2 - 18">
+            <img src="./draft2_19.png" alt="Draft 2 - 19">
+            <img src="./draft2_20.png" alt="Draft 2 - 20">
+            <img src="./draft2_21.png" alt="Draft 2 - 21">
+            <img src="./draft2_22.png" alt="Draft 2 - 22">
+            <img src="./draft2_23.png" alt="Draft 2 - 23">
+            <img src="./draft2_24.png" alt="Draft 2 - 24">
+        </div>
+        <div class="gallery-group" data-index="2">
+            <img src="./draft2_25.png" alt="Draft 2 - 25">
+            <img src="./draft2_26.png" alt="Draft 2 - 26">
+            <img src="./draft2_27.png" alt="Draft 2 - 27">
+            <img src="./draft2_28.png" alt="Draft 2 - 28">
+            <img src="./draft2_29.png" alt="Draft 2 - 29">
+            <img src="./draft2_30.png" alt="Draft 2 - 30">
+            <img src="./draft2_31.png" alt="Draft 2 - 31">
+            <img src="./draft2_32.png" alt="Draft 2 - 32">
+            <img src="./draft2_33.png" alt="Draft 2 - 33">
+            <img src="./draft2_34.png" alt="Draft 2 - 34">
+            <img src="./draft2_35.png" alt="Draft 2 - 35">
+            <img src="./draft2_36.png" alt="Draft 2 - 36">
+        </div>
+        <div class="gallery-group" data-index="3">
+            <img src="./draft2_37.png" alt="Draft 2 - 37">
+            <img src="./draft2_38.png" alt="Draft 2 - 38">
+            <img src="./draft2_39.png" alt="Draft 2 - 39">
+            <img src="./draft2_40.png" alt="Draft 2 - 40">
+            <img src="./draft2_41.png" alt="Draft 2 - 41">
+            <img src="./draft2_42.png" alt="Draft 2 - 42">
+            <img src="./draft2_43.png" alt="Draft 2 - 43">
+            <img src="./draft2_44.png" alt="Draft 2 - 44">
+            <img src="./draft2_45.png" alt="Draft 2 - 45">
+            <img src="./draft2_46.png" alt="Draft 2 - 46">
+            <img src="./draft2_47.png" alt="Draft 2 - 47">
+            <img src="./draft2_48.png" alt="Draft 2 - 48">
+        </div>
+        <div class="carousel-controls">
+            <button id="prev-group">←</button>
+            <span id="group-indicator">1 / 4</span>
+            <button id="next-group">→</button>
+        </div>
+    </div>
+
+    <section class="flipbook-section">
+        <h2 data-i18n="art7.finalTitle"
+  data-i18n-managed="true"
+  data-zh="菜单设计终稿">Final Menu Design</h2>
+        <p class="description" data-i18n="art7.description4"
+  data-i18n-managed="true"
+  data-zh="最终版本统一了内页主标题的色彩，移除了不一致的字体，以菜品类别区分信息层级，让视觉上更协调。">
+            In the final version, I standardized the color of the main titles and 
+            removed some inconsistent fonts, using the main dish categories as 
+            the primary differentiators to better balance aesthetics and visual unity.
+        </p>
+        <div class="umami-secondary-entry">
+            <button class="umami-secondary-cover" data-umami-open aria-label="Open the final menu">
+                <img src="../home/01/paper.png" alt="Umami final menu cover" loading="lazy">
+            </button>
+            <button class="umami-secondary-button" data-umami-open
+  data-i18n-managed="true"
+  data-zh="翻开菜单 →">Open the final menu →</button>
+        </div>
+    
+    </section>
+
+    <script>
+        const groups = document.querySelectorAll(".gallery-group");
+        const prevBtn = document.getElementById("prev-group");
+        const nextBtn = document.getElementById("next-group");
+        const indicator = document.getElementById("group-indicator");
+      
+        let currentGroup = 0;
+      
+        function updateGroupView(index) {
+          groups.forEach((g, i) => {
+            g.classList.toggle("active", i === index);
+          });
+          indicator.textContent = `${index + 1} / ${groups.length}`;
+          enableFullscreenOnClick();
+        }
+      
+        prevBtn.addEventListener("click", () => {
+          currentGroup = (currentGroup - 1 + groups.length) % groups.length;
+          updateGroupView(currentGroup);
+        });
+      
+        nextBtn.addEventListener("click", () => {
+          currentGroup = (currentGroup + 1) % groups.length;
+          updateGroupView(currentGroup);
+        });
+      
+        updateGroupView(currentGroup); // 初始显示
+
+        document.querySelector(".back-btn").addEventListener("click", (e) => {
+          e.preventDefault();
+          window.location.href = "../../index.html#book-modal";
+        });
+
+        function enableFullscreenOnClick() {
+            const carouselImages = document.querySelectorAll('.gallery-group img');
+
+            carouselImages.forEach(img => {
+                img.addEventListener('dblclick', () => {
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen();
+                    } else {
+                        if (img.requestFullscreen) {
+                            img.requestFullscreen();
+                        } else if (img.webkitRequestFullscreen) { /* Safari */
+                            img.webkitRequestFullscreen();
+                        } else if (img.msRequestFullscreen) { /* IE11 */
+                            img.msRequestFullscreen();
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+
+  
+  
+  <script src="./menu-reader.js"></script>
+<!-- 本页动态备用译文：原文由拼接产生或暂未在当前代码中找到；不影响其他作品。 -->
+<script id="page-translations">
+LydiaI18n.register([
+  [
+    "Logo Design",
+    "标志设计"
+  ],
+  [
+    "Click left or right",
+    "点击左右翻页 · 放大后滚动浏览 · 按 Esc 关闭",
+    true
+  ]
+]);
+</script>
+<script src="../shared/detail-language.js" defer></script>
+<script src="../../preview-media.js" defer></script>
+</body>
+</html>
+
+
+
+

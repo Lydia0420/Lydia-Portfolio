@@ -1,0 +1,6 @@
+.native-device:after{content:'';position:absolute;z-index:5;pointer-events:none;top:1.7%;left:34%;width:32%;height:4.2%;background:#070908;border-radius:30px}.native-fixed{z-index:4}.is-scrolled .native-fixed[data-icon=categories]:after{content:'☰';color:white;font-size:17px;position:absolute;inset:0;display:grid;place-items:center}.is-scrolled .native-fixed[data-icon=search]:after{content:'';position:absolute;left:20%;top:16%;width:42%;aspect-ratio:1;border:1.5px solid white;border-radius:50%}.is-scrolled .native-fixed[data-icon=search]:before{content:'';position:absolute;left:61%;top:62%;width:25%;height:1.5px;background:white;transform:rotate(45deg)}
+.native-menu-choice{color:transparent;font-family:Arial,sans-serif;line-height:1;white-space:nowrap;border-radius:10px;font-weight:400}
+/* Source colors read from Components 15/16. Static state fallback: the exact
+   Figma Gentle spring curve and original variant assets are still pending. */
+.native-menu-choice:focus-visible,.native-menu-choice:active{color:#f64646;background:linear-gradient(0deg,#f6464655 0%,#291306 26%);box-shadow:inset 0 0 0 1px #926e5d,inset 0 -2px 0 #ff3636}
+@media(hover:hover){.native-menu-choice:hover{color:#f64646;background:linear-gradient(0deg,#f6464655 0%,#291306 26%);box-shadow:inset 0 0 0 1px #926e5d,inset 0 -2px 0 #ff3636}}

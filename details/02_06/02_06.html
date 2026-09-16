@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>p5.js Sketchbook — Lydia He</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+
+  :root {
+    --paper: #fbe6e1;
+    --ink: #1b1818;
+    --muted: #756d70;
+    --line: rgba(27,24,24,.16);
+    --pink: #b37f8e;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  body {
+    display: grid;
+    place-items: center;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, serif;
+  }
+
+  /* =========================
+   NAV
+  ========================= */
+
+  .sketch-nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 58px;
+
+    padding: 10px 22px;
+
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      auto
+      1fr;
+
+    align-items: center;
+
+    background: transparent;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    border-bottom: none;
+    z-index: 1000;
+  }
+
+
+  .sketch-nav a {
+    text-decoration: none;
+  }
+
+  .sketch-back {
+    justify-self: start;
+
+    font-size: 1.02rem;
+
+    color: #f8f2f4;
+
+    border-bottom:
+      1.5px solid currentColor;
+
+    text-shadow:
+      0 1px 8px rgba(0,0,0,.22);
+
+    transition:
+      opacity .25s ease;
+  }
+
+
+  .sketch-back:hover {
+    opacity: .55;
+  }
+
+
+  .sketch-nav-title,
+  .sketch-count,
+  .sketch-kicker,
+  .sketch-title,
+  .sketch-note-label {
+    font-family:
+      'Aldrich',
+      sans-serif;
+  }
+
+
+  .sketch-nav-title {
+    justify-self: center;
+
+    font-size: .68rem;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    color: #7f7377;
+  }
+
+
+  .sketch-count {
+    justify-self: end;
+
+    font-size: .68rem;
+
+    letter-spacing: .10em;
+
+    color: #9b878d;
+  }
+
+
+  /* =========================
+    RIGHT TOP
+  ========================= */
+
+  .sketch-info-top {
+    position: fixed;
+
+    top: 78px;
+    right: 54px;
+    width: min(380px, 31vw);
+    text-align: right;
+    z-index: 30;
+    pointer-events: none;
+  }
+
+
+  .sketch-kicker {
+    margin-bottom: 10px;
+
+    font-size: .88rem;
+
+    letter-spacing: .15em;
+
+    text-transform: uppercase;
+
+    color: #9b727f;
+  }
+
+
+  .sketch-title {
+    margin: 0;
+
+    font-size: clamp(2.6rem, 4.2vw, 4.8rem);
+    line-height: .95;
+
+    letter-spacing: -.03em;
+  }
+
+
+  /* =========================
+    LEFT BOTTOM
+  ========================= */
+
+  .sketch-info-bottom {
+    position: fixed;
+
+    left: 42px;
+    bottom: 36px;
+
+    width:
+      min(390px, 31vw);
+
+    z-index: 30;
+
+    pointer-events: none;
+  }
+
+
+  .sketch-note-label {
+    margin-bottom: 9px;
+
+    font-size: .86rem;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    color: #9b727f;
+  }
+
+
+  .sketch-info-bottom p {
+    margin: 0;
+
+    color: #675e61;
+
+    font-size: 1.2rem;
+
+    line-height: 1.58;
+  }
+
+  .stage {
+    position: relative;
+    width: min(96vw, 1280px);
+    height: min(86vh, 820px);
+  }
+  .card {
+    --size: clamp(180px, 24.5vw, 310px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--size);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    transform-origin: 50% 50%;
+    will-change: transform;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(0,0,0,.09);
+  }
+  .card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+  }
+  @media (max-width: 700px) {
+
+.card {
+  --size:
+    clamp(
+      118px,
+      34vw,
+      168px
+    );
+}
+
+
+.sketch-nav {
+  padding:
+    10px 14px;
+
+  grid-template-columns:
+    1fr auto;
+}
+
+
+.sketch-nav-title {
+  display: none;
+}
+
+
+.sketch-info-top {
+  top: 78px;
+
+  right: 14px;
+
+  width: 180px;
+}
+
+
+.sketch-title {
+  font-size: 1.65rem;
+}
+
+
+.sketch-info-bottom {
+  left: 14px;
+
+  bottom: 14px;
+
+  width: 220px;
+}
+
+
+.sketch-info-bottom p {
+  font-size: .78rem;
+
+  line-height: 1.42;
+}
+
+}
+</style>
+<link rel="stylesheet" href="../shared/project-nav.css">
+<link rel="stylesheet" href="../shared/section2-nav.css">
+<link rel="stylesheet" href="../shared/detail-language.css">
+
+<!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
+<script src="../shared/detail-translations.js"></script>
+</head>
+<body>
+
+
+  <nav class="project-nav section2-nav sketch-nav" aria-label="Project navigation" style="--nav-ink:#493e46;--nav-surface:transparent"><a class="back-btn" href="../../index.html#game-modal"><span><svg class="back-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</span></a><div class="lang-right"><button id="lang-toggle" class="lang-toggle" type="button" aria-label="Chinese translation is not available yet" title="Chinese translation coming soon" disabled>中文</button></div><div class="sketch-nav-title">p5.js Sketchbook</div><div class="sketch-count">NYU / IDM</div></nav>
+  
+  
+  <div class="sketch-info-top">
+  
+    <div class="sketch-kicker">
+      06 / Creative Coding 
+    </div>
+  
+    <h1 class="sketch-title"
+  data-i18n-managed="true"
+  data-zh="可以玩的&lt;br&gt;创作草图。">
+      Playable<br>
+      Sketches.
+    </h1>
+  
+  </div>
+  
+  
+  <div class="sketch-info-bottom">
+    <div class="sketch-note-label">
+      WHAT’S INSIDE
+    </div>
+  
+    <p
+  data-i18n-managed="true"
+  data-zh="运动 · 生成形态&lt;br&gt;物理 · 声音 · 交互">
+      Motion · Generative Form<br>
+      Physics · Sound · Interaction
+    </p>
+  </div>
+  
+  
+  <div class="stage">
+
+    <a
+      class="card"
+      href="./generative-patterns-experience/index.html"
+      aria-label="Open sketch 01"
+    >
+      <img
+        src="./cover-01.png"
+        alt=""
+      >
+    </a>
+  
+  
+    <a
+      class="card"
+      href="./natural-phenomena-experience/index.html"
+      aria-label="Open sketch 02"
+    >
+      <img
+        src="./cover-02.png"
+        alt=""
+      >
+    </a>
+  
+  
+    <a
+      class="card"
+      href="./smart-creatures-experience/index.html"
+      aria-label="Open sketch 03"
+    >
+      <img
+        src="./cover-03.png"
+        alt=""
+      >
+    </a>
+  
+  
+    <a
+      class="card"
+      href="./infinite-patterns-experience/index.html"
+      aria-label="Open sketch 04"
+    >
+      <img
+        src="./cover-04.png"
+        alt=""
+      >
+    </a>
+  
+  
+    <a
+      class="card"
+      href="./spring-structure-experience/index.html"
+      aria-label="Open sketch 05"
+    >
+      <img
+        src="./cover-05.png"
+        alt=""
+      >
+    </a>
+  
+  
+    <a
+      class="card"
+      href="./additive-waves-experience/index.html"
+      aria-label="Open sketch 06"
+    >
+      <img
+        src="./cover-06.png"
+        alt=""
+      >
+    </a>
+  
+  
+    <a
+      class="card"
+      href="./dynamic-objects-experience/index.html"
+      aria-label="Open sketch 07"
+    >
+      <img
+        src="./cover-07.png"
+        alt=""
+      >
+    </a>
+  
+  </div>
+
+<script>
+const cards = [...document.querySelectorAll('.card')];
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const skipIntro =
+  new URLSearchParams(window.location.search).get('state') === 'fan';
+
+const EASE_SPREAD = 'cubic-bezier(.22,.72,.24,1)';
+const EASE_STACK  = 'cubic-bezier(.62,0,.28,1)';
+const EASE_FAN    = 'cubic-bezier(.18,.78,.2,1)';
+
+function unit() {
+  const w = Math.min(window.innerWidth, 1200);
+  return Math.max(.62, Math.min(1, w / 1120));
+}
+
+function transformOf({x=0,y=0,r=0,rx=0,ry=0}) {
+  return `
+    translate(calc(-50% + ${x}px), calc(-50% + ${y}px))
+    perspective(1000px)
+    rotateX(${rx}deg)
+    rotateY(${ry}deg)
+    rotateZ(${r}deg)
+  `;
+}
+
+function setPose(el, p) {
+  el.style.zIndex = p.z ?? 1;
+  el.style.transform = transformOf(p);
+}
+
+function animatePose(el, from, to, duration, easing, delay=0) {
+  el.style.zIndex = to.z ?? from.z ?? 1;
+  return el.animate([
+    { transform: transformOf(from) },
+    { transform: transformOf(to) }
+  ], {
+    duration,
+    delay,
+    easing,
+    fill: 'forwards'
+  }).finished.catch(() => {});
+}
+
+/*
+  PHASE 1
+  整体从右向左“带出来”。第一张始终在最上层。
+  所有图片保持正视角，只改变 X。
+
+  运动不是“逐张抽出然后停住”，而是一条连续的队列：
+  - 第一张先向左滑；
+  - 后面的图保持相同方向、紧跟着从它身后出现；
+  - 队列形成后，后面的图继续追上第一张；
+  - 最终 6 张完全重叠，只看到第一张。
+*/
+function trainStartPoses() {
+  const k = unit();
+  const start = 330 * k;
+  const gap = 78 * k;
+  return cards.map((_, i) => ({
+    x: start + i * gap,
+    y: 0,
+    r: 0,
+    z: i === 0 ? 100 : 50 - i
+  }));
+}
+
+function exactStackPoses() {
+  return cards.map((_, i) => ({
+    x: 0,
+    y: 0,
+    r: 0,
+    z: i === 0 ? 100 : 50 - i
+  }));
+}
+
+function animateTrainCard(el, i, duration = 1900) {
+  const k = unit();
+  const start = 330 * k;
+  const gap = 78 * k;
+
+  // 第一张先走；越靠后的卡片，开始向左移动的时间稍晚。
+  // 中段形成均匀队列，后段再连续压缩到第一张背后。
+  const followDelay = i * 0.055;
+  const revealEnd = 0.58;
+  const catchStart = 0.62;
+
+  const x0 = start + i * gap;
+  const xTrain = i * gap;
+
+  const frames = [
+    { offset: 0, transform: transformOf({x:x0,y:0,r:0}) },
+  ];
+
+  if (i > 0) {
+    frames.push({
+      offset: followDelay,
+      transform: transformOf({x:x0,y:0,r:0})
+    });
+  }
+
+  frames.push(
+    {
+      offset: revealEnd,
+      transform: transformOf({x:xTrain,y:0,r:0})
+    },
+    {
+      offset: catchStart,
+      transform: transformOf({x:xTrain,y:0,r:0})
+    },
+    {
+      offset: 1,
+      transform: transformOf({x:0,y:0,r:0})
+    }
+  );
+
+  el.style.zIndex = i === 0 ? 100 : 50 - i;
+
+  return el.animate(frames, {
+    duration,
+    easing: 'cubic-bezier(.42,0,.18,1)',
+    fill: 'forwards'
+  }).finished.catch(() => {});
+}
+
+/*
+  PHASE 2
+  六张图从完全正视、完全重叠的状态同时展开。
+  位移沿同一条斜线：左上 <-> 右下。
+  每张图施加完全相同的轻微旋转角度，从而形成统一的 3D 卡片感。
+*/
+function finalFanPoses() {
+  const ROTATE = -5;
+  const ROTATE_X = 8;
+  const ROTATE_Y = 4;
+
+  // 卡片实际尺寸
+  const card = document.querySelector('.card');
+  const size = card.getBoundingClientRect().width;
+
+  // 屏幕中心到边缘的距离
+  const halfW = window.innerWidth / 2;
+  const halfH = window.innerHeight / 2;
+
+  // 因为我们希望卡片“外角”碰到屏幕角落，
+  // 所以卡片中心不能直接到 halfW / halfH，
+  // 要减去半张卡片的尺寸。
+  const maxX = (halfW - size / 2) * 0.95
+  const maxY = (halfH - size / 2) * 1.07;
+
+  return [
+  { x:  maxX,        y:  maxY,        r: ROTATE, rx: ROTATE_X, ry: ROTATE_Y, z: 100 },
+  { x:  maxX*0.666,  y:  maxY*0.666,  r: ROTATE, rx: ROTATE_X, ry: ROTATE_Y, z: 60 },
+  { x:  maxX*0.333,  y:  maxY*0.333,  r: ROTATE, rx: ROTATE_X, ry: ROTATE_Y, z: 50 },
+  { x:  0,           y:  0,           r: ROTATE, rx: ROTATE_X, ry: ROTATE_Y, z: 40 },
+  { x: -maxX*0.333,  y: -maxY*0.333,  r: ROTATE, rx: ROTATE_X, ry: ROTATE_Y, z: 30 },
+  { x: -maxX*0.666,  y: -maxY*0.666,  r: ROTATE, rx: ROTATE_X, ry: ROTATE_Y, z: 20 },
+  { x: -maxX,        y: -maxY,        r: ROTATE, rx: ROTATE_X, ry: ROTATE_Y, z: 10 }
+];
+}
+
+function setupHover(fan) {
+  const HOVER_Y = 30;
+  const HOVER_DURATION = 240;
+  const HOVER_EASE = 'cubic-bezier(.22,.72,.24,1)';
+
+  cards.forEach((card, i) => {
+    const base = fan[i];
+
+    const hoverPose = {
+      ...base,
+      y: base.y - HOVER_Y
+    };
+
+    card.addEventListener('mouseenter', () => {
+      card.animate([
+        { transform: transformOf(base) },
+        { transform: transformOf(hoverPose) }
+      ], {
+        duration: HOVER_DURATION,
+        easing: HOVER_EASE,
+        fill: 'forwards'
+      });
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.animate([
+        { transform: transformOf(hoverPose) },
+        { transform: transformOf(base) }
+      ], {
+        duration: HOVER_DURATION,
+        easing: HOVER_EASE,
+        fill: 'forwards'
+      });
+    });
+  });
+}
+
+async function run() {
+  const start = trainStartPoses();
+  const stack = exactStackPoses();
+  const fan   = finalFanPoses();
+
+  // 从作品内页返回：直接显示最终展开状态
+  if (skipIntro) {
+    cards.forEach((card, i) => setPose(card, fan[i]));
+    setupHover(fan);
+    return;
+  }
+
+  // 正常进入 Sketchbook：播放完整动画
+  cards.forEach((card, i) => setPose(card, start[i]));
+  await sleep(180);
+
+  await Promise.all(cards.map((card, i) =>
+    animateTrainCard(card, i)
+  ));
+
+  cards.forEach((card, i) => setPose(card, stack[i]));
+  await sleep(260);
+
+  await Promise.all(cards.map((card, i) =>
+    animatePose(card, stack[i], fan[i], 980, EASE_FAN, 0)
+  ));
+
+  setupHover(fan);
+}
+
+run();
+</script>
+<!-- 本页动态备用译文：原文由拼接产生或暂未在当前代码中找到；不影响其他作品。 -->
+<script id="page-translations">
+LydiaI18n.register([
+  [
+    "🎮 Play the Game",
+    "🎮 开始游戏"
+  ]
+]);
+</script>
+<script src="../shared/detail-language.js" defer></script>
+<script src="../../preview-media.js" defer></script>
+</body>
+</html>
+
+
+
+
