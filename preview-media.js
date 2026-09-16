@@ -7,7 +7,8 @@
     note.setAttribute('role', 'note');
     note.textContent = message();
     note.style.cssText = 'position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:99999;max-width:90vw;padding:7px 12px;border-radius:6px;background:rgba(255,255,255,.94);color:#444;box-shadow:0 2px 10px #0001;font:11px/1.4 Arial,sans-serif;text-align:center;pointer-events:none';
-    document.body.append(note);
+    // 首页没有视频播放器，也不要用测试提示遮挡 Scroll 提示。
+    if (!document.querySelector('#hand-canvas')) document.body.append(note);
     new MutationObserver(() => { note.textContent = message(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
     document.querySelectorAll('video').forEach(video => {
         const caption = document.createElement('p');
