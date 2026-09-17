@@ -1,0 +1,199 @@
+/* About / mobile edition
+   Adjust these four settings first when fine-tuning the mobile composition. */
+:root {
+  --about-ink: #404b7a;
+  --about-page-gutter: 26px;
+  --about-photo-width: 230px;
+  --about-milestone-gap: 64px;
+  --about-ease-out: cubic-bezier(.23, 1, .32, 1);
+}
+
+/* Native buttons retain the original desktop image presentation. */
+button.polaroid { border: 0; font: inherit; cursor: pointer; }
+.caption { display: block; }
+.about-story-link { display: none; }
+#about-atmosphere { display: none; }
+#about-story-thread, #about-nav-surface { display: none; }
+.about-video-note { font: 12px/1.5 'Helvetica Neue', Arial, sans-serif; color: #596478; margin-top: 12px; }
+
+@media (max-width: 768px) {
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 90px; }
+  body { position: relative; padding-top: 0; color: #343b49; background: #fff; isolation: isolate; }
+  #about-story-thread {
+    display: block; position: absolute; left: 0; width: 100%;
+    pointer-events: none; z-index: 0; clip-path: inset(0 0 100% 0);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 140px), transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 140px), transparent);
+  }
+  #about-story-thread path { stroke: #a39a87; stroke-width: 1.6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  #about-nav-surface {
+    display: block; position: fixed; inset: 0 0 auto;
+    height: calc(64px + env(safe-area-inset-top, 0px));
+    background: rgba(245,247,249,.94); opacity: 0;
+    z-index: 999; pointer-events: none;
+  }
+  /* One continuous surface, behind both introduction and timeline. */
+  #about-atmosphere {
+    display: block; position: fixed; inset: 0; z-index: -1;
+    background: #f2f4f7; opacity: 0; pointer-events: none;
+  }
+  ::selection { background: #dce2ef; color: #263358; }
+  a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+  button { -webkit-user-select: none; user-select: none; }
+  :focus-visible { outline: 2px solid var(--about-ink); outline-offset: 5px; }
+
+  /* Same navigation structure and positions; a readable surface on scroll. */
+  .navbar, .navbar.scrolled {
+    padding: calc(8px + env(safe-area-inset-top, 0px)) 16px 8px;
+    min-height: 60px;
+    color: #343b49;
+    background: transparent; box-shadow: none; transition: none;
+  }
+  .navbar.scrolled { box-shadow: none; }
+  .navbar.nav-light .nav-logo { color: #111; }
+  .navbar.nav-light .nav-item, .navbar .shared-language-toggle { color: #454e61; }
+  .nav-logo { white-space: nowrap; }
+  .nav-links { gap: 10px; }
+  .nav-item { min-height: 44px; display: flex; align-items: center; }
+  .nav-item[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+  .shared-language-identity { gap: 3px; }
+  .shared-language-toggle { min-width: 34px; }
+  .nav-links:hover .nav-item:not(:hover) { opacity: 1; }
+  .nav-item:hover { transform: none; }
+
+  .intro-section { position: relative; z-index: 2; width: 100%; height: auto; overflow: visible; background: transparent; }
+  .about-container {
+    width: 100%; max-width: 560px; margin: 0 auto;
+    padding: calc(102px + env(safe-area-inset-top, 0px)) var(--about-page-gutter) 44px;
+    display: flex; flex-direction: column; align-items: stretch; gap: 0;
+  }
+  .text-section, .about-opening { display: contents; }
+  .text-section h1 {
+    order: 0; text-align: center; color: var(--about-ink);
+    font-size: clamp(38px, 10vw, 46px); line-height: 1.16;
+    margin: 0 0 22px; font-weight: 400;
+  }
+  .about-intro-line {
+    order: 1; display: block;
+    font-size: 20px; line-height: 1.55; color: #424b5d;
+    margin-bottom: 26px;
+  }
+  .polaroid {
+    order: 2; align-self: center; position: relative;
+    width: var(--about-photo-width); height: auto;
+    padding: 12px 12px 16px; margin: 0 0 14px;
+    background: #e5eaf0;
+    box-shadow: 0 3px 5px rgba(24,39,57,.08), 0 14px 28px rgba(24,39,57,.13);
+    transform: rotate(-3deg);
+    transition: none;
+  }
+  .polaroid img { width: 100%; height: auto; border: 0; }
+  .polaroid .caption { font-size: 22px; margin-top: 12px; line-height: 1.25; color: var(--about-ink); }
+  .polaroid:hover { transform: rotate(-3deg); }
+  .polaroid:disabled { opacity: 1; cursor: default; }
+  /* A second soft shadow fades instead of repainting a changing blur. */
+  .polaroid::before, .timeline-image::before {
+    content: ''; position: absolute; inset: 8px; z-index: -1;
+    box-shadow: 0 24px 30px rgba(30,43,62,.17);
+    opacity: var(--paper-lift, 0); pointer-events: none;
+  }
+  .about-intro-rest, .text-section > p:not(.about-opening) {
+    order: 4; display: block; max-width: none;
+    color: #474f5b; font-size: 18px; line-height: 1.7;
+    margin: 0 0 22px;
+    padding-left: 26px;
+  }
+  .about-story-link {
+    order: 3; align-self: center; display: flex; align-items: center; gap: 10px;
+    margin: 18px 0 34px; min-height: 44px; text-decoration: none;
+    color: var(--about-ink); font: 13px/1.5 'Helvetica Neue', Arial, sans-serif;
+  }
+  .about-story-link svg { width: 16px; height: 16px; transition: transform 160ms var(--about-ease-out); }
+  .about-story-link:active svg { transform: translateY(3px); }
+  .click-icon, .tap-hint, #whiteCover, #gradientTransition, #timeline-video { display: none !important; }
+
+  /* A single uninterrupted reading path. The original seven milestones remain. */
+  .timeline-section {
+    display: block !important; padding: 54px var(--about-page-gutter) 110px;
+    background: transparent; color: var(--about-ink);
+  }
+  .timeline-title {
+    color: var(--about-ink); text-align: center; text-shadow: none;
+    font-size: clamp(31px, 8.5vw, 40px); font-weight: 400;
+    line-height: 1.2; margin: 0 auto 44px; max-width: 508px;
+  }
+  .timeline-container {
+    position: relative; max-width: 508px; padding: 0 0 56px 26px;
+    gap: var(--about-milestone-gap);
+  }
+  .timeline-line {
+    display: none;
+    left: 0; top: 10px; bottom: 140px; width: 1px; height: auto;
+    transform: none; background: #d6dce6; z-index: 0;
+  }
+  .timeline-line-fill {
+    width: 1px; height: 100% !important; background: #9c8045;
+    box-shadow: none; transform: scaleY(0); transform-origin: top;
+    transition: none;
+  }
+  .timeline-item {
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 21px; color: var(--about-ink); isolation: isolate;
+  }
+  .timeline-item.left .timeline-content, .timeline-item.right .timeline-content {
+    order: 1; width: 100%; text-align: left;
+  }
+  .timeline-content h3 {
+    font-family: 'Moulpali', Georgia, serif; font-size: 23px;
+    color: #505b72; line-height: 1.35; font-weight: 400; margin: 0 0 12px;
+    transition: color 200ms ease;
+  }
+  .timeline-content p { color: #535c6b; font-size: 17px; line-height: 1.7; }
+  .timeline-item.left .timeline-image, .timeline-item.right .timeline-image { order: 2; width: 100%; }
+  .timeline-image img, .timeline-image video {
+    display: block; width: 100%; height: auto; max-height: 410px;
+    object-fit: contain; border-radius: 0; box-shadow: none;
+  }
+  .timeline-image { position: relative; isolation: isolate; transform: none; }
+  .timeline-item:nth-of-type(2n) .timeline-image { transform: none; }
+  .timeline-image > img, .timeline-image > video { transform-origin: 50% 65%; }
+  .timeline-image > img {
+    padding: 7px; background: #fff;
+    box-shadow: 0 6px 17px rgba(30,43,62,.1);
+  }
+  .timeline-dot, .timeline-dot.active {
+    display: block;
+    left: -26px; top: 10px; width: 8px; height: 8px; border-radius: 50%;
+    background: #abb6c8; opacity: 1; box-shadow: none;
+    transform: translateX(-4px); transition: transform 200ms var(--about-ease-out), background-color 200ms ease;
+  }
+  .is-reading .timeline-dot { background: #9c8045; transform: translateX(-4px) scale(1.25); }
+  .is-reading h3 { color: #334577; }
+  .timeline-content h3 { width: fit-content; position: relative; }
+  .timeline-content h3::after {
+    display: none;
+    content: ''; position: absolute; left: 0; right: 0; bottom: -3px;
+    height: 1px; background: #9c8045;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 240ms var(--about-ease-out);
+  }
+  .is-reading h3::after { transform: scaleX(1); }
+  .timeline-ending { height: auto; margin: 0 0 28px; }
+  .quote-left, .quote-right {
+    position: static; transform: none; white-space: normal;
+    font-size: 21px; line-height: 1.6; text-align: left; color: var(--about-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .polaroid, .timeline-dot, .timeline-content h3::after { transition: none; }
+  }
+}
+
+@media (max-width: 359px) {
+  :root { --about-page-gutter: 20px; --about-photo-width: 216px; }
+  .navbar, .navbar.scrolled { padding-left: 10px; padding-right: 10px; }
+  .nav-logo { font-size: 14px; }
+  .nav-links { gap: 7px; }
+  .nav-item { font-size: 12px; }
+  .shared-language-toggle { min-width: 28px; font-size: 12px; }
+}
