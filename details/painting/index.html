@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lydia — 空间参观 · 浅浮雕修订 13</title><meta name="description" content="Four rooms of paintings, from elementary school to university."><link rel="stylesheet" href="gallery.css"></head><body>
+<div id="stage"></div><header><a href="../../index.html#work-art" class="back">← 返回首页</a><div class="brand">LYDIA <span>/ THE PAINTING ROOMS</span></div><button id="lang">EN</button></header>
+<div class="room-heading"><span id="room-number">ROOM 01</span><h1 id="room-name">Elementary School</h1><p id="room-subtitle">The first brushstrokes.</p></div>
+<div id="status" role="status">Opening the gallery…</div><button id="hint" hidden></button>
+<nav class="explore-tools" aria-label="参观工具">
+<button id="map-toggle" aria-controls="map-panel" aria-expanded="false" data-en="Map" data-zh="小地图">小地图</button>
+<button id="mode-toggle" aria-pressed="false">自由参观</button>
+<button id="route-toggle" aria-controls="route-panel" aria-expanded="false" data-en="Tour route" data-zh="参观路线">参观路线</button>
+<button id="browse" data-en="Collection" data-zh="作品目录">作品目录</button></nav>
+<p id="interaction-hint" class="interaction-hint" role="status">滑动沿路线参观 · 点击画作近看</p>
+<section id="map-panel" class="explore-panel" hidden aria-label="展馆小地图"><div class="panel-head"><h2 data-en="Gallery map" data-zh="展馆地图">展馆地图</h2><button id="map-close" aria-label="关闭地图">✕</button></div><canvas id="map-canvas" width="600" height="440" aria-label="展馆平面图，圆点为当前位置，箭头为朝向"></canvas><div id="room-nav" role="group" aria-label="选择展厅"></div><p data-en="Choose an entrance · The dot is your location" data-zh="点击展厅前往入口 · 圆点显示当前位置">点击展厅前往入口 · 圆点显示当前位置</p></section>
+<section id="route-panel" class="explore-panel" hidden aria-label="参观路线"><div class="panel-head"><h2 data-en="Tour route" data-zh="参观路线">参观路线</h2><button id="route-close" aria-label="关闭路线">✕</button></div><p id="route-note">沿路线导览 · 两个独立展厅逆时针参观</p><div class="journey-bar"><input id="journey" type="range" min="0" max="1" step=".0001" value="0" aria-label="参观进度"><output id="journey-count">0%</output></div><button id="reset" data-en="Return to atrium" data-zh="回到大厅">回到大厅</button></section>
+
+<div id="free-controls" hidden aria-label="自由行走控制"><button data-walk="forward" aria-label="向前走">↑</button><div><button data-walk="left" aria-label="向左走">←</button><button data-walk="back" aria-label="向后走">↓</button><button data-walk="right" aria-label="向右走">→</button></div></div>
+<button id="cancel-transfer" hidden data-en="Stop guiding" data-zh="停止带路">停止带路</button>
+<div id="focus-panel" hidden><span id="focus-label"></span><button id="original" data-en="查看原图 ↗" data-zh="查看原图 ↗">查看原图 ↗</button><button id="continue" data-en="继续参观 →" data-zh="继续参观 →">继续参观 →</button></div>
+<div id="entry" aria-hidden="true"><div class="entry-door"></div></div>
+<dialog id="art-dialog" aria-label="Painting detail"><button class="close" data-close aria-label="Close painting">✕</button><div class="art-image-wrap"><img id="art-image" alt=""></div><div class="art-caption"><div><span id="art-era"></span><h2 id="art-title"></h2></div><span id="art-index"></span><div><button id="art-prev" aria-label="Previous painting">←</button><button id="art-next" aria-label="Next painting">→</button></div></div></dialog>
+<dialog id="catalog" aria-label="All paintings"><div class="catalog-head"><div><span data-en="THE COLLECTION" data-zh="作品目录">THE COLLECTION</span><h2 data-en="Four rooms. Years of looking." data-zh="四间展厅，一路看见。">Four rooms. Years of looking.</h2></div><button class="close" data-close aria-label="Close collection">✕</button></div><div id="catalog-rooms"></div></dialog>
+<noscript><p>Please enable JavaScript to enter the gallery.</p></noscript><script type="module" src="gallery.js?v=release-13"></script></body></html>
