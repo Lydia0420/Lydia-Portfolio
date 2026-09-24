@@ -1607,6 +1607,65 @@
 
 <!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
 <script src="../shared/detail-translations.js"></script>
+
+<!-- CHINESE TYPOGRAPHY COMPARISON: START -->
+<style>
+
+/*
+  Chinese typography comparison.
+  These commercial typefaces are referenced locally only; no font files are bundled.
+  Install licensed copies locally to see the exact faces.
+*/
+html[lang="zh-CN"] .hero .subtitle {
+  font-family:
+    "方正字迹-夏天的风 简",
+    "方正字迹-夏天的风",
+    "FZZJ-XiaTianDeFengS",
+    "FZZJ-XiaTianDeFeng",
+    "STKaiti",
+    "KaiTi",
+    serif;
+  font-weight: 400;
+  letter-spacing: .035em;
+  line-height: 1.65;
+}
+
+
+/* SAKURA comparison: section typography = 古茗体 */
+html[lang="zh-CN"] h2[data-i18n-managed="true"],
+html[lang="zh-CN"] h3[data-i18n-managed="true"] {
+  font-family:
+    "古茗体",
+    "古茗体 Regular",
+    "FZGuMingTi",
+    "FZGuMingTiS-R-GB",
+    "STKaiti",
+    "KaiTi",
+    serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: .015em;
+}
+
+html[lang="zh-CN"] h2[data-i18n-managed="true"] {
+  line-height: 1.28;
+}
+
+html[lang="zh-CN"] h3[data-i18n-managed="true"] {
+  line-height: 1.42;
+  letter-spacing: .02em;
+}
+
+/* Preserve the existing technical/UI typography around the headings. */
+html[lang="zh-CN"] .meta-item h3:not([data-i18n-managed="true"]),
+html[lang="zh-CN"] .micro-label,
+html[lang="zh-CN"] .scene-caption,
+html[lang="zh-CN"] .night-note {
+  font-family: "Aldrich", sans-serif;
+}
+</style>
+<!-- CHINESE TYPOGRAPHY COMPARISON: END -->
+
 </head>
 
 <body>
