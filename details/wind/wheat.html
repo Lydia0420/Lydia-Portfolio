@@ -76,6 +76,64 @@ footer{text-align:center;padding:40px 20px 60px;font:.92rem Georgia,serif;letter
 
 <!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
 <script src="../shared/detail-translations.js"></script>
+
+<!-- CHINESE TYPOGRAPHY COMPARISON: START -->
+<style>
+
+/*
+  Chinese typography comparison.
+  These commercial typefaces are referenced locally only; no font files are bundled.
+  Install licensed copies locally to see the exact faces.
+*/
+html[lang="zh-CN"] .hero .subtitle {
+  font-family:
+    "方正字迹-夏天的风 简",
+    "方正字迹-夏天的风",
+    "FZZJ-XiaTianDeFengS",
+    "FZZJ-XiaTianDeFeng",
+    "STKaiti",
+    "KaiTi",
+    serif;
+  font-weight: 400;
+  letter-spacing: .035em;
+  line-height: 1.65;
+}
+
+
+/* WIND comparison: section typography = 方正矩宋 */
+html[lang="zh-CN"] h2[data-i18n-managed="true"],
+html[lang="zh-CN"] h3[data-i18n-managed="true"] {
+  font-family:
+    "方正矩宋 简",
+    "方正矩宋",
+    "FZJuSongS-R-GB",
+    "FZJuSongS",
+    "Songti SC",
+    "STSong",
+    serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+
+html[lang="zh-CN"] h2[data-i18n-managed="true"] {
+  line-height: 1.22;
+}
+
+html[lang="zh-CN"] h3[data-i18n-managed="true"] {
+  line-height: 1.36;
+  letter-spacing: -.012em;
+}
+
+/* Keep English/system labels in their original Latin UI type. */
+html[lang="zh-CN"] .eyebrow,
+html[lang="zh-CN"] .micro,
+html[lang="zh-CN"] .step-no {
+  font-family: Arial, sans-serif;
+}
+</style>
+<!-- CHINESE TYPOGRAPHY COMPARISON: END -->
+
 </head>
 <body>
 <nav class="project-nav section2-nav" aria-label="Project navigation" style="--nav-ink:#39352c;--nav-surface:rgba(244,240,230,.94)"><a class="back-btn" href="../../index.html#game-modal"><span><svg class="back-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</span></a><div class="lang-right"><button id="lang-toggle" class="lang-toggle" type="button" aria-label="Chinese translation is not available yet" title="Chinese translation coming soon" disabled>中文</button></div></nav>
