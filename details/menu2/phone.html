@@ -8,11 +8,13 @@
   <link rel="stylesheet" href="./emenu/style.css">
   <link rel="stylesheet" href="../shared/project-nav.css">
 <link rel="stylesheet" href="../shared/detail-language.css">
+<link rel="stylesheet" href="../shared/graphic-family-zh.css">
 
 <!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
 <script src="../shared/detail-translations.js"></script>
+<link rel="stylesheet" href="../shared/body-copy-zh.css">
 </head>
-<body>
+<body data-zh-body="digital" data-graphic-project="digital">
   <nav class="project-nav" aria-label="Project navigation"><a class="back-btn" href="../../index.html#book-modal"><span><svg class="back-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</span></a><div class="lang-right"><button id="lang-toggle" class="lang-toggle" type="button" aria-label="Chinese translation is not available yet" title="Chinese translation coming soon" disabled>中文</button></div></nav>
   <main>
     <section class="hero" id="experience">
@@ -24,9 +26,9 @@
         <p class="intro"
   data-i18n-managed="true"
   data-zh="将 Umami 从纸质菜单转化为移动端体验，探索视觉识别、导航，以及影响浏览体验的细微设计。">Umami, translated from a printed menu into a mobile experience. A study in visual identity, navigation, and the small decisions that shape browsing.</p>
-        <dl class="credits"><div><dt>FORMAT</dt><dd
+        <dl class="credits"><div><dt data-i18n-ignore>FORMAT</dt><dd
   data-i18n-managed="true"
-  data-zh="移动端菜单">Mobile menu</dd></div><div><dt>TOOL</dt><dd>Figma</dd></div><div><dt>FOCUS</dt><dd
+  data-zh="移动端菜单">Mobile menu</dd></div><div><dt data-i18n-ignore>TOOL</dt><dd>Figma</dd></div><div><dt data-i18n-ignore>FOCUS</dt><dd
   data-i18n-managed="true"
   data-zh="UI / UX · 视觉设计">UI / UX · Visual design</dd></div></dl>
         <div class="hero-actions"><button class="primary" id="enter-menu"
@@ -176,6 +178,3 @@ LydiaI18n.register([
 <script src="../shared/detail-language.js" defer></script>
 <script src="../../preview-media.js" defer></script>
 </body></html>
-
-
-

@@ -62,33 +62,14 @@ const numbered = (count, fn) => Array.from({length:count},(_,i) => fn(i+1));
 const groups = [
   [LydiaI18n.text("First draft", "初稿"),numbered(15,i=>`logo_draft1_${String(i).padStart(2,'0')}.${[8,11,13,14,15].includes(i)?'png':'jpg'}`)],
   [LydiaI18n.text("Second draft", "第二稿"),numbered(15,i=>`logo draft2-${String(i).padStart(2,'0')}.png`)],
-  ['Third draft · Form',numbered(6,i=>`${String(i).padStart(2,'0')}.png`)],
-  ['Third draft · Color',numbered(9,i=>`color${i}.png`)],
-  ['Third draft · Refinement',numbered(8,i=>`Letter - ${i}.png`)]
+  [LydiaI18n.text('Third draft · Form', '第三稿 · 形态'),numbered(6,i=>`${String(i).padStart(2,'0')}.png`)],
+  [LydiaI18n.text('Third draft · Color', '第三稿 · 色彩'),numbered(9,i=>`color${i}.png`)],
+  [LydiaI18n.text('Third draft · Refinement', '第三稿 · 细化'),numbered(8,i=>`Letter - ${i}.png`)]
 ];
-// 下方代码会拼接这些英文标签；中文在这里一同维护。
-LydiaI18n.register([
-  [
-    "15 STUDIES",
-    "15 次研究"
-  ],
-  [
-    "6 STUDIES",
-    "6 次研究"
-  ],
-  [
-    "9 STUDIES",
-    "9 次研究"
-  ],
-  [
-    "8 STUDIES",
-    "8 次研究"
-  ]
-]);
 for (const [index,[name, files]] of groups.entries()) {
   const details = document.createElement('details');
   const summary = document.createElement('summary');
-  summary.innerHTML = `<span>${String(index+1).padStart(2,'0')}</span>${name}<span>${files.length} STUDIES</span><b aria-hidden="true">+</b>`;
+  summary.innerHTML = `<span>${String(index+1).padStart(2,'0')}</span><span class="archive-name">${name}</span><span data-i18n-ignore>${files.length} STUDIES</span><b aria-hidden="true">+</b>`;
   details.append(summary);
   details.addEventListener('toggle', () => {
     if (!details.open || details.querySelector('.archive-grid')) return;
@@ -133,5 +114,4 @@ function positionLight(event) {
 card.addEventListener('pointerenter', positionLight);
 card.addEventListener('pointermove', positionLight);
 card.addEventListener('pointerleave', () => { cancelAnimationFrame(lightFrame); lightFrame = 0; });
-
 

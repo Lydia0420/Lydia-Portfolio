@@ -1,0 +1,31 @@
+/* Section 03: user-supplied original font for local preview only.
+   Confirm web embedding / redistribution authorization before publishing. */
+@font-face {
+  font-family: "Narrative Together";
+  src: url("./fonts/FZSJ-YIQZGDRZ.TTF") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Leave English titles, UI, body copy, colors and interactions untouched. */
+html[lang="zh-CN"] main h2,
+html[lang="zh-CN"] main h3,
+html[lang="zh-CN"] main .hero-copy > p:not(.eyebrow):not(.hero-location),
+html[lang="zh-CN"] main .hand,
+html[lang="zh-CN"] main .scribble,
+html[lang="zh-CN"] main .cover-note i {
+  font-family: "Narrative Together", "PingFang SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+  letter-spacing: .015em;
+  line-height: 1.45;
+}
+
+html[lang="zh-CN"] main h2 em,
+html[lang="zh-CN"] main h3 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}

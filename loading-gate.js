@@ -1,11 +1,14 @@
 /* Lock only the initial loading phase; the site's modal scroll handling is unchanged. */
 (function () {
     const root = document.documentElement;
-    root.classList.add('intro-loading');
-    let locked = true;
-    const isReload = window.performance.getEntriesByType('navigation')[0]?.type === 'reload';
+    // Detail-page return links already identify the collection to restore.
+    // Keep preparing the intro in the background without hiding that collection.
+    let returningToCollection = ['#work-section', '#book-modal', '#game-modal', '#imac-modal', '#tv-modal'].includes(window.location.hash);
+    root.classList.add(returningToCollection ? 'intro-return' : 'intro-loading');
+    let locked = !returningToCollection;
+    const isReload = !returningToCollection && window.performance.getEntriesByType('navigation')[0]?.type === 'reload';
     const resetPosition = () => {
-        if (isReload) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (isReload && !returningToCollection) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     };
     const holdStart = () => { if (locked && window.scrollY !== 0) resetPosition(); };
     if (isReload) {
@@ -24,12 +27,21 @@
     };
     ['wheel', 'touchmove', 'keydown'].forEach(type => document.addEventListener(type, cancel, { passive: false }));
     const preventJump = event => {
+        if (event.target.closest('#navbar a[href="#work-section"]')) {
+            window.introGate.showWork();
+            return;
+        }
         if (locked && event.target.closest('a[onclick], a[href^="#"]')) {
             event.preventDefault(); event.stopImmediatePropagation();
         }
     };
     document.addEventListener('click', preventJump, true);
     window.introGate = {
+        showWork() {
+            returningToCollection = true;
+            root.classList.add('intro-return');
+            this.unlock();
+        },
         unlock() {
             resetPosition();
             locked = false;
@@ -39,6 +51,8 @@
             document.removeEventListener('click', preventJump, true);
         },
         fail(retry) {
+            // A failed background intro must not cover the restored work collection.
+            if (returningToCollection) return;
             const show = () => {
                 const status = document.getElementById('loading');
                 const button = document.getElementById('loading-retry');

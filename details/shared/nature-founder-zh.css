@@ -1,0 +1,83 @@
+/* User-supplied original fonts for local preview. Confirm web embedding and
+   redistribution authorization before publishing these assets. */
+@font-face {
+  font-family: "Nature JuSong";
+  src: url("./fonts/FZJuSJW.TTF") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nature Summer Wind";
+  src: url("./fonts/FZZJ-XTDFJW.TTF") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nature Guming";
+  src: url("./fonts/guming-R.TTF") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+html[lang="zh-CN"] [data-nature-heading="guming"] {
+  --nature-heading: "Aldrich", "Nature Guming", "Songti SC", serif;
+}
+/* Shared by Wind and Falls only. H1 deliberately remains untouched. */
+html[lang="zh-CN"] main .hero .subtitle {
+  font-family: "Nature Summer Wind", "PingFang SC", sans-serif;
+  font-size: clamp(1.5rem, 2.1vw, 1.85rem);
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+  line-height: 1.65;
+  letter-spacing: .015em;
+}
+html[lang="zh-CN"] main h2,
+html[lang="zh-CN"] main #views h2,
+html[lang="zh-CN"] main .closing h2 {
+  font-family: var(--nature-heading, "Aldrich", "Nature JuSong", "Songti SC", serif);
+  font-size: clamp(2rem, 3.6vw, 3.125rem);
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+html[lang="zh-CN"] main h2 em {
+  font-family: inherit;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+html[lang="zh-CN"] main h3,
+html[lang="zh-CN"] main #views .sound-note h3,
+html[lang="zh-CN"] main .reflection-card h3 {
+  font-family: var(--nature-heading, "Aldrich", "Nature JuSong", "Songti SC", serif);
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+/* Metadata headings are labels, not section headings. */
+html[lang="zh-CN"] main .meta-item h3 {
+  font-family: "Aldrich", "PingFang SC", sans-serif;
+  font-size: .75rem;
+  line-height: 1.65;
+  letter-spacing: .08em;
+}
+@media (max-width: 640px) {
+  html[lang="zh-CN"] main h2,
+  html[lang="zh-CN"] main #views h2,
+  html[lang="zh-CN"] main .closing h2 {
+    font-size: clamp(1.65rem, 6.8vw, 2rem);
+  }
+  html[lang="zh-CN"] main h3,
+  html[lang="zh-CN"] main #views .sound-note h3,
+  html[lang="zh-CN"] main .reflection-card h3 {
+    font-size: 1.35rem;
+  }
+  html[lang="zh-CN"] main .meta-item h3 { font-size: .75rem; }
+}

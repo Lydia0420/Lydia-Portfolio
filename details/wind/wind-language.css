@@ -1,0 +1,81 @@
+/* Chinese typography only. The English hero title and interactive artwork
+   retain their original styles, proportions and behavior. */
+@font-face {
+  font-family: "Wind Serif";
+  src: url("./wind-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+html[lang="zh-CN"] {
+  --wind-sans: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --wind-serif: Georgia, "Wind Serif", "Songti SC", serif;
+}
+html[lang="zh-CN"] main :is(p, dd, summary, .steps button, .hero-links, .tags span, .view-buttons button) {
+  font-family: var(--wind-sans);
+}
+html[lang="zh-CN"] main :is(.intro p, .interaction p, .section-head > p, .process-caption p, .sound-note p, .reflection p) {
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: .015em;
+  text-wrap: pretty;
+}
+html[lang="zh-CN"] main :is(.intro p, .process-caption p, .reflection p) {
+  max-width: 35em;
+}
+html[lang="zh-CN"] main h2,
+html[lang="zh-CN"] #views h2 {
+  font-family: var(--wind-sans);
+  font-size: clamp(1.7rem, 2.7vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+html[lang="zh-CN"] main h2 em {
+  font-family: var(--wind-serif);
+  font-size: 1.04em;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: .015em;
+  color: #626b42;
+}
+html[lang="zh-CN"] #views h2 em {
+  color: #dcc589;
+}
+html[lang="zh-CN"] main h3 {
+  font-family: var(--wind-sans);
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: .015em;
+}
+html[lang="zh-CN"] #views .sound-note h3 {
+  font-size: 1.25rem;
+}
+html[lang="zh-CN"] .hero .subtitle,
+html[lang="zh-CN"] .big-note {
+  font-family: var(--wind-serif);
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.85;
+  letter-spacing: .025em;
+}
+html[lang="zh-CN"] main .closing h2 {
+  font-family: var(--wind-serif);
+  font-weight: 400;
+}
+html[lang="zh-CN"] .steps button {
+  line-height: 1.65;
+}
+html[lang="zh-CN"] .steps button[aria-pressed="true"] {
+  font-weight: 600;
+}
+@media (max-width: 640px) {
+  html[lang="zh-CN"] main h2,
+  html[lang="zh-CN"] #views h2 {
+    font-size: clamp(1.55rem, 6.4vw, 1.85rem);
+  }
+  html[lang="zh-CN"] .process-caption p {
+    min-height: 0;
+  }
+}

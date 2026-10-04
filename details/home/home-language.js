@@ -12,9 +12,9 @@
   add('.nav-links a:nth-child(2)', '关于');
   add('.nav-links a:nth-child(3)', '联系');
   add('#scroll-cue', '向下滚动，开始探索 ↓');
-  add('.intro-kicker', '影像、AI 与<em>游戏。</em>');
-  add('.intro-slogan', '让想法，<br>成为可感知的<em>体验。</em>');
-  add('.intro-lead', '一名设计师，也是一名创意技术探索者。');
+  add('.intro-kicker', '<span class="zh-image">影像</span>、AI 与<span class="zh-game">游戏。</span>');
+  add('.intro-slogan', '<span class="thesis-start">让想法，</span><span class="thesis-landing"><span class="thesis-bridge">成为可感知的</span><em class="thesis-end">体验<span class="thesis-punct">。</span></em></span>');
+  add('.intro-lead', '一名设计师，也是一名<span class="identity-accent">创意技术</span>探索者。');
   add('.intro-purpose', '我通过创作，探索人与作品相遇时会发生什么。');
   add('.intro-detail', '我着迷于人与技术之间那些细微、偶然的回应：屏幕如何让人想要触碰，系统如何开始讲述故事，以及由代码构建的事物，如何也能让人感受到温度。');
   const collections = [
@@ -24,8 +24,14 @@
     ['tv', '影像与三维创作', '有些想法，需要在时间中展开。通过纪录片、定格动画与三维创作，我用动态影像构建并观察身边的世界。'],
     ['art', '艺术创作与实验', '并非每个想法都需要一块屏幕。绘画、版画与材料实验，让我通过色彩、肌理、重复和手留下的痕迹，慢慢思考。']
   ];
+  function formatChineseTitle(title) {
+    return title
+      .replace('游戏设计', '<span class="zh-game">游戏设计</span>')
+      .replace('影像', '<span class="zh-image">影像</span>')
+      .replace('与', ' <span class="type-amp">&amp;</span> ');
+  }
   collections.forEach(([id, title, description], index) => {
-    add(`#work-${id} .title`, title.replace('与', ' <span class="type-amp">&amp;</span> '));
+    add(`#work-${id} .title`, formatChineseTitle(title));
     add(`#work-${id} .description`, description);
     add(`#${id}-modal .modal-label-title`, `0${index + 1} / ${title.replace('与', ' &amp; ')}`);
   });
@@ -78,6 +84,7 @@
     return { element, attribute, en, zh: translations[en] || en };
   });
   let language = 'en';
+  let typeMotionFrame = 0;
   try { if (localStorage.getItem(key) === 'zh-CN') language = 'zh-CN'; } catch (_) {}
   function apply(next, remember = false) {
     const chinese = next === 'zh-CN';
@@ -99,6 +106,8 @@
     const loading = document.getElementById('loading');
     loading.textContent = `${chinese ? '正在加载' : 'Loading'}: ${loading.dataset.progress || 0}%`;
     language = next;
+    document.documentElement.classList.toggle('zh-home-ready', chinese);
+    requestChineseTypeMotion();
     if (remember) {
       try { localStorage.setItem(key, next); } catch (_) {}
       window.ScrollTrigger?.refresh();
@@ -110,6 +119,33 @@
     if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); element.click(); }
   }));
   apply(language);
+  function updateChineseTypeMotion() {
+    typeMotionFrame = 0;
+    const root = document.documentElement;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (language !== 'zh-CN' || reduced) {
+      root.style.removeProperty('--zh-home-track');
+      root.style.removeProperty('--zh-home-emphasis-opacity');
+      root.style.removeProperty('--zh-home-game-scale');
+      root.style.removeProperty('--zh-home-experience-track');
+      root.style.removeProperty('--zh-home-experience-shift');
+      return;
+    }
+    const hero = document.querySelector('#about-section');
+    if (!hero) return;
+    const rect = hero.getBoundingClientRect();
+    const progress = Math.min(1, Math.max(0, (window.innerHeight * .82 - rect.top) / (rect.height + window.innerHeight * .25)));
+    root.style.setProperty('--zh-home-track', `${(-.012 + progress * .018).toFixed(3)}em`);
+    root.style.setProperty('--zh-home-emphasis-opacity', `${(.88 + progress * .12).toFixed(2)}`);
+    root.style.setProperty('--zh-home-game-scale', `${(.91 + progress * .06).toFixed(3)}`);
+    root.style.setProperty('--zh-home-experience-track', `${(.03 + progress * .16).toFixed(3)}em`);
+    root.style.setProperty('--zh-home-experience-shift', `${(-.04 + progress * .06).toFixed(3)}em`);
+  }
+  function requestChineseTypeMotion() {
+    if (!typeMotionFrame) typeMotionFrame = requestAnimationFrame(updateChineseTypeMotion);
+  }
+  window.addEventListener('scroll', requestChineseTypeMotion, { passive: true });
+  window.addEventListener('resize', requestChineseTypeMotion);
   function syncSavedLanguage() {
     try {
       const saved = localStorage.getItem(key);

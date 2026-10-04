@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lydia's Portfolio</title>
     <link rel="preload" as="image" href="./bg-webp/frame_000.webp" fetchpriority="high">
-    <script src="./loading-gate.js"></script>
+    <script src="./loading-gate.js?v=20261004-work"></script>
 
     <style>
+        html.intro-return #loading, html.intro-return #loading-retry { display: none !important; }
         html.intro-loading, html.intro-loading body { overflow: hidden !important; }
         html.intro-loading .scroll-cue { visibility: hidden; }
         html.intro-loading body > :not(#navbar):not(#loading):not(#loading-retry) { opacity: 0 !important; pointer-events: none !important; }
@@ -1878,7 +1879,7 @@
     }
     </style>
 <link rel="stylesheet" href="./details/home/home-typography.css">
-<link rel="stylesheet" href="./details/home/home-language.css">
+<link rel="stylesheet" href="./details/home/home-language.css?v=chapter-serif">
 <link rel="stylesheet" href="./details/home/home-mobile-entry.css">
 <link rel="stylesheet" href="./details/home/home-mobile-books.css">
 <link rel="stylesheet" href="./details/home/home-mobile-games.css">
@@ -1892,7 +1893,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-identity"><a class="nav-logo" onclick="scrollToTop()">Lydia's Portfolio</a><button class="language-toggle" type="button" aria-label="切换为中文" lang="zh-CN">中文</button></div>
         <div class="nav-links">
-            <a class="nav-item" onclick="scrollToSection('work-section')">Work</a>
+            <a class="nav-item" href="#work-section" onclick="event.preventDefault(); introGate.showWork(); closeAllModals(); history.replaceState(null, '', '#work-section'); scrollToSection('work-section', 'instant')">Work</a>
             <a class="nav-item" href="./details/About/about.html">About</a>
             <a class="nav-item" href="./details/contact/contact.html">Contact</a>
         </div>
@@ -2332,7 +2333,7 @@
         }
 
         // 平滑滚动到指定板块（点击 Work / About）
-        function scrollToSection(id) {
+        function scrollToSection(id, behavior = 'smooth') {
             const element = document.getElementById(id);
             if (element) {
                 // 减去导航栏大概的高度，避免遮挡内容
@@ -2340,7 +2341,7 @@
                 const elementPosition = element.getBoundingClientRect().top + window.scrollY;
                 window.scrollTo({
                     top: elementPosition - offset,
-                    behavior: 'smooth'
+                    behavior
                 });
             }
         }
@@ -2586,6 +2587,13 @@
         if (!window.location.hash) return;
 
         const modalId = window.location.hash.substring(1);
+
+        if (modalId === 'work-section') {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => scrollToSection('work-section', 'instant'));
+            });
+            return;
+        }
 
         const modalToWorkItem = {
             'book-modal': 'work-book',

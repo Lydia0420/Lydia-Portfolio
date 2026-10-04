@@ -512,8 +512,9 @@
 
 <!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
 <script src="../shared/detail-translations.js"></script>
+<link rel="stylesheet" href="../shared/body-copy-zh.css?v=personal-18">
 </head>
-<body>
+<body data-zh-body="about">
     <div id="about-atmosphere" aria-hidden="true"></div>
     <div id="about-nav-surface" aria-hidden="true"></div>
     <svg id="about-story-thread" aria-hidden="true" focusable="false"><path fill="none"/></svg>
@@ -544,12 +545,10 @@
     <section class="intro-section">
         <div class="about-container">
             <div class="text-section">
-                <h1 data-i18n="about.Title"
-  data-i18n-managed="true"
-  data-zh="关于我">About Me</h1>
+                <h1 data-i18n-ignore>About Me</h1>
                 <!-- 中文放在对应英文附近。手机用 CSS 调整顺序，桌面仍是一段。 -->
                 <p class="description about-opening">
-                  <span class="about-intro-line" data-zh="你好，我是 Lydia，一名热爱传统与数字媒介的艺术创作者和设计师。">
+                  <span class="about-intro-line" data-zh="Hey there! 我是 Lydia，一名热爱传统与数字媒介的艺术创作者和设计师。">
                     Hey there!  I'm Lydia, an artist and designer with a love for both traditional and digital media.
                   </span>
                   <span class="about-intro-rest" data-zh="我从古典美术开始，逐渐被数字设计、交互媒体与生成艺术吸引，也发现自己喜欢将它们结合，看看创意与技术相遇时会发生什么。我没有离开某个世界，只是不断增加新的创作方式。">

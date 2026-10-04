@@ -1,33 +1,83 @@
 @import url('../shared/language-controls.css');
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400;500;600&family=ZCOOL+KuaiLe&family=ZCOOL+QingKe+HuangYou&family=ZCOOL+XiaoWei&display=swap');
 .nav-identity { display: flex; align-items: center; gap: 16px; }
 .language-toggle { appearance: none; border: 0; background: transparent; color: #555; font: 400 13px/1.4 'Helvetica Neue', Arial, sans-serif; min-width: 44px; min-height: 44px; padding: 4px; cursor: pointer; }
 .language-toggle:hover { color: #111; }
 .language-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 2px; border-radius: 2px; }
 html[lang="zh-CN"] {
-  --home-zh-font: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
-  --home-zh-display: 'Songti SC', 'Noto Serif CJK SC', 'Source Han Serif SC', 'SimSun', serif;
+  --home-zh-font: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --home-zh-display: 'Noto Serif SC', 'Songti SC', 'Noto Serif CJK SC', 'Source Han Serif SC', serif;
+  --home-zh-body-serif: 'Noto Serif SC', 'Songti SC', serif;
+  --home-zh-emphasis: 'LXGW WenKai', 'Kaiti SC', 'STKaiti', serif;
+  --home-zh-structural: 'ZCOOL QingKe HuangYou', 'Noto Sans SC', sans-serif;
+  --home-zh-play: 'ZCOOL KuaiLe', 'Noto Sans SC', sans-serif;
+  --home-zh-accent: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  --zh-home-track: -.012em;
+  --zh-home-emphasis-opacity: .88;
+  --zh-home-game-scale: .91;
+  --zh-home-experience-track: .09em;
+  --zh-home-experience-shift: -.02em;
+  font-synthesis: none;
 }
-html[lang="zh-CN"] #about-section .intro-kicker { font: 400 clamp(30px,3.8vw,51px)/1.4 var(--home-zh-display); letter-spacing: .025em; margin-bottom: 32px; }
-html[lang="zh-CN"] #about-section .intro-slogan { font: 400 clamp(38px,5.1vw,69px)/1.3 var(--home-zh-display); letter-spacing: .015em; }
-html[lang="zh-CN"] #about-section em { font-family: inherit; font-style: normal; letter-spacing: inherit; }
+html[lang="zh-CN"] #about-section .intro-kicker { display: block; margin: 0 0 24px; max-width: none; font: 400 clamp(26px,3vw,40px)/1.25 var(--home-zh-display); letter-spacing: -.025em; }
+html[lang="zh-CN"] #about-section .intro-slogan { font: 400 clamp(38px,5.1vw,69px)/.98 var(--home-zh-display); letter-spacing: var(--zh-home-track); transition: letter-spacing .45s ease-out; }
+html[lang="zh-CN"] #about-section em { font-family: var(--home-zh-emphasis); font-style: normal; font-weight: 700; letter-spacing: -.015em; }
+html[lang="zh-CN"] #about-section .intro-kicker :is(.zh-image, .zh-game) { font-family: var(--home-zh-accent); color: #7f8c9d; }
+html[lang="zh-CN"] #about-section .intro-kicker .zh-game { display: inline-block; transform: scaleX(var(--zh-home-game-scale)); transform-origin: left center; transition: transform .2s linear; }
+html[lang="zh-CN"] #about-section .thesis-start { display: block; margin-left: 6%; font-size: 1.12em; font-weight: 500; letter-spacing: -.04em; }
+html[lang="zh-CN"] #about-section .thesis-landing { display: flex; align-items: baseline; gap: .3em; margin: 22px 0 0 6%; }
+html[lang="zh-CN"] #about-section .thesis-bridge { font-family: var(--home-zh-font); font-size: .36em; font-weight: 400; letter-spacing: .025em; color: #59626b; white-space: nowrap; }
+html[lang="zh-CN"] #about-section .thesis-end { display: inline-block; color: #7f8c9d; font-family: var(--home-zh-display); font-size: 1.24em; font-weight: 400; letter-spacing: var(--zh-home-experience-track); line-height: 1; opacity: var(--zh-home-emphasis-opacity); transform: translateY(var(--zh-home-experience-shift)); transition: letter-spacing .15s linear, opacity .35s ease-out, transform .35s ease-out; white-space: nowrap; }
+html[lang="zh-CN"] #about-section .thesis-punct { font-family: var(--home-zh-font); font-size: .54em; margin-left: -.1em; transform: translateY(-.06em); }
 html[lang="zh-CN"] #about-section .intro-desc { font-family: var(--home-zh-font); font-size: 16px; line-height: 2; letter-spacing: .025em; }
-html[lang="zh-CN"] #about-section .intro-lead { font-size: 18px; font-weight: 400; }
-html[lang="zh-CN"] #work-section .content .title { font: 400 clamp(28px,2.85vw,39px)/1.45 var(--home-zh-display); letter-spacing: .04em; }
-html[lang="zh-CN"] #work-section .description { font-family: var(--home-zh-font); font-size: 15px; line-height: 2; letter-spacing: .025em; }
+html[lang="zh-CN"] #about-section .intro-lead { color: #30363c; font-family: var(--home-zh-body-serif); font-size: clamp(18px,1.65vw,24px); font-weight: 400; line-height: 1.6; }
+html[lang="zh-CN"] #about-section .identity-accent { color: #7f8c9d; font-family: var(--home-zh-accent); font-size: 1.14em; font-weight: 400; letter-spacing: -.02em; }
+html[lang="zh-CN"] #about-section .intro-purpose { color: #4d555d; font-family: var(--home-zh-font); font-size: 15px; font-weight: 400; line-height: 1.85; }
+html[lang="zh-CN"] #about-section .intro-detail { color: #737b83; font-family: var(--home-zh-font); font-size: 14px; font-weight: 300; line-height: 1.95; }
+/* Inherit the English collection geometry and type sizes from home-typography.css. */
+html[lang="zh-CN"] #work-section .content .title { font-family: var(--home-zh-accent); font-weight: 400; }
+html[lang="zh-CN"] #work-section .content .title .zh-game,
+html[lang="zh-CN"] #work-section .content .title .zh-image { color: #667586; font-family: var(--home-zh-accent); font-weight: 400; letter-spacing: -.025em; }
+html[lang="zh-CN"] #work-section .description { font-family: var(--home-zh-font); font-weight: 300; }
 html[lang="zh-CN"] .book-overlay { font-family: var(--home-zh-font); }
 html[lang="zh-CN"] .book-overlay .modal-label-title { letter-spacing: .04em; }
+/* Carry the English italic's editorial contrast into a Chinese book inscription. */
+html[lang="zh-CN"] .book-spread-label .chapter-title {
+  font-family: var(--home-zh-body-serif);
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: .1em;
+  line-height: 1.45;
+}
 html[lang="zh-CN"] .zine-cover-copy h3 { line-height: 1.4; letter-spacing: .02em; }
 html[lang="zh-CN"] .zine-cover-copy p { line-height: 1.8; }
 @media(max-width:700px) {
-  html[lang="zh-CN"] #about-section .intro-kicker { font-size: clamp(26px,6.8vw,41px); max-width: none; margin-bottom: 25px; }
+  html[lang="zh-CN"] #about-section .intro-kicker { font-size: clamp(24px,6.6vw,36px); margin-bottom: 24px; }
   html[lang="zh-CN"] #about-section .intro-slogan { font-size: clamp(32px,8.5vw,51px); }
+  html[lang="zh-CN"] #about-section .thesis-start { font-size: 1.08em; }
+  html[lang="zh-CN"] #about-section .thesis-landing { display: flex; margin: 18px 0 0 6%; gap: .2em; }
+  html[lang="zh-CN"] #about-section .thesis-bridge { font-size: .34em; }
+  html[lang="zh-CN"] #about-section .thesis-end { font-size: 1.24em; line-height: 1; }
   html[lang="zh-CN"] #about-section .intro-desc { font-size: 15px; }
-  html[lang="zh-CN"] #work-section .content .title { font-size: 28px; }
-  html[lang="zh-CN"] #about-section .intro-lead { font-size: 17px; }
+  html[lang="zh-CN"] #about-section .intro-lead { font-size: 18px; }
+  html[lang="zh-CN"] #about-section .intro-purpose { font-size: 14px; }
+  html[lang="zh-CN"] #about-section .intro-detail { font-size: 13px; }
 }
 @media(max-width:480px) {
   .nav-identity { gap: 5px; }
   .navbar .nav-logo { font-size: 14px; }
   .navbar .nav-links { gap: 12px; }
   .language-toggle { min-width: 36px; font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+html[lang="zh-CN"] #about-section .intro-slogan,
+  html[lang="zh-CN"] #about-section .thesis-end,
+  html[lang="zh-CN"] #about-section .intro-kicker .zh-game { transition: none; }
+}
+html[lang="zh-CN"] #about-section :is(.intro-kicker, .intro-slogan, .intro-desc) { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .75s cubic-bezier(.2,.8,.2,1); }
+html[lang="zh-CN"].zh-home-ready #about-section :is(.intro-kicker, .intro-slogan, .intro-desc) { opacity: 1; transform: none; }
+html[lang="zh-CN"] #about-section .intro-slogan { transition-delay: .07s; }
+html[lang="zh-CN"] #about-section .intro-desc { transition-delay: .14s; }
+@media (prefers-reduced-motion: reduce) {
+  html[lang="zh-CN"] #about-section :is(.intro-kicker, .intro-slogan, .intro-desc) { opacity: 1; transform: none; transition: none; }
 }

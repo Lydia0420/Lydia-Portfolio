@@ -1,0 +1,50 @@
+/* Section 04 shares Twenty's chosen handwriting in different amounts.
+   User-supplied original font for local preview; verify embedding and
+   redistribution authorization before publication. */
+@font-face {
+  font-family: "Video Time Hand";
+  src: url("./fonts/FZSJ-WOZSJDJTDN.TTF") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+html[lang="zh-CN"] [data-video-type="handmade"] :is(h2, h3, .hero-copy .intro, .recipe-line span, .paper-photo figcaption span, .making-notes p),
+html[lang="zh-CN"] [data-video-type="gift"] :is(h2, .intro > p),
+html[lang="zh-CN"] .worktop > p {
+  font-family: "Video Time Hand", "PingFang SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+  line-height: 1.5;
+  letter-spacing: .01em;
+}
+
+html[lang="zh-CN"] [data-video-type="handmade"] h2 em {
+  font-family: inherit;
+  font-style: normal;
+}
+
+html[lang="zh-CN"] [data-video-type="handmade"] .hero-copy .intro,
+html[lang="zh-CN"] [data-video-type="gift"] .intro > p {
+  font-size: 22px;
+  line-height: 1.75;
+}
+
+/* Small production notes need more room than their original caption type. */
+html[lang="zh-CN"] [data-video-type="handmade"] .paper-photo figcaption span,
+html[lang="zh-CN"] [data-video-type="handmade"] .making-notes p {
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+html[lang="zh-CN"] .worktop > p {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  html[lang="zh-CN"] [data-video-type="handmade"] .hero-copy .intro,
+  html[lang="zh-CN"] [data-video-type="gift"] .intro > p,
+  html[lang="zh-CN"] .worktop > p { font-size: 18px; }
+}

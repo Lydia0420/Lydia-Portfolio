@@ -73,11 +73,14 @@ footer{text-align:center;padding:40px 20px 60px;font:.92rem Georgia,serif;letter
 <link rel="stylesheet" href="../shared/section2-nav.css">
 <style>body{padding-top:58px}</style>
 <link rel="stylesheet" href="../shared/detail-language.css">
+<link rel="stylesheet" href="./wind-language.css">
+<link rel="stylesheet" href="../shared/nature-founder-zh.css">
 
 <!-- 公共词汇与动态文案工具：须先于作品脚本加载。 -->
 <script src="../shared/detail-translations.js"></script>
+<link rel="stylesheet" href="../shared/body-copy-zh.css">
 </head>
-<body>
+<body data-zh-body="wind">
 <nav class="project-nav section2-nav" aria-label="Project navigation" style="--nav-ink:#39352c;--nav-surface:rgba(244,240,230,.94)"><a class="back-btn" href="../../index.html#game-modal"><span><svg class="back-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back</span></a><div class="lang-right"><button id="lang-toggle" class="lang-toggle" type="button" aria-label="Chinese translation is not available yet" title="Chinese translation coming soon" disabled>中文</button></div></nav>
 <main>
 <div class="wrap">
@@ -100,24 +103,24 @@ footer{text-align:center;padding:40px 20px 60px;font:.92rem Georgia,serif;letter
 <dl class="meta"><div><dt>Role</dt><dd>Creative Coder<br>Visual Designer</dd></div><div><dt>Tools</dt><dd>p5.js · JavaScript<br>Tweakpane · REAPER</dd></div><div><dt>Context</dt><dd>Nature of Code<br>Generative systems project</dd></div><div><dt>Exploration</dt><dd>Organic motion<br>Environmental interaction</dd></div></dl>
 <section class="section intro" id="overview"><div><div class="eyebrow">01 / THE QUESTION</div><h2
   data-i18n-managed="true"
-  data-zh="如何描绘&lt;br&gt;看不见的事物？">How do you draw<br>something you<br><em>cannot see?</em></h2></div><div><p
+  data-zh="如何描绘&lt;br&gt;&lt;em&gt;看不见的事物？&lt;/em&gt;">How do you draw<br>something you<br><em>cannot see?</em></h2></div><div><p
   data-i18n-managed="true"
   data-zh="我从风出发：它本身不可见，却能通过被它推动的事物所感知。我没有直接描绘风，而是构建了一片麦田，让风显现。">I began with wind: invisible on its own, but unmistakable in what it moves. Instead of drawing the force, I built a field of wheat to reveal its presence.</p><p
   data-i18n-managed="true"
   data-zh="每一株麦子生长、弯曲、摇摆、承接光线。它们共同回应同一股力量，又保留各自的细小差异，让整片景观显得鲜活。">Each blade grows, bends, sways and catches light. Together they form a landscape shaped by shared forces, without losing the small differences that make it feel alive.</p><div class="big-note">The challenge: moving together,<br>without moving exactly alike.</div></div></section>
 <section class="interaction" aria-labelledby="interaction-title"><div><div class="eyebrow">A SMALL ENCOUNTER WITH WIND</div><h2 id="interaction-title"
   data-i18n-managed="true"
-  data-zh="一点动作，&lt;br&gt;共同回应。">A little movement.<br><em>A shared response.</em></h2><p
+  data-zh="一点动作，&lt;br&gt;&lt;em&gt;共同回应。&lt;/em&gt;">A little movement.<br><em>A shared response.</em></h2><p
   data-i18n-managed="true"
   data-zh="轻轻掠过麦茎，看动作在小簇麦田中传递，再随着每株麦子的回归慢慢平息。">Brush across the stems. Watch a gesture travel through the cluster, then soften as each blade finds its way back.</p></div><div class="cluster-wrap"><div class="cluster-stage" tabindex="0" role="button" aria-label="Stir the wheat. Move across, tap, or use the left and right arrow keys."><canvas width="500" height="380" aria-hidden="true"></canvas></div><div class="cluster-hint">Move to stir the field.</div></div></section>
 <section class="section"><div class="section-head"><div><div class="eyebrow">02 / FINDING THE ATMOSPHERE</div><h2
   data-i18n-managed="true"
-  data-zh="麦田之前，&lt;br&gt;是种种可能。">Before the field,<br><em>a collection of possibilities.</em></h2></div><p
+  data-zh="麦田之前，&lt;br&gt;&lt;em&gt;是种种可能。&lt;/em&gt;">Before the field,<br><em>a collection of possibilities.</em></h2></div><p
   data-i18n-managed="true"
   data-zh="形态、运动与色彩的参考。">References for form, motion and atmosphere.</p></div><div class="research"><button class="image-button" data-enlarge="./mindmap.jpg" aria-label="Enlarge original mind map"><img loading="lazy" src="./mindmap.jpg" alt="Original project mind map"><span class="micro">01 / MIND MAP <span>Enlarge ↗</span></span></button><button class="image-button" data-enlarge="./moodboard.png" aria-label="Enlarge original mood board"><img loading="lazy" src="./moodboard.png" alt="Original project mood board"><span class="micro">02 / MOOD BOARD <span>Enlarge ↗</span></span></button></div></section>
 <section class="section process" id="process"><div class="section-head"><div><div class="eyebrow">03 / BUILDING A LIVING SYSTEM</div><h2
   data-i18n-managed="true"
-  data-zh="一株麦子，&lt;br&gt;千种细微差异。">One blade.<br>A thousand small differences.</h2></div><p
+  data-zh="一株麦子，&lt;br&gt;&lt;em&gt;千种细微差异。&lt;/em&gt;">One blade.<br>A thousand small differences.</h2></div><p
   data-i18n-managed="true"
   data-zh="从单株到鲜活的麦田。">From one blade to a living field.</p></div><div class="process-layout"><div class="steps" role="group" aria-label="Design process stages"><button aria-pressed="true" data-step="0"
   data-i18n-managed="true"
@@ -139,7 +142,7 @@ footer{text-align:center;padding:40px 20px 60px;font:.92rem Georgia,serif;letter
 </div>
 <section class="dark-section" id="views"><div class="wrap"><div class="section-head"><div><div class="eyebrow">04 / THE SURFACE & THE SYSTEM</div><h2
   data-i18n-managed="true"
-  data-zh="感受景观，&lt;br&gt;理解结构。">A landscape to feel.<br><em>A structure to understand.</em></h2></div><div class="view-buttons" role="group" aria-label="Original project views"><button data-view="0" aria-pressed="true"
+  data-zh="感受景观，&lt;br&gt;&lt;em&gt;理解结构。&lt;/em&gt;">A landscape to feel.<br><em>A structure to understand.</em></h2></div><div class="view-buttons" role="group" aria-label="Original project views"><button data-view="0" aria-pressed="true"
   data-i18n-managed="true"
   data-zh="麦田">The field</button><button data-view="1" aria-pressed="false"
   data-i18n-managed="true"
@@ -156,7 +159,7 @@ footer{text-align:center;padding:40px 20px 60px;font:.92rem Georgia,serif;letter
   data-zh="线框视图呈现表面之下的曲线、向量与控制点。最初用于技术调试的画面，逐渐成为理解作品的另一种方式。">The wireframe exposes the curves, vectors and control points beneath the surface. What began as a technical view became another way to see the work.</p></div></div></div></section>
 <div class="wrap"><section class="section reflection"><div><div class="eyebrow">05 / WHAT THE FIELD TAUGHT ME</div><h2
   data-i18n-managed="true"
-  data-zh="自然的感受，&lt;br&gt;有意的选择。">Natural feeling.<br><em>Deliberate decisions.</em></h2></div><div><article><h3
+  data-zh="自然的感受，&lt;br&gt;&lt;em&gt;有意的选择。&lt;/em&gt;">Natural feeling.<br><em>Deliberate decisions.</em></h2></div><div><article><h3
   data-i18n-managed="true"
   data-zh="限制塑造了视觉语言。">Constraints shaped the visual language.</h3><p
   data-i18n-managed="true"
@@ -203,7 +206,4 @@ LydiaI18n.register([
 <script src="../shared/detail-language.js" defer></script>
 <script src="../../preview-media.js" defer></script>
 </body></html>
-
-
-
 

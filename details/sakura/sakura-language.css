@@ -1,0 +1,99 @@
+/* Wheat's Chinese type hierarchy, with a blossom palette. The hero accent
+   is shared by both languages; artwork and interaction remain unchanged. */
+.hero h1 em {
+  font-family: Georgia, serif;
+  font-size: 1.08em;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.04em;
+  color: #805563;
+}
+@font-face {
+  font-family: "Falls Serif";
+  src: url("./falls-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+html[lang="zh-CN"] {
+  --falls-sans: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --falls-serif: Georgia, "Falls Serif", "Songti SC", serif;
+  --falls-accent: #805563;
+}
+html[lang="zh-CN"] main p {
+  font-family: var(--falls-sans);
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: .015em;
+  text-wrap: pretty;
+}
+html[lang="zh-CN"] :is(.overview-grid, .process-text, .reflection-card) p {
+  max-width: 35em;
+}
+html[lang="zh-CN"] main h2 {
+  font-family: var(--falls-sans);
+  font-size: clamp(1.7rem, 2.7vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+html[lang="zh-CN"] main h2 em {
+  font-family: var(--falls-serif);
+  font-size: 1.04em;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: .015em;
+  color: var(--falls-accent);
+}
+html[lang="zh-CN"] main h3 {
+  font-family: var(--falls-sans);
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: .015em;
+}
+html[lang="zh-CN"] .hero .subtitle {
+  font-family: var(--falls-serif);
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.85;
+  letter-spacing: .025em;
+}
+html[lang="zh-CN"] :is(.tag, .hero-links, .scene-controls button) {
+  font-family: var(--falls-sans);
+}
+html[lang="zh-CN"] .meta-item h3 {
+  font-family: "Aldrich", var(--falls-sans);
+  font-size: .75rem;
+  letter-spacing: .08em;
+}
+html[lang="zh-CN"] .meta-item p {
+  font-size: .875rem;
+  line-height: 1.75;
+}
+html[lang="zh-CN"] .interaction-step p {
+  font-size: .9375rem;
+  line-height: 1.85;
+}
+html[lang="zh-CN"] .reflection-card h3 {
+  font-size: 1.125rem;
+}
+html[lang="zh-CN"] :is(.eyebrow, .micro-label) {
+  color: var(--falls-accent);
+}
+html[lang="zh-CN"] .night-section h2 em {
+  color: #e5bdcc;
+}
+html[lang="zh-CN"] .night-section p {
+  color: #d9ced3;
+}
+html[lang="zh-CN"] main ::selection {
+  background: #ead4dd;
+  color: #382731;
+}
+@media (max-width: 640px) {
+  html[lang="zh-CN"] main h2 {
+    font-size: clamp(1.55rem, 6.4vw, 1.85rem);
+  }
+}

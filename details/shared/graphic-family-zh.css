@@ -1,0 +1,245 @@
+/* Section 01: Chinese-only typography. Artwork, English and prototypes retain
+   their original styling. Local OFL fonts; no network request on language switch. */
+@font-face {
+  font-family: "Graphic XiaoWei";
+  src: url("./fonts/graphic-xiaowei.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Graphic Serif";
+  src: url("./fonts/graphic-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* XiaoWei's 回 outline can fill in on some renderers; use the local serif
+   for this single character without changing the rest of the display face. */
+@font-face {
+  font-family: "Graphic Hui";
+  src: url("./fonts/graphic-serif.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+56DE;
+}
+
+html[lang="zh-CN"] body[data-graphic-project] {
+  --graphic-display: "Aldrich", "Graphic XiaoWei", "Songti SC", serif;
+  --graphic-serif: Georgia, "Graphic Serif", "Songti SC", serif;
+  --graphic-sans: "DM Sans", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --graphic-ink: #253d33;
+  --graphic-muted: #59655e;
+  --graphic-accent: #385a48;
+  font-family: var(--graphic-sans);
+  color: var(--graphic-ink);
+}
+html[lang="zh-CN"] body[data-graphic-project] :is(h1, h2) {
+  font-family: var(--graphic-display);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.35;
+  letter-spacing: .015em;
+  text-wrap: balance;
+  color: var(--graphic-ink);
+}
+html[lang="zh-CN"] body[data-graphic-project] h2 {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+}
+html[lang="zh-CN"] body[data-graphic-project] :is(.eyebrow, .small-label, .meta, .credits, .step, .moment-number) {
+  font-family: "Aldrich", "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: .065em;
+}
+html[lang="zh-CN"] body[data-graphic-project] :is(.eyebrow, .small-label) {
+  color: var(--graphic-accent);
+}
+html[lang="zh-CN"] body[data-graphic-project] ::selection {
+  background: #dce5d8;
+  color: #203b2d;
+}
+html[lang="zh-CN"] body[data-graphic-project] :focus-visible {
+  outline: 2px solid var(--graphic-accent);
+  outline-offset: 5px;
+}
+
+/* UMAMI: a two-column title block on the original page background. */
+html[lang="zh-CN"] [data-graphic-project="print"] .final-intro {
+  width: min(1160px, 88%);
+  margin: 80px auto 100px;
+  gap: clamp(32px, 6vw, 88px);
+}
+html[lang="zh-CN"] [data-graphic-project="print"] .project-intro {
+  flex: 1;
+  min-width: 0;
+}
+html[lang="zh-CN"] [data-graphic-project="print"] .project-intro h1 {
+  width: 2.3em;
+  margin: 0 0 32px;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  line-height: 1.12;
+  letter-spacing: .045em;
+  word-break: break-all;
+  text-wrap: wrap;
+}
+html[lang="zh-CN"] [data-graphic-project="print"] .description {
+  font-family: var(--graphic-sans);
+  font-size: 1rem;
+  line-height: 1.95;
+  color: var(--graphic-muted);
+  text-wrap: pretty;
+}
+html[lang="zh-CN"] [data-graphic-project="print"] .project-intro .description {
+  max-width: 29em;
+  margin: 0;
+}
+html[lang="zh-CN"] [data-graphic-project="print"] > h1 {
+  font-size: clamp(2rem, 3.7vw, 3.25rem);
+}
+
+/* UPKP: the same lettering, centered above the identity as in English. */
+html[lang="zh-CN"] body[data-graphic-project="identity"] {
+  --graphic-ink: #202e29;
+  --graphic-accent: #3d5d4c;
+  --muted: #59665e;
+}
+html[lang="zh-CN"] [data-graphic-project="identity"] .hero-heading {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 28px;
+}
+html[lang="zh-CN"] [data-graphic-project="identity"] .hero h1 {
+  font-size: clamp(2.8rem, 5.5vw, 4.75rem);
+  letter-spacing: .09em;
+}
+html[lang="zh-CN"] [data-graphic-project="identity"] :is(.idea-copy, .section-heading, .system-copy) p {
+  font-family: var(--graphic-sans);
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 34em;
+}
+html[lang="zh-CN"] [data-graphic-project="identity"] .idea-copy .lead {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: var(--graphic-ink);
+}
+html[lang="zh-CN"] [data-graphic-project="identity"] h3 {
+  font-family: var(--graphic-sans);
+  font-weight: 600;
+  letter-spacing: .025em;
+}
+
+/* Digital UMAMI: Latin title stays Aldrich; Chinese is wider and horizontal. */
+html[lang="zh-CN"] body[data-graphic-project="digital"] {
+  --ink: #253d33;
+  --muted: #59655e;
+}
+html[lang="zh-CN"] [data-graphic-project="digital"] .hero h1 {
+  font-family: "Aldrich", sans-serif;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+html[lang="zh-CN"] [data-graphic-project="digital"] .hero-line {
+  font-family: var(--graphic-display);
+  font-size: clamp(1.75rem, 2.6vw, 2.7rem);
+  line-height: 1.5;
+  letter-spacing: .065em;
+  color: var(--graphic-accent);
+}
+html[lang="zh-CN"] [data-graphic-project="digital"] :is(.hero-copy > .intro, .section-intro, .section-heading > p:not(.eyebrow)) {
+  font-family: var(--graphic-sans);
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 32em;
+  color: var(--graphic-muted);
+}
+html[lang="zh-CN"] [data-graphic-project="digital"] .section-heading h2 {
+  letter-spacing: .04em;
+}
+
+/* Zine shares the display family; narrative emphasis retains the serif voice. */
+html[lang="zh-CN"] body[data-graphic-project="editorial"] {
+  --graphic-display: "Aldrich", "Graphic Hui", "Graphic XiaoWei", "Songti SC", serif;
+  --graphic-ink: #3b302a;
+  --graphic-muted: #6b5e55;
+  --graphic-accent: #7b3027;
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] :is(h1, h2, h3) {
+  font-family: var(--graphic-display);
+  font-weight: 400;
+  letter-spacing: .015em;
+  color: var(--graphic-ink);
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] .project-note strong {
+  font-family: var(--graphic-serif);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  color: var(--graphic-ink);
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] .intro h1 {
+  max-width: 7em;
+  font-size: clamp(2.75rem, 4.3vw, 4.5rem);
+  line-height: 1.4;
+  color: #111;
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] .summary {
+  font-family: var(--graphic-sans);
+  font-size: 1rem;
+  line-height: 1.95;
+  max-width: 29em;
+  color: var(--graphic-muted);
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] .project-note {
+  font-family: var(--graphic-sans);
+  font-size: 1rem;
+  line-height: 1.95;
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] .project-note strong {
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  line-height: 1.65;
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] .moments p {
+  font-family: var(--graphic-sans);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] .meta span {
+  font-family: var(--graphic-sans);
+  font-weight: 700;
+}
+html[lang="zh-CN"] [data-graphic-project="editorial"] footer > p {
+  font-family: var(--graphic-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: .025em;
+  text-wrap: balance;
+}
+
+/* Wrapping archive names enables language switching without changing their size. */
+[data-graphic-project="identity"] summary .archive-name {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+@media (max-width: 768px) {
+  html[lang="zh-CN"] [data-graphic-project="print"] .final-intro {
+    width: 88%;
+    margin: 48px auto 64px;
+    gap: 32px;
+  }
+  html[lang="zh-CN"] [data-graphic-project="print"] .project-intro h1 {
+    width: auto;
+    font-size: 2.8rem;
+    word-break: normal;
+    margin-bottom: 24px;
+  }
+  html[lang="zh-CN"] [data-graphic-project="identity"] .hero h1 {
+    letter-spacing: .04em;
+  }
+  html[lang="zh-CN"] [data-graphic-project="editorial"] .intro h1 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+}

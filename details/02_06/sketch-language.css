@@ -1,0 +1,28 @@
+/* Chinese companion to Wind / Falls; the sketch interaction stays unchanged. */
+html[lang="zh-CN"] .sketch-title {
+  font-family: "Nature Summer Wind", "PingFang SC", sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+html[lang="zh-CN"] .sketch-info-bottom p {
+  font-family: "Aldrich", "Nature JuSong", "Songti SC", serif;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.65;
+  letter-spacing: .015em;
+}
+
+html[lang="zh-CN"] .sketch-kicker,
+html[lang="zh-CN"] .sketch-note-label {
+  font-family: "Aldrich", "PingFang SC", sans-serif;
+}
+
+@media (max-width: 640px) {
+  html[lang="zh-CN"] .sketch-info-bottom p {
+    font-size: 1.05rem;
+  }
+}

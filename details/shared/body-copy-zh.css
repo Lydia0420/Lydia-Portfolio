@@ -1,0 +1,75 @@
+/* Chinese reading copy only. Display titles, notes, UI, colors and layout stay local.
+   System Chinese sans avoids another large font download; English pages are untouched. */
+html[lang="zh-CN"] :is(
+  body[data-zh-body="about"] .description,
+  body[data-zh-body="about"] .about-intro-line,
+  body[data-zh-body="about"] .about-intro-rest,
+  body[data-zh-body="contact"] .intro,
+  body[data-zh-body="print"] .description,
+  body[data-zh-body="logo"] .idea-copy > p:not(.lead),
+  body[data-zh-body="logo"] .process-caption p,
+  body[data-zh-body="logo"] .color-info p,
+  body[data-zh-body="logo"] .detail-grid p,
+  body[data-zh-body="digital"] .hero-copy > .intro,
+  body[data-zh-body="digital"] .section-heading > p:not(.eyebrow),
+  body[data-zh-body="digital"] .journey-card p,
+  body[data-zh-body="digital"] .section-intro,
+  body[data-zh-body="digital"] #version-description,
+  body[data-zh-body="digital"] .language-grid p,
+  body[data-zh-body="digital"] .archive-body > p,
+  body[data-zh-body="zine"] .summary,
+  body[data-zh-body="zine"] .project-note p,
+  body[data-zh-body="zine"] .section-heading > p:not(.eyebrow),
+  body[data-zh-body="zine"] .editorial-notes p:not(.small-note),
+  body[data-zh-body="zine"] #layer-description,
+  body[data-zh-body="zine"] .learning-grid p,
+  body[data-zh-body="game"] .description,
+  body[data-zh-body="kitty"] .description,
+  body[data-zh-body="candy"] .description,
+  body[data-zh-body="wind"] .intro p,
+  body[data-zh-body="wind"] .interaction p,
+  body[data-zh-body="wind"] .section-head > p,
+  body[data-zh-body="wind"] .process-caption p,
+  body[data-zh-body="wind"] .sound-note p,
+  body[data-zh-body="wind"] .reflection p,
+  body[data-zh-body="falls"] .overview-grid p,
+  body[data-zh-body="falls"] .process-text p,
+  body[data-zh-body="falls"] .reflection-card p,
+  body[data-zh-body="mr"] .story-copy > p:not(.lead),
+  body[data-zh-body="mr"] .section-intro,
+  body[data-zh-body="mr"] #chapter-description,
+  body[data-zh-body="mr"] .visual-copy > p:not(.micro),
+  body[data-zh-body="mr"] .objects p,
+  body[data-zh-body="mr"] .observations p,
+  body[data-zh-body="mr"] .credits details p,
+  body[data-zh-body="emotion"] .pantry > .intro,
+  body[data-zh-body="emotion"] #food-story,
+  body[data-zh-body="emotion"] .prep-copy > p,
+  body[data-zh-body="emotion"] #cut-story,
+  body[data-zh-body="emotion"] .process-title > p,
+  body[data-zh-body="emotion"] #step-description,
+  body[data-zh-body="twenty"] .about-copy > p:not(.lead),
+  body[data-zh-body="twenty"] .section-heading > p,
+  body[data-zh-body="twenty"] #comparison-description,
+  body[data-zh-body="twenty"] .archive-intro,
+  body[data-zh-body="twenty"] .archive-grid article > p[data-zh]:not(.eyebrow),
+  body[data-zh-body="ginger"] .section-heading > p,
+  body[data-zh-body="ginger"] .lab aside > p:not(.eyebrow):not(.lab-note),
+  body[data-zh-body="snowy"] .section-head > p,
+  body[data-zh-body="snowy"] .resident-backstory,
+  body[data-zh-body="snowy"] #resident-intro > p:first-of-type,
+  body[data-zh-body="box"] .section-head > p,
+  body[data-zh-body="box"] .dreams-heading > p
+) {
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  font-size: var(--zh-reading-size, 1rem);
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.015em;
+}
+
+/* Personal pages have more room for a slightly larger reading size. */
+html[lang="zh-CN"] body[data-zh-body="about"],
+html[lang="zh-CN"] body[data-zh-body="contact"] {
+  --zh-reading-size: 1.125rem;
+}
